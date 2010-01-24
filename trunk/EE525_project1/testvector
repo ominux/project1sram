@@ -1,0 +1,34 @@
+radix 		11111 		1 	11111111 	11111
+vname 		ain[0:4] 	read_in din[0:7] 	abin[0:4] 
+tunit 1ns
+tfall .02
+trise .02
+vih 1.1
+vil 0
+
+;for delay sim
+
+
+;time	 	address 	r/w	data_in		_address 
+
+;writing to location 11111 - data written is "10100101"
+0.0		11111		0	10100101	00000
+;writing to location 00000 - data written is "01011010"
+4.0		00000		0	01011010	11111
+;reading location 11111 
+8.0		11111		1	01011010   	00000 ;<<<-------------read from 11111
+;reading location 00000
+12.0     	00000   	1  	10100101   	11111 ;<<<-------------read from 00000
+;reading location 11111 
+16.0     	11111   	1  	01011010   	00000 ;<<<-------------additional read
+
+;writing to location 11111 - data written is "00000000"
+20.0     	11111  		0  	00000000   	00000
+;writing to location 00000 - data written is "11111111"
+24.0     	00000   	0  	11111111   	11111 
+;reading location 11111 
+28.0     	11111   	1  	11111111   	00000 ;<<<-------------read from 11111
+;reading location 00000
+32.0     	00000   	1  	00000000   	11111 ;<<<-------------read from 00000
+;reading location 11111 
+36.0     	11111   	1  	11111111   	00000 ;<<<-------------additional read
