@@ -17,7 +17,7 @@ vvdd! vdd! gnd! DC=1.1
 
 *****************************Simulation settings ********************************
 
-.TRAN 1e-12 100ns START=0.0
+.TRAN 1e-12 40ns START=0.0
 .OP
 
 .TEMP 25
@@ -31,7 +31,8 @@ vvdd! vdd! gnd! DC=1.1
 
 *****************************Include your netlist here **************************
 
-.INCLUDE sram_layout.pex.netlist
+.INCLUDE "netlist"
+*.INCLUDE sram_layout.pex.netlist
 
 
 *to simulate your SRAM, you may create an instance in this file, or 
