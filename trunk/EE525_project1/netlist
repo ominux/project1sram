@@ -31,38 +31,38 @@ xi4<0> bl<0> wl _bl<0> SRAM_cell
 ** Cell name: SRAM_regfile
 ** View name: schematic
 .subckt SRAM_regfile bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> wl<15> wl<14> wl<13> wl<12> wl<11> wl<10> wl<9> wl<8> wl<7> wl<6> wl<5> wl<4> wl<3> wl<2> wl<1> wl<0> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0>
-xi0<15> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> wl<15> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> SRAM_register
-xi0<14> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> wl<14> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> SRAM_register
-xi0<13> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> wl<13> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> SRAM_register
-xi0<12> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> wl<12> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> SRAM_register
-xi0<11> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> wl<11> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> SRAM_register
-xi0<10> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> wl<10> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> SRAM_register
-xi0<9> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> wl<9> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> SRAM_register
-xi0<8> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> wl<8> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> SRAM_register
-xi0<7> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> wl<7> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> SRAM_register
-xi0<6> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> wl<6> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> SRAM_register
-xi0<5> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> wl<5> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> SRAM_register
-xi0<4> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> wl<4> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> SRAM_register
-xi0<3> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> wl<3> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> SRAM_register
-xi0<2> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> wl<2> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> SRAM_register
-xi0<1> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> wl<1> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> SRAM_register
-xi0<0> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> wl<0> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> SRAM_register
-xi1<15> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> wl<15> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> SRAM_register
-xi1<14> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> wl<14> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> SRAM_register
-xi1<13> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> wl<13> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> SRAM_register
-xi1<12> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> wl<12> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> SRAM_register
-xi1<11> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> wl<11> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> SRAM_register
-xi1<10> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> wl<10> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> SRAM_register
-xi1<9> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> wl<9> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> SRAM_register
-xi1<8> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> wl<8> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> SRAM_register
-xi1<7> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> wl<7> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> SRAM_register
-xi1<6> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> wl<6> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> SRAM_register
-xi1<5> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> wl<5> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> SRAM_register
-xi1<4> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> wl<4> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> SRAM_register
-xi1<3> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> wl<3> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> SRAM_register
-xi1<2> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> wl<2> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> SRAM_register
-xi1<1> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> wl<1> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> SRAM_register
-xi1<0> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> wl<0> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> SRAM_register
+xi0<15> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> wl<15> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> SRAM_register
+xi0<14> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> wl<14> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> SRAM_register
+xi0<13> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> wl<13> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> SRAM_register
+xi0<12> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> wl<12> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> SRAM_register
+xi0<11> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> wl<11> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> SRAM_register
+xi0<10> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> wl<10> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> SRAM_register
+xi0<9> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> wl<9> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> SRAM_register
+xi0<8> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> wl<8> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> SRAM_register
+xi0<7> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> wl<7> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> SRAM_register
+xi0<6> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> wl<6> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> SRAM_register
+xi0<5> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> wl<5> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> SRAM_register
+xi0<4> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> wl<4> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> SRAM_register
+xi0<3> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> wl<3> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> SRAM_register
+xi0<2> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> wl<2> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> SRAM_register
+xi0<1> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> wl<1> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> SRAM_register
+xi0<0> bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> wl<0> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> SRAM_register
+xi1<15> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> wl<15> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> SRAM_register
+xi1<14> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> wl<14> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> SRAM_register
+xi1<13> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> wl<13> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> SRAM_register
+xi1<12> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> wl<12> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> SRAM_register
+xi1<11> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> wl<11> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> SRAM_register
+xi1<10> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> wl<10> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> SRAM_register
+xi1<9> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> wl<9> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> SRAM_register
+xi1<8> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> wl<8> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> SRAM_register
+xi1<7> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> wl<7> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> SRAM_register
+xi1<6> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> wl<6> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> SRAM_register
+xi1<5> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> wl<5> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> SRAM_register
+xi1<4> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> wl<4> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> SRAM_register
+xi1<3> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> wl<3> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> SRAM_register
+xi1<2> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> wl<2> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> SRAM_register
+xi1<1> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> wl<1> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> SRAM_register
+xi1<0> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> wl<0> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> SRAM_register
 .ends SRAM_regfile
 ** End of subcircuit definition.
 
@@ -168,7 +168,14 @@ xi2 se _se inv_min
 ** Cell name: output_buffer
 ** View name: schematic
 .subckt output_buffer _d_out<7> _d_out<6> _d_out<5> _d_out<4> _d_out<3> _d_out<2> _d_out<1> _d_out<0> d_in<7> d_in<6> d_in<5> d_in<4> d_in<3> d_in<2> d_in<1> d_in<0>
-xi2 _d_out<7> _d_out<6> _d_out<5> _d_out<4> _d_out<3> _d_out<2> _d_out<1> _d_out<0> d_in<7> d_in<6> d_in<5> d_in<4> d_in<3> d_in<2> d_in<1> d_in<0> data_buffer
+xi4<7> d_in<7> _d_out<7> inv_min
+xi4<6> d_in<6> _d_out<6> inv_min
+xi4<5> d_in<5> _d_out<5> inv_min
+xi4<4> d_in<4> _d_out<4> inv_min
+xi4<3> d_in<3> _d_out<3> inv_min
+xi4<2> d_in<2> _d_out<2> inv_min
+xi4<1> d_in<1> _d_out<1> inv_min
+xi4<0> d_in<0> _d_out<0> inv_min
 .ends output_buffer
 ** End of subcircuit definition.
 
