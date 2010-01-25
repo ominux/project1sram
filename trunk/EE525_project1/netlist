@@ -70,8 +70,8 @@ xi1<0> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1
 ** Cell name: precharge
 ** View name: schematic
 .subckt precharge bl _bl clk
-m1 bl clk vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
-m0 _bl clk vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
+m1 bl clk vdd! vdd! PMOS_VTG L=50e-9 W=540e-9
+m0 _bl clk vdd! vdd! PMOS_VTG L=50e-9 W=540e-9
 .ends precharge
 ** End of subcircuit definition.
 
@@ -79,14 +79,14 @@ m0 _bl clk vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
 ** Cell name: decode_row_cell
 ** View name: schematic
 .subckt decode_row_cell a b c clk d out
-m7 out _out 0 0 NMOS_VTG L=50e-9 W=90e-9
-m5 footer clk 0 0 NMOS_VTG L=50e-9 W=270e-9
-m4 net1 a footer 0 NMOS_VTG L=50e-9 W=270e-9
-m3 net12 b net1 0 NMOS_VTG L=50e-9 W=270e-9
-m2 net9 c net12 0 NMOS_VTG L=50e-9 W=270e-9
-m0 _out d net9 0 NMOS_VTG L=50e-9 W=270e-9
-m6 out _out vdd! vdd! PMOS_VTG L=50e-9 W=270e-9
-m1 _out clk vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
+m7 out _out 0 0 NMOS_VTG L=50e-9 W=270e-9
+m5 footer clk 0 0 NMOS_VTG L=50e-9 W=540e-9
+m4 net1 a footer 0 NMOS_VTG L=50e-9 W=450e-9
+m3 net12 b net1 0 NMOS_VTG L=50e-9 W=450e-9
+m2 net9 c net12 0 NMOS_VTG L=50e-9 W=360e-9
+m0 _out d net9 0 NMOS_VTG L=50e-9 W=360e-9
+m6 out _out vdd! vdd! PMOS_VTG L=50e-9 W=720e-9
+m1 _out clk vdd! vdd! PMOS_VTG L=50e-9 W=180e-9
 .ends decode_row_cell
 ** End of subcircuit definition.
 
@@ -117,14 +117,14 @@ xi0 _a<0> _a<1> _a<2> clk _a<3> wl<0> decode_row_cell
 ** Cell name: write_driver
 ** View name: schematic
 .subckt write_driver bl we _bl _d clk colsel d
-m9 _bl clk net027 0 NMOS_VTG L=50e-9 W=270e-9
-m8 bl clk net044 0 NMOS_VTG L=50e-9 W=270e-9
-m7 net040 we 0 0 NMOS_VTG L=50e-9 W=270e-9
-m6 net036 we 0 0 NMOS_VTG L=50e-9 W=270e-9
-m5 net027 colsel net9 0 NMOS_VTG L=50e-9 W=270e-9
-m2 net044 colsel net14 0 NMOS_VTG L=50e-9 W=270e-9
-m3 net14 _d net036 0 NMOS_VTG L=50e-9 W=270e-9
-m4 net9 d net040 0 NMOS_VTG L=50e-9 W=270e-9
+m9 _bl clk net027 0 NMOS_VTG L=50e-9 W=540e-9
+m8 bl clk net044 0 NMOS_VTG L=50e-9 W=540e-9
+m7 net040 we 0 0 NMOS_VTG L=50e-9 W=540e-9
+m6 net036 we 0 0 NMOS_VTG L=50e-9 W=540e-9
+m5 net027 colsel net9 0 NMOS_VTG L=50e-9 W=540e-9
+m2 net044 colsel net14 0 NMOS_VTG L=50e-9 W=540e-9
+m3 net14 _d net036 0 NMOS_VTG L=50e-9 W=540e-9
+m4 net9 d net040 0 NMOS_VTG L=50e-9 W=540e-9
 .ends write_driver
 ** End of subcircuit definition.
 
@@ -167,8 +167,10 @@ m0 in0 _se out 0 NMOS_VTG L=50e-9 W=90e-9
 ** Cell name: output_buffer
 ** View name: schematic
 .subckt output_buffer _d_out d_in
-m0 _d_out d_in 0 0 NMOS_VTG L=50e-9 W=90e-9
-m1 _d_out d_in vdd! vdd! PMOS_VTG L=50e-9 W=270e-9
+m3 _d_out net12 0 0 NMOS_VTG L=50e-9 W=270e-9
+m0 net12 d_in 0 0 NMOS_VTG L=50e-9 W=90e-9
+m1 net12 d_in vdd! vdd! PMOS_VTG L=50e-9 W=270e-9
+m2 _d_out net12 vdd! vdd! PMOS_VTG L=50e-9 W=540e-9
 .ends output_buffer
 ** End of subcircuit definition.
 
@@ -185,14 +187,6 @@ m1 out in vdd! vdd! PMOS_VTG L=50e-9 W=1.5e-6
 ** Cell name: SRAM_TopLevel
 ** View name: schematic
 xi0 bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> wl<15> wl<14> wl<13> wl<12> wl<11> wl<10> wl<9> wl<8> wl<7> wl<6> wl<5> wl<4> wl<3> wl<2> wl<1> wl<0> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> SRAM_regfile
-xi1<7> bl_col0<7> _bl_col0<7> clk precharge
-xi1<6> bl_col0<6> _bl_col0<6> clk precharge
-xi1<5> bl_col0<5> _bl_col0<5> clk precharge
-xi1<4> bl_col0<4> _bl_col0<4> clk precharge
-xi1<3> bl_col0<3> _bl_col0<3> clk precharge
-xi1<2> bl_col0<2> _bl_col0<2> clk precharge
-xi1<1> bl_col0<1> _bl_col0<1> clk precharge
-xi1<0> bl_col0<0> _bl_col0<0> clk precharge
 xi3<7> bl_col1<7> _bl_col1<7> clk precharge
 xi3<6> bl_col1<6> _bl_col1<6> clk precharge
 xi3<5> bl_col1<5> _bl_col1<5> clk precharge
@@ -201,6 +195,14 @@ xi3<3> bl_col1<3> _bl_col1<3> clk precharge
 xi3<2> bl_col1<2> _bl_col1<2> clk precharge
 xi3<1> bl_col1<1> _bl_col1<1> clk precharge
 xi3<0> bl_col1<0> _bl_col1<0> clk precharge
+xi1<7> bl_col0<7> _bl_col0<7> clk precharge
+xi1<6> bl_col0<6> _bl_col0<6> clk precharge
+xi1<5> bl_col0<5> _bl_col0<5> clk precharge
+xi1<4> bl_col0<4> _bl_col0<4> clk precharge
+xi1<3> bl_col0<3> _bl_col0<3> clk precharge
+xi1<2> bl_col0<2> _bl_col0<2> clk precharge
+xi1<1> bl_col0<1> _bl_col0<1> clk precharge
+xi1<0> bl_col0<0> _bl_col0<0> clk precharge
 xi4 clk_gen wl<15> wl<14> wl<13> wl<12> wl<11> wl<10> wl<9> wl<8> wl<7> wl<6> wl<5> wl<4> wl<3> wl<2> wl<1> wl<0> _a3 _a2 _a1 _a0 a3 a2 a1 a0 decode_row
 xi7<7> bl_col0<7> we _bl_col0<7> _d<7> clk_gen _a4 d7 write_driver
 xi7<6> bl_col0<6> we _bl_col0<6> _d<6> clk_gen _a4 d6 write_driver
@@ -235,21 +237,69 @@ x_bl_mux<3> a4 _a4 _bl_col0<3> _bl_col1<3> _mux_out<3> output_mux
 x_bl_mux<2> a4 _a4 _bl_col0<2> _bl_col1<2> _mux_out<2> output_mux
 x_bl_mux<1> a4 _a4 _bl_col0<1> _bl_col1<1> _mux_out<1> output_mux
 x_bl_mux<0> a4 _a4 _bl_col0<0> _bl_col1<0> _mux_out<0> output_mux
-xi14<7> w7 _mux_out<7> output_buffer
-xi14<6> w6 _mux_out<6> output_buffer
-xi14<5> w5 _mux_out<5> output_buffer
-xi14<4> w4 _mux_out<4> output_buffer
-xi14<3> w3 _mux_out<3> output_buffer
-xi14<2> w2 _mux_out<2> output_buffer
-xi14<1> w1 _mux_out<1> output_buffer
-xi14<0> w0 _mux_out<0> output_buffer
-xi13<7> _w7 mux_out<7> output_buffer
-xi13<6> _w6 mux_out<6> output_buffer
-xi13<5> _w5 mux_out<5> output_buffer
-xi13<4> _w4 mux_out<4> output_buffer
-xi13<3> _w3 mux_out<3> output_buffer
-xi13<2> _w2 mux_out<2> output_buffer
-xi13<1> _w1 mux_out<1> output_buffer
-xi13<0> _w0 mux_out<0> output_buffer
+xi14<7> _w7 _mux_out<7> output_buffer
+xi14<6> _w6 _mux_out<6> output_buffer
+xi14<5> _w5 _mux_out<5> output_buffer
+xi14<4> _w4 _mux_out<4> output_buffer
+xi14<3> _w3 _mux_out<3> output_buffer
+xi14<2> _w2 _mux_out<2> output_buffer
+xi14<1> _w1 _mux_out<1> output_buffer
+xi14<0> _w0 _mux_out<0> output_buffer
+xi13<7> w7 mux_out<7> output_buffer
+xi13<6> w6 mux_out<6> output_buffer
+xi13<5> w5 mux_out<5> output_buffer
+xi13<4> w4 mux_out<4> output_buffer
+xi13<3> w3 mux_out<3> output_buffer
+xi13<2> w2 mux_out<2> output_buffer
+xi13<1> w1 mux_out<1> output_buffer
+xi13<0> w0 mux_out<0> output_buffer
 xi18 clk_ clk_gen clk_buffer
 xi16 r_w we inv_min
+c8<15> wl<15> 0 60e-15
+c8<14> wl<14> 0 60e-15
+c8<13> wl<13> 0 60e-15
+c8<12> wl<12> 0 60e-15
+c8<11> wl<11> 0 60e-15
+c8<10> wl<10> 0 60e-15
+c8<9> wl<9> 0 60e-15
+c8<8> wl<8> 0 60e-15
+c8<7> wl<7> 0 60e-15
+c8<6> wl<6> 0 60e-15
+c8<5> wl<5> 0 60e-15
+c8<4> wl<4> 0 60e-15
+c8<3> wl<3> 0 60e-15
+c8<2> wl<2> 0 60e-15
+c8<1> wl<1> 0 60e-15
+c8<0> wl<0> 0 60e-15
+c7<7> _bl_col1<7> 0 50e-15
+c7<6> _bl_col1<6> 0 50e-15
+c7<5> _bl_col1<5> 0 50e-15
+c7<4> _bl_col1<4> 0 50e-15
+c7<3> _bl_col1<3> 0 50e-15
+c7<2> _bl_col1<2> 0 50e-15
+c7<1> _bl_col1<1> 0 50e-15
+c7<0> _bl_col1<0> 0 50e-15
+c6<7> bl_col1<7> 0 50e-15
+c6<6> bl_col1<6> 0 50e-15
+c6<5> bl_col1<5> 0 50e-15
+c6<4> bl_col1<4> 0 50e-15
+c6<3> bl_col1<3> 0 50e-15
+c6<2> bl_col1<2> 0 50e-15
+c6<1> bl_col1<1> 0 50e-15
+c6<0> bl_col1<0> 0 50e-15
+c5<7> _bl_col0<7> 0 50e-15
+c5<6> _bl_col0<6> 0 50e-15
+c5<5> _bl_col0<5> 0 50e-15
+c5<4> _bl_col0<4> 0 50e-15
+c5<3> _bl_col0<3> 0 50e-15
+c5<2> _bl_col0<2> 0 50e-15
+c5<1> _bl_col0<1> 0 50e-15
+c5<0> _bl_col0<0> 0 50e-15
+c4<7> bl_col0<7> 0 50e-15
+c4<6> bl_col0<6> 0 50e-15
+c4<5> bl_col0<5> 0 50e-15
+c4<4> bl_col0<4> 0 50e-15
+c4<3> bl_col0<3> 0 50e-15
+c4<2> bl_col0<2> 0 50e-15
+c4<1> bl_col0<1> 0 50e-15
+c4<0> bl_col0<0> 0 50e-15
