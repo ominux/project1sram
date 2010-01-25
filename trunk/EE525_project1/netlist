@@ -81,11 +81,11 @@ m0 _bl clk vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
 ** View name: schematic
 .subckt decode_row_cell a b c clk d out
 m7 out net25 0 0 NMOS_VTG L=50e-9 W=90e-9
-m5 footer clk 0 net023 NMOS_VTG L=50e-9 W=90e-9
-m4 net1 a footer net023 NMOS_VTG L=50e-9 W=90e-9
-m3 net12 b net1 net023 NMOS_VTG L=50e-9 W=90e-9
-m2 net9 c net12 net023 NMOS_VTG L=50e-9 W=90e-9
-m0 net25 d net9 net023 NMOS_VTG L=50e-9 W=90e-9
+m5 footer clk 0 0 NMOS_VTG L=50e-9 W=90e-9
+m4 net1 a footer 0 NMOS_VTG L=50e-9 W=90e-9
+m3 net12 b net1 0 NMOS_VTG L=50e-9 W=90e-9
+m2 net9 c net12 0 NMOS_VTG L=50e-9 W=90e-9
+m0 net25 d net9 0 NMOS_VTG L=50e-9 W=90e-9
 m6 out net25 vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
 m1 net25 clk vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
 .ends decode_row_cell
@@ -201,40 +201,40 @@ xi3<3> bl_col1<3> _bl_col1<3> clk precharge
 xi3<2> bl_col1<2> _bl_col1<2> clk precharge
 xi3<1> bl_col1<1> _bl_col1<1> clk precharge
 xi3<0> bl_col1<0> _bl_col1<0> clk precharge
-xi4 clk_gen wl<15> wl<14> wl<13> wl<12> wl<11> wl<10> wl<9> wl<8> wl<7> wl<6> wl<5> wl<4> wl<3> wl<2> wl<1> wl<0> _a<3> _a<2> _a<1> _a<0> a<3> a<2> a<1> a<0> decode_row
-xi7<7> bl_col0<7> _bl_col0<7> r_w d<7> _a<4> _d<7> write_driver
-xi7<6> bl_col0<6> _bl_col0<6> r_w d<6> _a<4> _d<6> write_driver
-xi7<5> bl_col0<5> _bl_col0<5> r_w d<5> _a<4> _d<5> write_driver
-xi7<4> bl_col0<4> _bl_col0<4> r_w d<4> _a<4> _d<4> write_driver
-xi7<3> bl_col0<3> _bl_col0<3> r_w d<3> _a<4> _d<3> write_driver
-xi7<2> bl_col0<2> _bl_col0<2> r_w d<2> _a<4> _d<2> write_driver
-xi7<1> bl_col0<1> _bl_col0<1> r_w d<1> _a<4> _d<1> write_driver
-xi7<0> bl_col0<0> _bl_col0<0> r_w d<0> _a<4> _d<0> write_driver
-xi8<7> bl_col1<7> _bl_col1<7> r_w d<7> a<4> _d<7> write_driver
-xi8<6> bl_col1<6> _bl_col1<6> r_w d<6> a<4> _d<6> write_driver
-xi8<5> bl_col1<5> _bl_col1<5> r_w d<5> a<4> _d<5> write_driver
-xi8<4> bl_col1<4> _bl_col1<4> r_w d<4> a<4> _d<4> write_driver
-xi8<3> bl_col1<3> _bl_col1<3> r_w d<3> a<4> _d<3> write_driver
-xi8<2> bl_col1<2> _bl_col1<2> r_w d<2> a<4> _d<2> write_driver
-xi8<1> bl_col1<1> _bl_col1<1> r_w d<1> a<4> _d<1> write_driver
-xi8<0> bl_col1<0> _bl_col1<0> r_w d<0> a<4> _d<0> write_driver
-xi9 _d<7> _d<6> _d<5> _d<4> _d<3> _d<2> _d<1> _d<0> d<7> d<6> d<5> d<4> d<3> d<2> d<1> d<0> data_buffer
-xbl_mux<7> a<4> bl_col0<7> bl_col1<7> net49<0> output_mux
-xbl_mux<6> a<4> bl_col0<6> bl_col1<6> net49<1> output_mux
-xbl_mux<5> a<4> bl_col0<5> bl_col1<5> net49<2> output_mux
-xbl_mux<4> a<4> bl_col0<4> bl_col1<4> net49<3> output_mux
-xbl_mux<3> a<4> bl_col0<3> bl_col1<3> net49<4> output_mux
-xbl_mux<2> a<4> bl_col0<2> bl_col1<2> net49<5> output_mux
-xbl_mux<1> a<4> bl_col0<1> bl_col1<1> net49<6> output_mux
-xbl_mux<0> a<4> bl_col0<0> bl_col1<0> net49<7> output_mux
-x_bl_mux<7> a<4> _bl_col0<7> _bl_col1<7> net47<0> output_mux
-x_bl_mux<6> a<4> _bl_col0<6> _bl_col1<6> net47<1> output_mux
-x_bl_mux<5> a<4> _bl_col0<5> _bl_col1<5> net47<2> output_mux
-x_bl_mux<4> a<4> _bl_col0<4> _bl_col1<4> net47<3> output_mux
-x_bl_mux<3> a<4> _bl_col0<3> _bl_col1<3> net47<4> output_mux
-x_bl_mux<2> a<4> _bl_col0<2> _bl_col1<2> net47<5> output_mux
-x_bl_mux<1> a<4> _bl_col0<1> _bl_col1<1> net47<6> output_mux
-x_bl_mux<0> a<4> _bl_col0<0> _bl_col1<0> net47<7> output_mux
-xi14 w<7> w<6> w<5> w<4> w<3> w<2> w<1> w<0> net47<0> net47<1> net47<2> net47<3> net47<4> net47<5> net47<6> net47<7> output_buffer
-xi13 _w<7> _w<6> _w<5> _w<4> _w<3> _w<2> _w<1> _w<0> net49<0> net49<1> net49<2> net49<3> net49<4> net49<5> net49<6> net49<7> output_buffer
+xi4 clk_gen wl<15> wl<14> wl<13> wl<12> wl<11> wl<10> wl<9> wl<8> wl<7> wl<6> wl<5> wl<4> wl<3> wl<2> wl<1> wl<0> _a3 _a2 _a1 _a0 a3 a2 a1 a0 decode_row
+xi7<7> bl_col0<7> _bl_col0<7> r_w d7 _a4 _d<7> write_driver
+xi7<6> bl_col0<6> _bl_col0<6> r_w d6 _a4 _d<6> write_driver
+xi7<5> bl_col0<5> _bl_col0<5> r_w d5 _a4 _d<5> write_driver
+xi7<4> bl_col0<4> _bl_col0<4> r_w d4 _a4 _d<4> write_driver
+xi7<3> bl_col0<3> _bl_col0<3> r_w d3 _a4 _d<3> write_driver
+xi7<2> bl_col0<2> _bl_col0<2> r_w d2 _a4 _d<2> write_driver
+xi7<1> bl_col0<1> _bl_col0<1> r_w d1 _a4 _d<1> write_driver
+xi7<0> bl_col0<0> _bl_col0<0> r_w d0 _a4 _d<0> write_driver
+xi8<7> bl_col1<7> _bl_col1<7> r_w d7 a4 _d<7> write_driver
+xi8<6> bl_col1<6> _bl_col1<6> r_w d6 a4 _d<6> write_driver
+xi8<5> bl_col1<5> _bl_col1<5> r_w d5 a4 _d<5> write_driver
+xi8<4> bl_col1<4> _bl_col1<4> r_w d4 a4 _d<4> write_driver
+xi8<3> bl_col1<3> _bl_col1<3> r_w d3 a4 _d<3> write_driver
+xi8<2> bl_col1<2> _bl_col1<2> r_w d2 a4 _d<2> write_driver
+xi8<1> bl_col1<1> _bl_col1<1> r_w d1 a4 _d<1> write_driver
+xi8<0> bl_col1<0> _bl_col1<0> r_w d0 a4 _d<0> write_driver
+xi9 _d<7> _d<6> _d<5> _d<4> _d<3> _d<2> _d<1> _d<0> d7 d6 d5 d4 d3 d2 d1 d0 data_buffer
+xbl_mux<7> a4 bl_col0<7> bl_col1<7> net49<0> output_mux
+xbl_mux<6> a4 bl_col0<6> bl_col1<6> net49<1> output_mux
+xbl_mux<5> a4 bl_col0<5> bl_col1<5> net49<2> output_mux
+xbl_mux<4> a4 bl_col0<4> bl_col1<4> net49<3> output_mux
+xbl_mux<3> a4 bl_col0<3> bl_col1<3> net49<4> output_mux
+xbl_mux<2> a4 bl_col0<2> bl_col1<2> net49<5> output_mux
+xbl_mux<1> a4 bl_col0<1> bl_col1<1> net49<6> output_mux
+xbl_mux<0> a4 bl_col0<0> bl_col1<0> net49<7> output_mux
+x_bl_mux<7> a4 _bl_col0<7> _bl_col1<7> net47<0> output_mux
+x_bl_mux<6> a4 _bl_col0<6> _bl_col1<6> net47<1> output_mux
+x_bl_mux<5> a4 _bl_col0<5> _bl_col1<5> net47<2> output_mux
+x_bl_mux<4> a4 _bl_col0<4> _bl_col1<4> net47<3> output_mux
+x_bl_mux<3> a4 _bl_col0<3> _bl_col1<3> net47<4> output_mux
+x_bl_mux<2> a4 _bl_col0<2> _bl_col1<2> net47<5> output_mux
+x_bl_mux<1> a4 _bl_col0<1> _bl_col1<1> net47<6> output_mux
+x_bl_mux<0> a4 _bl_col0<0> _bl_col1<0> net47<7> output_mux
+xi14 w7 w6 w5 w4 w3 w2 w1 w0 net47<0> net47<1> net47<2> net47<3> net47<4> net47<5> net47<6> net47<7> output_buffer
+xi13 _w7 _w6 _w5 _w4 _w3 _w2 _w1 _w0 net49<0> net49<1> net49<2> net49<3> net49<4> net49<5> net49<6> net49<7> output_buffer
 xi15 clk_ clk_gen clk_buffer
