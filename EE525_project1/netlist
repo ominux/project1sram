@@ -166,16 +166,19 @@ m0 in0 _se out 0 NMOS_VTG L=50e-9 W=90e-9
 ** Library name: EE525_project1
 ** Cell name: output_buffer
 ** View name: schematic
-.subckt output_buffer _d_out<7> _d_out<6> _d_out<5> _d_out<4> _d_out<3> _d_out<2> _d_out<1> _d_out<0> d_in<7> d_in<6> d_in<5> d_in<4> d_in<3> d_in<2> d_in<1> d_in<0>
-xi4<7> d_in<7> _d_out<7> inv_min
-xi4<6> d_in<6> _d_out<6> inv_min
-xi4<5> d_in<5> _d_out<5> inv_min
-xi4<4> d_in<4> _d_out<4> inv_min
-xi4<3> d_in<3> _d_out<3> inv_min
-xi4<2> d_in<2> _d_out<2> inv_min
-xi4<1> d_in<1> _d_out<1> inv_min
-xi4<0> d_in<0> _d_out<0> inv_min
+.subckt output_buffer _d_out d_in
+m0 _d_out d_in 0 0 NMOS_VTG L=50e-9 W=90e-9
+m1 _d_out d_in vdd! vdd! PMOS_VTG L=50e-9 W=270e-9
 .ends output_buffer
+** End of subcircuit definition.
+
+** Library name: EE525_project1
+** Cell name: clk_buffer
+** View name: schematic
+.subckt clk_buffer in out
+m0 out in 0 0 NMOS_VTG L=50e-9 W=500e-9
+m1 out in vdd! vdd! PMOS_VTG L=50e-9 W=1.5e-6
+.ends clk_buffer
 ** End of subcircuit definition.
 
 ** Library name: EE525_project1
@@ -198,23 +201,23 @@ xi3<3> bl_col1<3> _bl_col1<3> clk precharge
 xi3<2> bl_col1<2> _bl_col1<2> clk precharge
 xi3<1> bl_col1<1> _bl_col1<1> clk precharge
 xi3<0> bl_col1<0> _bl_col1<0> clk precharge
-xi4 clk wl<15> wl<14> wl<13> wl<12> wl<11> wl<10> wl<9> wl<8> wl<7> wl<6> wl<5> wl<4> wl<3> wl<2> wl<1> wl<0> _a3 _a2 _a1 _a0 a3 a2 a1 a0 decode_row
-xi7<7> bl_col0<7> _a4 _bl_col0<7> _d<7> clk we d7 write_driver
-xi7<6> bl_col0<6> _a4 _bl_col0<6> _d<6> clk we d6 write_driver
-xi7<5> bl_col0<5> _a4 _bl_col0<5> _d<5> clk we d5 write_driver
-xi7<4> bl_col0<4> _a4 _bl_col0<4> _d<4> clk we d4 write_driver
-xi7<3> bl_col0<3> _a4 _bl_col0<3> _d<3> clk we d3 write_driver
-xi7<2> bl_col0<2> _a4 _bl_col0<2> _d<2> clk we d2 write_driver
-xi7<1> bl_col0<1> _a4 _bl_col0<1> _d<1> clk we d1 write_driver
-xi7<0> bl_col0<0> _a4 _bl_col0<0> _d<0> clk we d0 write_driver
-xi8<7> bl_col1<7> a4 _bl_col1<7> _d<7> clk we d7 write_driver
-xi8<6> bl_col1<6> a4 _bl_col1<6> _d<6> clk we d6 write_driver
-xi8<5> bl_col1<5> a4 _bl_col1<5> _d<5> clk we d5 write_driver
-xi8<4> bl_col1<4> a4 _bl_col1<4> _d<4> clk we d4 write_driver
-xi8<3> bl_col1<3> a4 _bl_col1<3> _d<3> clk we d3 write_driver
-xi8<2> bl_col1<2> a4 _bl_col1<2> _d<2> clk we d2 write_driver
-xi8<1> bl_col1<1> a4 _bl_col1<1> _d<1> clk we d1 write_driver
-xi8<0> bl_col1<0> a4 _bl_col1<0> _d<0> clk we d0 write_driver
+xi4 clk_gen wl<15> wl<14> wl<13> wl<12> wl<11> wl<10> wl<9> wl<8> wl<7> wl<6> wl<5> wl<4> wl<3> wl<2> wl<1> wl<0> _a3 _a2 _a1 _a0 a3 a2 a1 a0 decode_row
+xi7<7> bl_col0<7> we _bl_col0<7> _d<7> clk_gen _a4 d7 write_driver
+xi7<6> bl_col0<6> we _bl_col0<6> _d<6> clk_gen _a4 d6 write_driver
+xi7<5> bl_col0<5> we _bl_col0<5> _d<5> clk_gen _a4 d5 write_driver
+xi7<4> bl_col0<4> we _bl_col0<4> _d<4> clk_gen _a4 d4 write_driver
+xi7<3> bl_col0<3> we _bl_col0<3> _d<3> clk_gen _a4 d3 write_driver
+xi7<2> bl_col0<2> we _bl_col0<2> _d<2> clk_gen _a4 d2 write_driver
+xi7<1> bl_col0<1> we _bl_col0<1> _d<1> clk_gen _a4 d1 write_driver
+xi7<0> bl_col0<0> we _bl_col0<0> _d<0> clk_gen _a4 d0 write_driver
+xi8<7> bl_col1<7> we _bl_col1<7> _d<7> clk_gen a4 d7 write_driver
+xi8<6> bl_col1<6> we _bl_col1<6> _d<6> clk_gen a4 d6 write_driver
+xi8<5> bl_col1<5> we _bl_col1<5> _d<5> clk_gen a4 d5 write_driver
+xi8<4> bl_col1<4> we _bl_col1<4> _d<4> clk_gen a4 d4 write_driver
+xi8<3> bl_col1<3> we _bl_col1<3> _d<3> clk_gen a4 d3 write_driver
+xi8<2> bl_col1<2> we _bl_col1<2> _d<2> clk_gen a4 d2 write_driver
+xi8<1> bl_col1<1> we _bl_col1<1> _d<1> clk_gen a4 d1 write_driver
+xi8<0> bl_col1<0> we _bl_col1<0> _d<0> clk_gen a4 d0 write_driver
 xi9 _d<7> _d<6> _d<5> _d<4> _d<3> _d<2> _d<1> _d<0> d7 d6 d5 d4 d3 d2 d1 d0 data_buffer
 xbl_mux<7> a4 _a4 bl_col0<7> bl_col1<7> mux_out<7> output_mux
 xbl_mux<6> a4 _a4 bl_col0<6> bl_col1<6> mux_out<6> output_mux
@@ -232,6 +235,21 @@ x_bl_mux<3> a4 _a4 _bl_col0<3> _bl_col1<3> _mux_out<3> output_mux
 x_bl_mux<2> a4 _a4 _bl_col0<2> _bl_col1<2> _mux_out<2> output_mux
 x_bl_mux<1> a4 _a4 _bl_col0<1> _bl_col1<1> _mux_out<1> output_mux
 x_bl_mux<0> a4 _a4 _bl_col0<0> _bl_col1<0> _mux_out<0> output_mux
-xi14 w7 w6 w5 w4 w3 w2 w1 w0 _mux_out<7> _mux_out<6> _mux_out<5> _mux_out<4> _mux_out<3> _mux_out<2> _mux_out<1> _mux_out<0> output_buffer
-xi13 _w7 _w6 _w5 _w4 _w3 _w2 _w1 _w0 mux_out<7> mux_out<6> mux_out<5> mux_out<4> mux_out<3> mux_out<2> mux_out<1> mux_out<0> output_buffer
+xi14<7> w7 _mux_out<7> output_buffer
+xi14<6> w6 _mux_out<6> output_buffer
+xi14<5> w5 _mux_out<5> output_buffer
+xi14<4> w4 _mux_out<4> output_buffer
+xi14<3> w3 _mux_out<3> output_buffer
+xi14<2> w2 _mux_out<2> output_buffer
+xi14<1> w1 _mux_out<1> output_buffer
+xi14<0> w0 _mux_out<0> output_buffer
+xi13<7> _w7 mux_out<7> output_buffer
+xi13<6> _w6 mux_out<6> output_buffer
+xi13<5> _w5 mux_out<5> output_buffer
+xi13<4> _w4 mux_out<4> output_buffer
+xi13<3> _w3 mux_out<3> output_buffer
+xi13<2> _w2 mux_out<2> output_buffer
+xi13<1> _w1 mux_out<1> output_buffer
+xi13<0> _w0 mux_out<0> output_buffer
+xi18 clk_ clk_gen clk_buffer
 xi16 r_w we inv_min
