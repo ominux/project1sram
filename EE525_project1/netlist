@@ -77,6 +77,44 @@ m0 _bl clk vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
 ** End of subcircuit definition.
 
 ** Library name: EE525_project1
+** Cell name: decode_row_cell
+** View name: schematic
+.subckt decode_row_cell a b c clk d out
+m7 out net25 0 0 NMOS_VTG L=50e-9 W=90e-9
+m5 footer clk 0 net023 NMOS_VTG L=50e-9 W=90e-9
+m4 net1 a footer net023 NMOS_VTG L=50e-9 W=90e-9
+m3 net12 b net1 net023 NMOS_VTG L=50e-9 W=90e-9
+m2 net9 c net12 net023 NMOS_VTG L=50e-9 W=90e-9
+m0 net25 d net9 net023 NMOS_VTG L=50e-9 W=90e-9
+m6 out net25 vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
+m1 net25 clk vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
+.ends decode_row_cell
+** End of subcircuit definition.
+
+** Library name: EE525_project1
+** Cell name: decode_row
+** View name: schematic
+.subckt decode_row clk wl<15> wl<14> wl<13> wl<12> wl<11> wl<10> wl<9> wl<8> wl<7> wl<6> wl<5> wl<4> wl<3> wl<2> wl<1> wl<0> _a<3> _a<2> _a<1> _a<0> a<3> a<2> a<1> a<0>
+xi15 a<0> a<1> a<2> clk a<3> wl<15> decode_row_cell
+xi14 _a<0> a<1> a<2> clk a<3> wl<14> decode_row_cell
+xi13 a<0> _a<1> a<2> clk a<3> wl<13> decode_row_cell
+xi12 _a<0> _a<1> a<2> clk a<3> wl<12> decode_row_cell
+xi11 a<0> a<1> _a<2> clk a<3> wl<11> decode_row_cell
+xi10 _a<0> a<1> _a<2> clk a<3> wl<10> decode_row_cell
+xi9 a<0> _a<1> _a<2> clk a<3> wl<9> decode_row_cell
+xi8 _a<0> _a<1> _a<2> clk a<3> wl<8> decode_row_cell
+xi7 a<0> a<1> a<2> clk _a<3> wl<7> decode_row_cell
+xi6 _a<0> a<1> a<2> clk _a<3> wl<6> decode_row_cell
+xi5 a<0> _a<1> a<2> clk _a<3> wl<5> decode_row_cell
+xi4 _a<0> _a<1> a<2> clk _a<3> wl<4> decode_row_cell
+xi3 a<0> a<1> _a<2> clk _a<3> wl<3> decode_row_cell
+xi2 _a<0> a<1> _a<2> clk _a<3> wl<2> decode_row_cell
+xi1 a<0> _a<1> _a<2> clk _a<3> wl<1> decode_row_cell
+xi0 _a<0> _a<1> _a<2> clk _a<3> wl<0> decode_row_cell
+.ends decode_row
+** End of subcircuit definition.
+
+** Library name: EE525_project1
 ** Cell name: inv_min
 ** View name: schematic
 .subckt inv_min in out
@@ -135,6 +173,15 @@ xi2 _d_out<7> _d_out<6> _d_out<5> _d_out<4> _d_out<3> _d_out<2> _d_out<1> _d_out
 ** End of subcircuit definition.
 
 ** Library name: EE525_project1
+** Cell name: clk_buffer
+** View name: schematic
+.subckt clk_buffer in out
+m0 out in 0 0 NMOS_VTG L=50e-9 W=90e-9
+m1 out in vdd! vdd! PMOS_VTG L=50e-9 W=1e-6
+.ends clk_buffer
+** End of subcircuit definition.
+
+** Library name: EE525_project1
 ** Cell name: SRAM_TopLevel
 ** View name: schematic
 xi0 bl_col0<7> bl_col0<6> bl_col0<5> bl_col0<4> bl_col0<3> bl_col0<2> bl_col0<1> bl_col0<0> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1<1> bl_col1<0> wl<15> wl<14> wl<13> wl<12> wl<11> wl<10> wl<9> wl<8> wl<7> wl<6> wl<5> wl<4> wl<3> wl<2> wl<1> wl<0> _bl_col0<7> _bl_col0<6> _bl_col0<5> _bl_col0<4> _bl_col0<3> _bl_col0<2> _bl_col0<1> _bl_col0<0> _bl_col1<7> _bl_col1<6> _bl_col1<5> _bl_col1<4> _bl_col1<3> _bl_col1<2> _bl_col1<1> _bl_col1<0> SRAM_regfile
@@ -154,6 +201,7 @@ xi3<3> bl_col1<3> _bl_col1<3> clk precharge
 xi3<2> bl_col1<2> _bl_col1<2> clk precharge
 xi3<1> bl_col1<1> _bl_col1<1> clk precharge
 xi3<0> bl_col1<0> _bl_col1<0> clk precharge
+xi4 clk_gen wl<15> wl<14> wl<13> wl<12> wl<11> wl<10> wl<9> wl<8> wl<7> wl<6> wl<5> wl<4> wl<3> wl<2> wl<1> wl<0> _a<3> _a<2> _a<1> _a<0> a<3> a<2> a<1> a<0> decode_row
 xi7<7> bl_col0<7> _bl_col0<7> r_w d<7> _a<4> _d<7> write_driver
 xi7<6> bl_col0<6> _bl_col0<6> r_w d<6> _a<4> _d<6> write_driver
 xi7<5> bl_col0<5> _bl_col0<5> r_w d<5> _a<4> _d<5> write_driver
@@ -189,3 +237,4 @@ x_bl_mux<1> a<4> _bl_col0<1> _bl_col1<1> net47<6> output_mux
 x_bl_mux<0> a<4> _bl_col0<0> _bl_col1<0> net47<7> output_mux
 xi14 w<7> w<6> w<5> w<4> w<3> w<2> w<1> w<0> net47<0> net47<1> net47<2> net47<3> net47<4> net47<5> net47<6> net47<7> output_buffer
 xi13 _w<7> _w<6> _w<5> _w<4> _w<3> _w<2> _w<1> _w<0> net49<0> net49<1> net49<2> net49<3> net49<4> net49<5> net49<6> net49<7> output_buffer
+xi15 clk_ clk_gen clk_buffer
