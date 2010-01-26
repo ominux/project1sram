@@ -70,6 +70,7 @@ xi1<0> bl_col1<7> bl_col1<6> bl_col1<5> bl_col1<4> bl_col1<3> bl_col1<2> bl_col1
 ** Cell name: precharge
 ** View name: schematic
 .subckt precharge bl _bl clk
+m3 bl clk _bl vdd! PMOS_VTG L=50e-9 W=90e-9
 m1 bl clk vdd! vdd! PMOS_VTG L=50e-9 W=540e-9
 m0 _bl clk vdd! vdd! PMOS_VTG L=50e-9 W=540e-9
 .ends precharge
@@ -132,7 +133,7 @@ m4 net9 d net040 0 NMOS_VTG L=50e-9 W=900e-9
 ** Cell name: inv_min
 ** View name: schematic
 .subckt inv_min in out
-m0 out in vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
+m0 out in vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
 m1 out in 0 0 NMOS_VTG L=50e-9 W=90e-9
 .ends inv_min
 ** End of subcircuit definition.
@@ -153,14 +154,16 @@ xi0<0> d<0> _d<0> inv_min
 ** End of subcircuit definition.
 
 ** Library name: EE525_project1
-** Cell name: output_buffer
+** Cell name: inv_2x
 ** View name: schematic
-.subckt output_buffer _d_out d_in
-m3 _d_out net12 0 0 NMOS_VTG L=50e-9 W=270e-9
-m0 net12 d_in 0 0 NMOS_VTG L=50e-9 W=90e-9
-m1 net12 d_in vdd! vdd! PMOS_VTG L=50e-9 W=270e-9
-m2 _d_out net12 vdd! vdd! PMOS_VTG L=50e-9 W=540e-9
-.ends output_buffer
+.subckt inv_2x in out
+m5 out net29 vdd! vdd! PMOS_VTG L=50e-9 W=900e-9
+m3 net25 in vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m0 net29 net25 vdd! vdd! PMOS_VTG L=50e-9 W=450e-9
+m4 out net29 0 0 NMOS_VTG L=50e-9 W=360e-9
+m2 net25 in 0 0 NMOS_VTG L=50e-9 W=90e-9
+m1 net29 net25 0 0 NMOS_VTG L=50e-9 W=180e-9
+.ends inv_2x
 ** End of subcircuit definition.
 
 ** Library name: EE525_project1
@@ -173,22 +176,43 @@ m1 out in vdd! vdd! PMOS_VTG L=50e-9 W=2e-6
 ** End of subcircuit definition.
 
 ** Library name: EE525_project1
+** Cell name: sense_amp
+** View name: schematic
+.subckt sense_amp bl bl_out _bl
+m1 net9 net9 vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m0 bl_out net9 vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m4 net033 vdd! 0 0 NMOS_VTG L=50e-9 W=90e-9
+m3 bl_out _bl net033 0 NMOS_VTG L=50e-9 W=90e-9
+m2 net9 bl net033 0 NMOS_VTG L=50e-9 W=90e-9
+.ends sense_amp
+** End of subcircuit definition.
+
+** Library name: EE525_project1
 ** Cell name: output_mux_new
 ** View name: schematic
 .subckt output_mux_new se _se in0 in1 out
-m11 out out2 vdd! vdd! PMOS_VTG L=50e-9 W=540e-9
-m8 out out1 vdd! vdd! PMOS_VTG L=50e-9 W=540e-9
+m11 out out2 vdd! vdd! PMOS_VTG L=50e-9 W=720e-9
+m8 out out1 vdd! vdd! PMOS_VTG L=50e-9 W=720e-9
 m7 out2 se vdd! vdd! PMOS_VTG L=50e-9 W=270e-9
 m6 out2 in1 vdd! vdd! PMOS_VTG L=50e-9 W=270e-9
 m2 out1 _se vdd! vdd! PMOS_VTG L=50e-9 W=270e-9
 m1 out1 in0 vdd! vdd! PMOS_VTG L=50e-9 W=270e-9
-m10 net45 out2 0 0 NMOS_VTG L=50e-9 W=540e-9
-m9 out out1 net45 0 NMOS_VTG L=50e-9 W=540e-9
+m10 net45 out2 0 0 NMOS_VTG L=50e-9 W=720e-9
+m9 out out1 net45 0 NMOS_VTG L=50e-9 W=720e-9
 m5 out2 in1 net50 0 NMOS_VTG L=50e-9 W=180e-9
 m4 net50 se 0 0 NMOS_VTG L=50e-9 W=180e-9
 m0 out1 in0 net61 0 NMOS_VTG L=50e-9 W=180e-9
 m3 net61 _se 0 0 NMOS_VTG L=50e-9 W=180e-9
 .ends output_mux_new
+** End of subcircuit definition.
+
+** Library name: EE525_project1
+** Cell name: output_buffer
+** View name: schematic
+.subckt output_buffer _d_out d_in
+m3 _d_out d_in 0 0 NMOS_VTG L=50e-9 W=270e-9
+m2 _d_out d_in vdd! vdd! PMOS_VTG L=50e-9 W=900e-9
+.ends output_buffer
 ** End of subcircuit definition.
 
 ** Library name: EE525_project1
@@ -229,24 +253,24 @@ xi8<2> bl_col1<2> we _bl_col1<2> _d<2> clk_gen a4 d2 write_driver
 xi8<1> bl_col1<1> we _bl_col1<1> _d<1> clk_gen a4 d1 write_driver
 xi8<0> bl_col1<0> we _bl_col1<0> _d<0> clk_gen a4 d0 write_driver
 xi9 _d<7> _d<6> _d<5> _d<4> _d<3> _d<2> _d<1> _d<0> d7 d6 d5 d4 d3 d2 d1 d0 data_buffer
-xi22<7> net73<0> mux_out<7> output_buffer
-xi22<6> net73<1> mux_out<6> output_buffer
-xi22<5> net73<2> mux_out<5> output_buffer
-xi22<4> net73<3> mux_out<4> output_buffer
-xi22<3> net73<4> mux_out<3> output_buffer
-xi22<2> net73<5> mux_out<2> output_buffer
-xi22<1> net73<6> mux_out<1> output_buffer
-xi22<0> net73<7> mux_out<0> output_buffer
-xi21<7> net75<0> _mux_out<7> output_buffer
-xi21<6> net75<1> _mux_out<6> output_buffer
-xi21<5> net75<2> _mux_out<5> output_buffer
-xi21<4> net75<3> _mux_out<4> output_buffer
-xi21<3> net75<4> _mux_out<3> output_buffer
-xi21<2> net75<5> _mux_out<2> output_buffer
-xi21<1> net75<6> _mux_out<1> output_buffer
-xi21<0> net75<7> _mux_out<0> output_buffer
+xi23 r_w we inv_2x
 xi18 clk_ clk_gen clk_buffer
-xi16 r_w we inv_min
+xsa_col0<7> bl_col0<7> sa_out_col0<7> _bl_col0<7> sense_amp
+xsa_col0<6> bl_col0<6> sa_out_col0<6> _bl_col0<6> sense_amp
+xsa_col0<5> bl_col0<5> sa_out_col0<5> _bl_col0<5> sense_amp
+xsa_col0<4> bl_col0<4> sa_out_col0<4> _bl_col0<4> sense_amp
+xsa_col0<3> bl_col0<3> sa_out_col0<3> _bl_col0<3> sense_amp
+xsa_col0<2> bl_col0<2> sa_out_col0<2> _bl_col0<2> sense_amp
+xsa_col0<1> bl_col0<1> sa_out_col0<1> _bl_col0<1> sense_amp
+xsa_col0<0> bl_col0<0> sa_out_col0<0> _bl_col0<0> sense_amp
+xsa_col1<7> bl_col1<7> sa_out_col1<7> _bl_col1<7> sense_amp
+xsa_col1<6> bl_col1<6> sa_out_col1<6> _bl_col1<6> sense_amp
+xsa_col1<5> bl_col1<5> sa_out_col1<5> _bl_col1<5> sense_amp
+xsa_col1<4> bl_col1<4> sa_out_col1<4> _bl_col1<4> sense_amp
+xsa_col1<3> bl_col1<3> sa_out_col1<3> _bl_col1<3> sense_amp
+xsa_col1<2> bl_col1<2> sa_out_col1<2> _bl_col1<2> sense_amp
+xsa_col1<1> bl_col1<1> sa_out_col1<1> _bl_col1<1> sense_amp
+xsa_col1<0> bl_col1<0> sa_out_col1<0> _bl_col1<0> sense_amp
 c7<7> _bl_col1<7> 0 30e-15
 c7<6> _bl_col1<6> 0 30e-15
 c7<5> _bl_col1<5> 0 30e-15
@@ -255,14 +279,14 @@ c7<3> _bl_col1<3> 0 30e-15
 c7<2> _bl_col1<2> 0 30e-15
 c7<1> _bl_col1<1> 0 30e-15
 c7<0> _bl_col1<0> 0 30e-15
-c6<7> bl_col1<7> 0 30e-15
-c6<6> bl_col1<6> 0 30e-15
-c6<5> bl_col1<5> 0 30e-15
-c6<4> bl_col1<4> 0 30e-15
-c6<3> bl_col1<3> 0 30e-15
-c6<2> bl_col1<2> 0 30e-15
-c6<1> bl_col1<1> 0 30e-15
-c6<0> bl_col1<0> 0 30e-15
+c6<7> sa_out_col1<7> 0 30e-15
+c6<6> sa_out_col1<6> 0 30e-15
+c6<5> sa_out_col1<5> 0 30e-15
+c6<4> sa_out_col1<4> 0 30e-15
+c6<3> sa_out_col1<3> 0 30e-15
+c6<2> sa_out_col1<2> 0 30e-15
+c6<1> sa_out_col1<1> 0 30e-15
+c6<0> sa_out_col1<0> 0 30e-15
 c5<7> _bl_col0<7> 0 30e-15
 c5<6> _bl_col0<6> 0 30e-15
 c5<5> _bl_col0<5> 0 30e-15
@@ -271,14 +295,14 @@ c5<3> _bl_col0<3> 0 30e-15
 c5<2> _bl_col0<2> 0 30e-15
 c5<1> _bl_col0<1> 0 30e-15
 c5<0> _bl_col0<0> 0 30e-15
-c4<7> bl_col0<7> 0 30e-15
-c4<6> bl_col0<6> 0 30e-15
-c4<5> bl_col0<5> 0 30e-15
-c4<4> bl_col0<4> 0 30e-15
-c4<3> bl_col0<3> 0 30e-15
-c4<2> bl_col0<2> 0 30e-15
-c4<1> bl_col0<1> 0 30e-15
-c4<0> bl_col0<0> 0 30e-15
+c4<7> sa_out_col1<7> 0 30e-15
+c4<6> sa_out_col1<6> 0 30e-15
+c4<5> sa_out_col1<5> 0 30e-15
+c4<4> sa_out_col1<4> 0 30e-15
+c4<3> sa_out_col1<3> 0 30e-15
+c4<2> sa_out_col1<2> 0 30e-15
+c4<1> sa_out_col1<1> 0 30e-15
+c4<0> sa_out_col1<0> 0 30e-15
 c8<15> wl<15> 0 60e-15
 c8<14> wl<14> 0 60e-15
 c8<13> wl<13> 0 60e-15
@@ -295,19 +319,19 @@ c8<3> wl<3> 0 60e-15
 c8<2> wl<2> 0 60e-15
 c8<1> wl<1> 0 60e-15
 c8<0> wl<0> 0 60e-15
-x_bl_mux<7> a4 _a4 _bl_col0<7> _bl_col1<7> _w7 output_mux_new
-x_bl_mux<6> a4 _a4 _bl_col0<6> _bl_col1<6> _w6 output_mux_new
-x_bl_mux<5> a4 _a4 _bl_col0<5> _bl_col1<5> _w5 output_mux_new
-x_bl_mux<4> a4 _a4 _bl_col0<4> _bl_col1<4> _w4 output_mux_new
-x_bl_mux<3> a4 _a4 _bl_col0<3> _bl_col1<3> _w3 output_mux_new
-x_bl_mux<2> a4 _a4 _bl_col0<2> _bl_col1<2> _w2 output_mux_new
-x_bl_mux<1> a4 _a4 _bl_col0<1> _bl_col1<1> _w1 output_mux_new
-x_bl_mux<0> a4 _a4 _bl_col0<0> _bl_col1<0> _w0 output_mux_new
-xbl_mux<7> a4 _a4 bl_col0<7> bl_col1<7> w7 output_mux_new
-xbl_mux<6> a4 _a4 bl_col0<6> bl_col1<6> w6 output_mux_new
-xbl_mux<5> a4 _a4 bl_col0<5> bl_col1<5> w5 output_mux_new
-xbl_mux<4> a4 _a4 bl_col0<4> bl_col1<4> w4 output_mux_new
-xbl_mux<3> a4 _a4 bl_col0<3> bl_col1<3> w3 output_mux_new
-xbl_mux<2> a4 _a4 bl_col0<2> bl_col1<2> w2 output_mux_new
-xbl_mux<1> a4 _a4 bl_col0<1> bl_col1<1> w1 output_mux_new
-xbl_mux<0> a4 _a4 bl_col0<0> bl_col1<0> w0 output_mux_new
+xsa_mux<7> a4 _a4 sa_out_col0<7> sa_out_col1<7> w7 output_mux_new
+xsa_mux<6> a4 _a4 sa_out_col0<6> sa_out_col1<6> w6 output_mux_new
+xsa_mux<5> a4 _a4 sa_out_col0<5> sa_out_col1<5> w5 output_mux_new
+xsa_mux<4> a4 _a4 sa_out_col0<4> sa_out_col1<4> w4 output_mux_new
+xsa_mux<3> a4 _a4 sa_out_col0<3> sa_out_col1<3> w3 output_mux_new
+xsa_mux<2> a4 _a4 sa_out_col0<2> sa_out_col1<2> w2 output_mux_new
+xsa_mux<1> a4 _a4 sa_out_col0<1> sa_out_col1<1> w1 output_mux_new
+xsa_mux<0> a4 _a4 sa_out_col0<0> sa_out_col1<0> w0 output_mux_new
+xi27<7> _w7 w7 output_buffer
+xi27<6> _w6 w6 output_buffer
+xi27<5> _w5 w5 output_buffer
+xi27<4> _w4 w4 output_buffer
+xi27<3> _w3 w3 output_buffer
+xi27<2> _w2 w2 output_buffer
+xi27<1> _w1 w1 output_buffer
+xi27<0> _w0 w0 output_buffer
