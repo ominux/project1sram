@@ -17,7 +17,7 @@ vvdd! vdd! gnd! DC=1.1
 
 *****************************Simulation settings ********************************
 
-.TRAN 1e-12 40ns START=0.0
+.TRAN 2e-12 40ns START=0.0
 .OP
 
 .TEMP 25
