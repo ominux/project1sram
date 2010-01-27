@@ -1,0 +1,23 @@
+* File: precharge.pex.netlist
+* Created: Wed Jan 27 07:38:05 2010
+* Program "Calibre xRC"
+* Version "v2007.2_34.24"
+* 
+.subckt precharge  BL CLK VDD! _BL
+* 
+MM1 BL CLK VDD! VDD! PMOS_VTG L=5e-08 W=4.5e-07 AD=4.5e-14 AS=6.3e-14
++ PD=1.1e-06 PS=1.18e-06
+MM3 BL CLK _BL VDD! PMOS_VTG L=5e-08 W=9e-08 AD=9e-15 AS=9e-15 PD=3.8e-07
++ PS=3.8e-07
+MM0 _BL CLK VDD! VDD! PMOS_VTG L=5e-08 W=4.5e-07 AD=4.5e-14 AS=6.3e-14
++ PD=1.1e-06 PS=1.18e-06
+c_4 BL 0 0.0474027f
+c_8 CLK 0 0.0948807f
+c_12 VDD! 0 0.044685f
+c_16 _BL 0 0.0365702f
+*
+.include "precharge.pex.netlist.PRECHARGE.pxi"
+*
+.ends
+*
+*

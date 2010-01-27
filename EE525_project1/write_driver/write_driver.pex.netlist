@@ -1,0 +1,37 @@
+* File: write_driver.pex.netlist
+* Created: Wed Jan 27 07:43:10 2010
+* Program "Calibre xRC"
+* Version "v2007.2_34.24"
+* 
+.subckt write_driver  BL WE _BL GND! COLSEL CLK D _D
+* 
+MM2 net044 COLSEL net14 GND! NMOS_VTG L=5e-08 W=3.6e-07 AD=5.7525e-14
++ AS=5.7525e-14 PD=1.1e-06 PS=1.1e-06
+MM7 net040 WE GND! GND! NMOS_VTG L=5e-08 W=3.6e-07 AD=5.7525e-14 AS=5.7525e-14
++ PD=1.1e-06 PS=1.1e-06
+MM6 net036 WE GND! GND! NMOS_VTG L=5e-08 W=3.85e-07 AD=5.04e-14 AS=5.7525e-14
++ PD=1e-06 PS=1.1e-06
+MM9 _BL CLK net027 GND! NMOS_VTG L=5e-08 W=3.85e-07 AD=3.8625e-14 AS=5.04e-14
++ PD=9.95e-07 PS=1e-06
+MM8 BL CLK net044 GND! NMOS_VTG L=5e-08 W=3.85e-07 AD=4.14e-14 AS=5.7525e-14
++ PD=9.5e-07 PS=1.1e-06
+MM3 net14 _D net036 GND! NMOS_VTG L=5e-08 W=3.85e-07 AD=5.7525e-14 AS=5.04e-14
++ PD=1.1e-06 PS=1e-06
+MM4 net9 D net040 GND! NMOS_VTG L=5e-08 W=3.85e-07 AD=5.7525e-14 AS=5.7525e-14
++ PD=1.1e-06 PS=1.1e-06
+MM5 net027 COLSEL net9 GND! NMOS_VTG L=5e-08 W=3.85e-07 AD=5.04e-14
++ AS=5.7525e-14 PD=1e-06 PS=1.1e-06
+c_3 BL 0 0.0140229f
+c_10 WE 0 0.0662121f
+c_13 _BL 0 0.0161001f
+c_18 GND! 0 0.0219019f
+c_25 COLSEL 0 0.103961f
+c_31 CLK 0 0.156391f
+c_35 D 0 0.0259878f
+c_40 _D 0 0.0299362f
+*
+.include "write_driver.pex.netlist.WRITE_DRIVER.pxi"
+*
+.ends
+*
+*

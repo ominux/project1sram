@@ -1,0 +1,29 @@
+* File: output_mux_new.pex.netlist.OUTPUT_MUX_NEW.pxi
+* Created: Wed Jan 27 07:41:21 2010
+* 
+cc_1 GND! VDD! 0.0103507f
+cc_2 out1 VDD! 0.062678f
+cc_3 OUT VDD! 0.0134586f
+cc_4 out2 VDD! 0.635629f
+cc_5 _SE VDD! 0.00794714f
+cc_6 IN0 VDD! 0.00611528f
+cc_7 IN1 VDD! 0.00588704f
+cc_8 SE VDD! 0.0841892f
+cc_9 out1 GND! 0.0196999f
+cc_10 out2 GND! 0.135543f
+cc_11 _SE GND! 0.00975949f
+cc_12 IN0 GND! 0.00411027f
+cc_13 IN1 GND! 0.00309166f
+cc_14 SE GND! 0.00572237f
+cc_15 OUT out1 0.250964f
+cc_16 out2 out1 0.0803024f
+cc_17 _SE out1 0.00919413f
+cc_18 IN0 out1 0.146312f
+cc_19 IN1 out1 0.0113198f
+cc_20 out2 OUT 0.0374161f
+cc_21 _SE out2 0.00332708f
+cc_22 IN0 out2 6.17837e-19
+cc_23 IN1 out2 0.0880641f
+cc_24 SE out2 0.178272f
+cc_25 IN0 _SE 0.0230361f
+cc_26 SE IN1 0.0210358f
