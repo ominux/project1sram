@@ -1,0 +1,21 @@
+* File: clk_buffer.pex.netlist
+* Created: Wed Jan 27 06:32:25 2010
+* Program "Calibre xRC"
+* Version "v2007.2_34.24"
+* 
+.subckt clk_buffer  GND! VDD! IN OUT
+* 
+MM0 OUT IN GND! GND! NMOS_VTG L=5e-08 W=8.1e-07 AD=8.1e-14 AS=8.1e-14
++ PD=1.82e-06 PS=1.82e-06
+MM1 OUT IN VDD! VDD! PMOS_VTG L=5e-08 W=2.025e-06 AD=2.025e-13 AS=2.025e-13
++ PD=4.25e-06 PS=4.25e-06
+c_4 GND! 0 0.043446f
+c_8 VDD! 0 0.0924301f
+c_12 IN 0 0.237812f
+c_16 OUT 0 0.11322f
+*
+.include "clk_buffer.pex.netlist.clk_buffer.pxi"
+*
+.ends
+*
+*
