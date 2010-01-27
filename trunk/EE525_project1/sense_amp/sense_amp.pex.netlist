@@ -1,0 +1,30 @@
+* File: sense_amp.pex.netlist
+* Created: Wed Jan 27 06:34:15 2010
+* Program "Calibre xRC"
+* Version "v2007.2_34.24"
+* 
+.subckt sense_amp  VDD! GND! _BL_OUT BL_OUT BL _BL
+* 
+MM2 _BL_OUT BL net033 GND! NMOS_VTG L=5e-08 W=1.8e-07 AD=1.8e-14 AS=2.52e-14
++ PD=5.6e-07 PS=6.4e-07
+MM4 net033 VDD! GND! GND! NMOS_VTG L=5e-08 W=9e-08 AD=9e-15 AS=9e-15 PD=3.8e-07
++ PS=3.8e-07
+MM3 BL_OUT _BL net033 GND! NMOS_VTG L=5e-08 W=1.8e-07 AD=1.8e-14 AS=2.52e-14
++ PD=5.6e-07 PS=6.4e-07
+MM1 _BL_OUT _BL_OUT VDD! VDD! PMOS_VTG L=5e-08 W=4.5e-07 AD=4.5e-14 AS=6.3e-14
++ PD=1.1e-06 PS=1.18e-06
+MM0 BL_OUT _BL_OUT VDD! VDD! PMOS_VTG L=5e-08 W=4.5e-07 AD=4.5e-14 AS=6.3e-14
++ PD=1.1e-06 PS=1.18e-06
+c_7 VDD! 0 0.0678078f
+c_11 GND! 0 0.0282533f
+c_17 _BL_OUT 0 0.0951151f
+c_24 net033 0 0.0114634f
+c_29 BL_OUT 0 0.0229048f
+c_35 BL 0 0.0381511f
+c_41 _BL 0 0.0392235f
+*
+.include "sense_amp.pex.netlist.SENSE_AMP.pxi"
+*
+.ends
+*
+*
