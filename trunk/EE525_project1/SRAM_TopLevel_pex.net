@@ -1,0 +1,186 @@
+
+** Library name: EE525_project1
+** Cell name: SRAM_regfile
+** View name: schematic
+.include sram_regfile.pex.netlist
+** End of subcircuit definition.
+
+** Library name: EE525_project1
+** Cell name: precharge
+** View name: schematic
+.include precharge.pex.netlist
+** End of subcircuit definition.
+
+** Library name: EE525_project1
+** Cell name: decode_row
+** View name: schematic
+.include decode_row.pex.netlist
+** End of subcircuit definition.
+
+** Library name: EE525_project1
+** Cell name: decode_row_cell
+** View name: schematic
+*.subckt decode_row_cell a b c clk d out
+*m7 out _out 0 0 NMOS_VTG L=50e-9 W=180e-9
+*m5 footer clk 0 0 NMOS_VTG L=50e-9 W=540e-9
+*m4 net1 a footer 0 NMOS_VTG L=50e-9 W=540e-9
+*m3 net12 b net1 0 NMOS_VTG L=50e-9 W=540e-9
+*m2 net9 c net12 0 NMOS_VTG L=50e-9 W=540e-9
+*m0 _out d net9 0 NMOS_VTG L=50e-9 W=540e-9
+*m6 out _out vdd! vdd! PMOS_VTG L=50e-9 W=1.98e-6
+*m1 _out clk vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
+*.ends decode_row_cell
+** End of subcircuit definition.
+
+** Library name: EE525_project1
+** Cell name: decode_row
+** View name: schematic
+*.subckt decode_row clk wl<15> wl<14> wl<13> wl<12> wl<11> wl<10> wl<9> wl<8> wl<7> wl<6> wl<5> wl<4> wl<3> wl<2> wl<1> wl<0> _a<3> _a<2> _a<1> _a<0> a<3> a<2> a<1> a<0>
+*xi15 a<0> a<1> a<2> clk a<3> wl<15> decode_row_cell
+*xi14 _a<0> a<1> a<2> clk a<3> wl<14> decode_row_cell
+*xi13 a<0> _a<1> a<2> clk a<3> wl<13> decode_row_cell
+*xi12 _a<0> _a<1> a<2> clk a<3> wl<12> decode_row_cell
+*xi11 a<0> a<1> _a<2> clk a<3> wl<11> decode_row_cell
+*xi10 _a<0> a<1> _a<2> clk a<3> wl<10> decode_row_cell
+*xi9 a<0> _a<1> _a<2> clk a<3> wl<9> decode_row_cell
+*xi8 _a<0> _a<1> _a<2> clk a<3> wl<8> decode_row_cell
+*xi7 a<0> a<1> a<2> clk _a<3> wl<7> decode_row_cell
+*xi6 _a<0> a<1> a<2> clk _a<3> wl<6> decode_row_cell
+*xi5 a<0> _a<1> a<2> clk _a<3> wl<5> decode_row_cell
+*xi4 _a<0> _a<1> a<2> clk _a<3> wl<4> decode_row_cell
+*xi3 a<0> a<1> _a<2> clk _a<3> wl<3> decode_row_cell
+*xi2 _a<0> a<1> _a<2> clk _a<3> wl<2> decode_row_cell
+*xi1 a<0> _a<1> _a<2> clk _a<3> wl<1> decode_row_cell
+*xi0 _a<0> _a<1> _a<2> clk _a<3> wl<0> decode_row_cell
+*.ends decode_row
+** End subckt
+
+** Library name: EE525_project1
+** Cell name: write_driver
+** View name: schematic
+.include write_driver.pex.netlist
+** End of subcircuit definition.
+
+** Library name: EE525_project1
+** Cell name: inv_min
+** View name: schematic
+.subckt inv_min in out
+m0 out in vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m1 out in 0 0 NMOS_VTG L=50e-9 W=90e-9
+.ends inv_min
+** End of subcircuit definition.
+
+** Library name: EE525_project1
+** Cell name: data_buffer
+** View name: schematic
+.subckt data_buffer _d<7> _d<6> _d<5> _d<4> _d<3> _d<2> _d<1> _d<0> d<7> d<6> d<5> d<4> d<3> d<2> d<1> d<0>
+xi0<7> d<7> _d<7> inv_min
+xi0<6> d<6> _d<6> inv_min
+xi0<5> d<5> _d<5> inv_min
+xi0<4> d<4> _d<4> inv_min
+xi0<3> d<3> _d<3> inv_min
+xi0<2> d<2> _d<2> inv_min
+xi0<1> d<1> _d<1> inv_min
+xi0<0> d<0> _d<0> inv_min
+.ends data_buffer
+** End of subcircuit definition.
+
+** Library name: EE525_project1
+** Cell name: clk_buffer
+** View name: schematic
+.include clk_buffer.pex.netlist
+** End of subcircuit definition.
+
+** Library name: EE525_project1
+** Cell name: sense_amp
+** View name: schematic
+.include sense_amp.pex.netlist
+** End of subcircuit definition.
+
+** Library name: EE525_project1
+** Cell name: output_mux_new
+** View name: schematic
+.include output_mux_new.pex.netlist
+** End of subcircuit definition.
+
+** Library name: EE525_project1
+** Cell name: SRAM_TopLevel
+** View name: schematic
+xi0 wl<11> wl<3> wl<7> wl<9> wl<10> wl<13> wl<14> wl<15> wl<0> wl<1> wl<8> wl<12> wl<2> wl<4> wl<5> wl<6> VDD! bl_col0<7> _bl_col0<7> bl_col0<6> _bl_col0<6> bl_col0<5> _bl_col0<5> bl_col0<4> _bl_col0<4> bl_col0<3> _bl_col0<3> bl_col0<2> _bl_col0<2> bl_col0<1> _bl_col0<1> bl_col0<0> _bl_col0<0> bl_col1<7> _bl_col1<7> bl_col1<6> _bl_col1<6> bl_col1<5> _bl_col1<5> bl_col1<4> _bl_col1<4> bl_col1<3> _bl_col1<3> bl_col1<2> _bl_col1<2> bl_col1<1> _bl_col1<1> bl_col1<0> _bl_col1<0> GND! SRAM_regfile
+
+xi1<7> bl_col0<7> clk VDD! _bl_col0<7> precharge
+xi1<6> bl_col0<6> clk VDD! _bl_col0<6> precharge
+xi1<5> bl_col0<5> clk VDD! _bl_col0<5> precharge
+xi1<4> bl_col0<4> clk VDD! _bl_col0<4> precharge
+xi1<3> bl_col0<3> clk VDD! _bl_col0<3> precharge
+xi1<2> bl_col0<2> clk VDD! _bl_col0<2> precharge
+xi1<1> bl_col0<1> clk VDD! _bl_col0<1> precharge
+xi1<0> bl_col0<0> clk VDD! _bl_col0<0> precharge
+xi3<7> bl_col1<7> clk VDD! _bl_col1<7> precharge
+xi3<6> bl_col1<6> clk VDD! _bl_col1<6> precharge
+xi3<5> bl_col1<5> clk VDD! _bl_col1<5> precharge
+xi3<4> bl_col1<4> clk VDD! _bl_col1<4> precharge
+xi3<3> bl_col1<3> clk VDD! _bl_col1<3> precharge
+xi3<2> bl_col1<2> clk VDD! _bl_col1<2> precharge
+xi3<1> bl_col1<1> clk VDD! _bl_col1<1> precharge
+xi3<0> bl_col1<0> clk VDD! _bl_col1<0> precharge
+
+xi4 a2 _a2 VDD! GND! wl<15> wl<1> wl<9> wl<11> wl<13> wl<3> wl<5> wl<7> a0 _a3 a3 _a0 clk_gen wl<8> wl<12> wl<14> wl<4> wl<6> wl<0> wl<2> wl<10> a1 _a1 decode_row
+*xi4 clk_gen wl<15> wl<14> wl<13> wl<12> wl<11> wl<10> wl<9> wl<8> wl<7> wl<6> wl<5> wl<4> wl<3> wl<2> wl<1> wl<0> _a3 _a2 _a1 _a0 a3 a2 a1 a0 decode_row
+
+
+xi7<7> bl_col0<7> we _bl_col0<7> GND! _a4 clk_gen d7 _d<7> write_driver
+xi7<6> bl_col0<6> we _bl_col0<6> GND! _a4 clk_gen d6 _d<6> write_driver
+xi7<5> bl_col0<5> we _bl_col0<5> GND! _a4 clk_gen d5 _d<5> write_driver
+xi7<4> bl_col0<4> we _bl_col0<4> GND! _a4 clk_gen d4 _d<4> write_driver
+xi7<3> bl_col0<3> we _bl_col0<3> GND! _a4 clk_gen d3 _d<3> write_driver
+xi7<2> bl_col0<2> we _bl_col0<2> GND! _a4 clk_gen d2 _d<2> write_driver
+xi7<1> bl_col0<1> we _bl_col0<1> GND! _a4 clk_gen d1 _d<1> write_driver
+xi7<0> bl_col0<0> we _bl_col0<0> GND! _a4 clk_gen d0 _d<0> write_driver
+xi8<7> bl_col1<7> we _bl_col1<7> GND! a4 clk_gen d7 _d<7> write_driver
+xi8<6> bl_col1<6> we _bl_col1<6> GND! a4 clk_gen d6 _d<6> write_driver
+xi8<5> bl_col1<5> we _bl_col1<5> GND! a4 clk_gen d5 _d<5> write_driver
+xi8<4> bl_col1<4> we _bl_col1<4> GND! a4 clk_gen d4 _d<4> write_driver
+xi8<3> bl_col1<3> we _bl_col1<3> GND! a4 clk_gen d3 _d<3> write_driver
+xi8<2> bl_col1<2> we _bl_col1<2> GND! a4 clk_gen d2 _d<2> write_driver
+xi8<1> bl_col1<1> we _bl_col1<1> GND! a4 clk_gen d1 _d<1> write_driver
+xi8<0> bl_col1<0> we _bl_col1<0> GND! a4 clk_gen d0 _d<0> write_driver
+
+xi9 _d<7> _d<6> _d<5> _d<4> _d<3> _d<2> _d<1> _d<0> d7 d6 d5 d4 d3 d2 d1 d0 data_buffer
+
+xi18 GND! VDD! clk_ clk_gen clk_buffer
+xi29 GND! VDD! r_w we clk_buffer
+
+xsa_col0<7> VDD! GND! _sa_out_col0<7> sa_out_col0<7> bl_col0<7> _bl_col0<7> sense_amp
+xsa_col0<6> VDD! GND! _sa_out_col0<6> sa_out_col0<6> bl_col0<6> _bl_col0<6> sense_amp
+xsa_col0<5> VDD! GND! _sa_out_col0<5> sa_out_col0<5> bl_col0<5> _bl_col0<5> sense_amp
+xsa_col0<4> VDD! GND! _sa_out_col0<4> sa_out_col0<4> bl_col0<4> _bl_col0<4> sense_amp
+xsa_col0<3> VDD! GND! _sa_out_col0<3> sa_out_col0<3> bl_col0<3> _bl_col0<3> sense_amp
+xsa_col0<2> VDD! GND! _sa_out_col0<2> sa_out_col0<2> bl_col0<2> _bl_col0<2> sense_amp
+xsa_col0<1> VDD! GND! _sa_out_col0<1> sa_out_col0<1> bl_col0<1> _bl_col0<1> sense_amp
+xsa_col0<0> VDD! GND! _sa_out_col0<0> sa_out_col0<0> bl_col0<0> _bl_col0<0> sense_amp
+xsa_col1<7> VDD! GND! _sa_out_col1<7> sa_out_col1<7> bl_col1<7> _bl_col1<7> sense_amp
+xsa_col1<6> VDD! GND! _sa_out_col1<6> sa_out_col1<6> bl_col1<6> _bl_col1<6> sense_amp
+xsa_col1<5> VDD! GND! _sa_out_col1<5> sa_out_col1<5> bl_col1<5> _bl_col1<5> sense_amp
+xsa_col1<4> VDD! GND! _sa_out_col1<4> sa_out_col1<4> bl_col1<4> _bl_col1<4> sense_amp
+xsa_col1<3> VDD! GND! _sa_out_col1<3> sa_out_col1<3> bl_col1<3> _bl_col1<3> sense_amp
+xsa_col1<2> VDD! GND! _sa_out_cozl1<2> sa_out_col1<2> bl_col1<2> _bl_col1<2> sense_amp
+xsa_col1<1> VDD! GND! _sa_out_col1<1> sa_out_col1<1> bl_col1<1> _bl_col1<1> sense_amp
+xsa_col1<0> VDD! GND! _sa_out_col1<0> sa_out_col1<0> bl_col1<0> _bl_col1<0> sense_amp
+
+xi28<7> VDD! GND! _w7 _a4 _sa_out_col0<7> _sa_out_col1<7> a4 output_mux_new
+xi28<6> VDD! GND! _w6 _a4 _sa_out_col0<6> _sa_out_col1<6> a4 output_mux_new
+xi28<5> VDD! GND! _w5 _a4 _sa_out_col0<5> _sa_out_col1<5> a4 output_mux_new
+xi28<4> VDD! GND! _w4 _a4 _sa_out_col0<4> _sa_out_col1<4> a4 output_mux_new
+xi28<3> VDD! GND! _w3 _a4 _sa_out_col0<3> _sa_out_col1<3> a4 output_mux_new
+xi28<2> VDD! GND! _w2 _a4 _sa_out_col0<2> _sa_out_col1<2> a4 output_mux_new
+xi28<1> VDD! GND! _w1 _a4 _sa_out_col0<1> _sa_out_col1<1> a4 output_mux_new
+xi28<0> VDD! GND! _w0 _a4 _sa_out_col0<0> _sa_out_col1<0> a4 output_mux_new
+xsa_mux<7> VDD! GND! w7 _a4 sa_out_col0<7> sa_out_col1<7> a4 output_mux_new
+xsa_mux<6> VDD! GND! w6 _a4 sa_out_col0<6> sa_out_col1<6> a4 output_mux_new
+xsa_mux<5> VDD! GND! w5 _a4 sa_out_col0<5> sa_out_col1<5> a4 output_mux_new
+xsa_mux<4> VDD! GND! w4 _a4 sa_out_col0<4> sa_out_col1<4> a4 output_mux_new
+xsa_mux<3> VDD! GND! w3 _a4 sa_out_col0<3> sa_out_col1<3> a4 output_mux_new
+xsa_mux<2> VDD! GND! w2 _a4 sa_out_col0<2> sa_out_col1<2> a4 output_mux_new
+xsa_mux<1> VDD! GND! w1 _a4 sa_out_col0<1> sa_out_col1<1> a4 output_mux_new
+xsa_mux<0> VDD! GND! w0 _a4 sa_out_col0<0> sa_out_col1<0> a4 output_mux_new

@@ -14,7 +14,7 @@ c_8 VDD! 0 0.0924301f
 c_12 IN 0 0.237812f
 c_16 OUT 0 0.11322f
 *
-.include "clk_buffer.pex.netlist.clk_buffer.pxi"
+.include "clk_buffer.pex.netlist.CLK_BUFFER.pxi"
 *
 .ends
 *
