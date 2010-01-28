@@ -31,8 +31,8 @@ vvdd! vdd! gnd! DC=1.1
 
 *****************************Include your netlist here **************************
 
-.INCLUDE "netlist"
-*.INCLUDE sram_layout.pex.netlist
+*.INCLUDE "netlist"
+.INCLUDE "SRAM_TopLevel/SRAM_TopLevel.pex.netlist"
 
 
 *to simulate your SRAM, you may create an instance in this file, or 
