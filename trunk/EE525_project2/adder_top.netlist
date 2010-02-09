@@ -1,0 +1,33 @@
+
+** Library name: EE525_project2
+** Cell name: inv_min
+** View name: schematic
+.subckt inv_min in out
+m0 out in vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m1 out in 0 0 NMOS_VTG L=50e-9 W=90e-9
+.ends inv_min
+** End of subcircuit definition.
+
+** Library name: EE525_project2
+** Cell name: adder_top
+** View name: schematic
+xinv<19> _a<19> s<19> inv_min
+xinv<18> _a<18> s<18> inv_min
+xinv<17> _a<17> s<17> inv_min
+xinv<16> _a<16> s<16> inv_min
+xinv<15> _a<15> s<15> inv_min
+xinv<14> _a<14> s<14> inv_min
+xinv<13> _a<13> s<13> inv_min
+xinv<12> _a<12> s<12> inv_min
+xinv<11> _a<11> s<11> inv_min
+xinv<10> _a<10> s<10> inv_min
+xinv<9> _a<9> s<9> inv_min
+xinv<8> _a<8> s<8> inv_min
+xinv<7> _a<7> s<7> inv_min
+xinv<6> _a<6> s<6> inv_min
+xinv<5> _a<5> s<5> inv_min
+xinv<4> _a<4> s<4> inv_min
+xinv<3> _a<3> s<3> inv_min
+xinv<2> _a<2> s<2> inv_min
+xinv<1> _a<1> s<1> inv_min
+xinv<0> _a<0> s<0> inv_min
