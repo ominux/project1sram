@@ -18,7 +18,7 @@ vil 0
 ; adding 0 and FFFFF
 8.0		00000           FFFFF           FFFFF           00000
 ; adding FFFFF and 0
-12.0     	FFFFF           00000           FFFFF           00000
+12.0     	FFFFF           00000           00000           FFFFF
 ; adding A5A5A and 5A5A5
 16.0     	A5A5A           5A5A5           5A5A5           A5A5A
 ; adding 5A5A5 and A5A5A

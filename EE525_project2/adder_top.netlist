@@ -1,5 +1,47 @@
 
 ** Library name: EE525_project2
+** Cell name: xor
+** View name: schematic
+.subckt xor a b y
+m1 y net15 b 0 NMOS_VTG L=50e-9 W=90e-9
+m2 net15 a 0 0 NMOS_VTG L=50e-9 W=90e-9
+m0 y b net15 0 NMOS_VTG L=50e-9 W=90e-9
+m5 y a b vdd! PMOS_VTG L=50e-9 W=225e-9
+m4 net15 a vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m3 y b a vdd! PMOS_VTG L=50e-9 W=225e-9
+.ends xor
+** End of subcircuit definition.
+
+** Library name: EE525_project2
+** Cell name: pg
+** View name: schematic
+.subckt pg a b g p _g _p
+m13 g _g 0 0 NMOS_VTG L=50e-9 W=90e-9
+m11 net040 b 0 0 NMOS_VTG L=50e-9 W=180e-9
+m10 _g a net040 0 NMOS_VTG L=50e-9 W=180e-9
+m7 _p p 0 0 NMOS_VTG L=50e-9 W=90e-9
+m12 g _g vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m9 _g b vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m8 _g a vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m6 _p p vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+xi2 a b p xor
+.ends pg
+** End of subcircuit definition.
+
+** Library name: EE525_project2
+** Cell name: aoi
+** View name: schematic
+.subckt aoi a b c y
+m3 y b net9 0 NMOS_VTG L=50e-9 W=180e-9
+m2 net9 c 0 0 NMOS_VTG L=50e-9 W=180e-9
+m0 y a 0 0 NMOS_VTG L=50e-9 W=90e-9
+m5 y a net25 vdd! PMOS_VTG L=50e-9 W=550e-9
+m4 net25 c vdd! vdd! PMOS_VTG L=50e-9 W=550e-9
+m1 net25 b vdd! vdd! PMOS_VTG L=50e-9 W=550e-9
+.ends aoi
+** End of subcircuit definition.
+
+** Library name: EE525_project2
 ** Cell name: inv_min
 ** View name: schematic
 .subckt inv_min in out
@@ -9,25 +51,93 @@ m1 out in 0 0 NMOS_VTG L=50e-9 W=90e-9
 ** End of subcircuit definition.
 
 ** Library name: EE525_project2
+** Cell name: ripple_carry
+** View name: schematic
+.subckt ripple_carry g<18> g<17> g<16> g<15> g<14> g<13> g<12> g<11> g<10> g<9> g<8> g<7> g<6> g<5> g<4> g<3> g<2> g<1> g<0> c<18> c<17> c<16> c<15> c<14> c<13> c<12> c<11> c<10> c<9> c<8> c<7> c<6> c<5> c<4> c<3> c<2> c<1> c<0> pres p<18> p<17> p<16> p<15> p<14> p<13> p<12> p<11> p<10> p<9> p<8> p<7> p<6> p<5> p<4> p<3> p<2> p<1> p<0>
+xandorinv<0> g<0> p<0> 0 net012 aoi
+xandorinv<18> g<18> p<18> c<17> net016<0> aoi
+xandorinv<17> g<17> p<17> c<16> net016<1> aoi
+xandorinv<16> g<16> p<16> c<15> net016<2> aoi
+xandorinv<15> g<15> p<15> c<14> net016<3> aoi
+xandorinv<14> g<14> p<14> c<13> net016<4> aoi
+xandorinv<13> g<13> p<13> c<12> net016<5> aoi
+xandorinv<12> g<12> p<12> c<11> net016<6> aoi
+xandorinv<11> g<11> p<11> c<10> net016<7> aoi
+xandorinv<10> g<10> p<10> c<9> net016<8> aoi
+xandorinv<9> g<9> p<9> c<8> net016<9> aoi
+xandorinv<8> g<8> p<8> c<7> net016<10> aoi
+xandorinv<7> g<7> p<7> c<6> net016<11> aoi
+xandorinv<6> g<6> p<6> c<5> net016<12> aoi
+xandorinv<5> g<5> p<5> c<4> net016<13> aoi
+xandorinv<4> g<4> p<4> c<3> net016<14> aoi
+xandorinv<3> g<3> p<3> c<2> net016<15> aoi
+xandorinv<2> g<2> p<2> c<1> net016<16> aoi
+xandorinv<1> g<1> p<1> c<0> net016<17> aoi
+r0 p<0> pres 0
+xinv<0> net012 c<0> inv_min
+xinv<18> net016<0> c<18> inv_min
+xinv<17> net016<1> c<17> inv_min
+xinv<16> net016<2> c<16> inv_min
+xinv<15> net016<3> c<15> inv_min
+xinv<14> net016<4> c<14> inv_min
+xinv<13> net016<5> c<13> inv_min
+xinv<12> net016<6> c<12> inv_min
+xinv<11> net016<7> c<11> inv_min
+xinv<10> net016<8> c<10> inv_min
+xinv<9> net016<9> c<9> inv_min
+xinv<8> net016<10> c<8> inv_min
+xinv<7> net016<11> c<7> inv_min
+xinv<6> net016<12> c<6> inv_min
+xinv<5> net016<13> c<5> inv_min
+xinv<4> net016<14> c<4> inv_min
+xinv<3> net016<15> c<3> inv_min
+xinv<2> net016<16> c<2> inv_min
+xinv<1> net016<17> c<1> inv_min
+.ends ripple_carry
+** End of subcircuit definition.
+
+** Library name: EE525_project2
 ** Cell name: adder_top
 ** View name: schematic
-xinv<19> _a<19> s<19> inv_min
-xinv<18> _a<18> s<18> inv_min
-xinv<17> _a<17> s<17> inv_min
-xinv<16> _a<16> s<16> inv_min
-xinv<15> _a<15> s<15> inv_min
-xinv<14> _a<14> s<14> inv_min
-xinv<13> _a<13> s<13> inv_min
-xinv<12> _a<12> s<12> inv_min
-xinv<11> _a<11> s<11> inv_min
-xinv<10> _a<10> s<10> inv_min
-xinv<9> _a<9> s<9> inv_min
-xinv<8> _a<8> s<8> inv_min
-xinv<7> _a<7> s<7> inv_min
-xinv<6> _a<6> s<6> inv_min
-xinv<5> _a<5> s<5> inv_min
-xinv<4> _a<4> s<4> inv_min
-xinv<3> _a<3> s<3> inv_min
-xinv<2> _a<2> s<2> inv_min
-xinv<1> _a<1> s<1> inv_min
-xinv<0> _a<0> s<0> inv_min
+xgensum<19> p<19> gout<19> s<19> xor
+xgensum<18> p<18> gout<18> s<18> xor
+xgensum<17> p<17> gout<17> s<17> xor
+xgensum<16> p<16> gout<16> s<16> xor
+xgensum<15> p<15> gout<15> s<15> xor
+xgensum<14> p<14> gout<14> s<14> xor
+xgensum<13> p<13> gout<13> s<13> xor
+xgensum<12> p<12> gout<12> s<12> xor
+xgensum<11> p<11> gout<11> s<11> xor
+xgensum<10> p<10> gout<10> s<10> xor
+xgensum<9> p<9> gout<9> s<9> xor
+xgensum<8> p<8> gout<8> s<8> xor
+xgensum<7> p<7> gout<7> s<7> xor
+xgensum<6> p<6> gout<6> s<6> xor
+xgensum<5> p<5> gout<5> s<5> xor
+xgensum<4> p<4> gout<4> s<4> xor
+xgensum<3> p<3> gout<3> s<3> xor
+xgensum<2> p<2> gout<2> s<2> xor
+xgensum<1> p<1> gout<1> s<1> xor
+xgensum<0> p<0> ground s<0> xor
+xgenpg<19> a<19> b<19> g<19> p<19> net11<0> net10<0> pg
+xgenpg<18> a<18> b<18> g<18> p<18> net11<1> net10<1> pg
+xgenpg<17> a<17> b<17> g<17> p<17> net11<2> net10<2> pg
+xgenpg<16> a<16> b<16> g<16> p<16> net11<3> net10<3> pg
+xgenpg<15> a<15> b<15> g<15> p<15> net11<4> net10<4> pg
+xgenpg<14> a<14> b<14> g<14> p<14> net11<5> net10<5> pg
+xgenpg<13> a<13> b<13> g<13> p<13> net11<6> net10<6> pg
+xgenpg<12> a<12> b<12> g<12> p<12> net11<7> net10<7> pg
+xgenpg<11> a<11> b<11> g<11> p<11> net11<8> net10<8> pg
+xgenpg<10> a<10> b<10> g<10> p<10> net11<9> net10<9> pg
+xgenpg<9> a<9> b<9> g<9> p<9> net11<10> net10<10> pg
+xgenpg<8> a<8> b<8> g<8> p<8> net11<11> net10<11> pg
+xgenpg<7> a<7> b<7> g<7> p<7> net11<12> net10<12> pg
+xgenpg<6> a<6> b<6> g<6> p<6> net11<13> net10<13> pg
+xgenpg<5> a<5> b<5> g<5> p<5> net11<14> net10<14> pg
+xgenpg<4> a<4> b<4> g<4> p<4> net11<15> net10<15> pg
+xgenpg<3> a<3> b<3> g<3> p<3> net11<16> net10<16> pg
+xgenpg<2> a<2> b<2> g<2> p<2> net11<17> net10<17> pg
+xgenpg<1> a<1> b<1> g<1> p<1> net11<18> net10<18> pg
+xgenpg<0> a<0> b<0> g<0> p<0> net11<19> net10<19> pg
+xi3 g<18> g<17> g<16> g<15> g<14> g<13> g<12> g<11> g<10> g<9> g<8> g<7> g<6> g<5> g<4> g<3> g<2> g<1> g<0> gout<19> gout<18> gout<17> gout<16> gout<15> gout<14> gout<13> gout<12> gout<11> gout<10> gout<9> gout<8> gout<7> gout<6> gout<5> gout<4> gout<3> gout<2> gout<1> gout<0> p<18> p<17> p<16> p<15> p<14> p<13> p<12> p<11> p<10> p<9> p<8> p<7> p<6> p<5> p<4> p<3> p<2> p<1> p<0> ripple_carry
+r0 ground 0 0
