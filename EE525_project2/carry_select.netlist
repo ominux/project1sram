@@ -1,0 +1,112 @@
+
+** Library name: EE525_project2
+** Cell name: full_adder_mirror
+** View name: schematic
+.subckt full_adder_mirror a b cin cout s _cout
+m13 s net025 0 0 NMOS_VTG L=50e-9 W=90e-9
+m12 cout _cout 0 0 NMOS_VTG L=50e-9 W=90e-9
+m11 net025 cin net016 0 NMOS_VTG L=50e-9 W=90e-9
+m10 net021 cin 0 0 NMOS_VTG L=50e-9 W=90e-9
+m9 net021 a 0 0 NMOS_VTG L=50e-9 W=90e-9
+m8 net025 _cout net021 0 NMOS_VTG L=50e-9 W=90e-9
+m7 net021 b 0 0 NMOS_VTG L=50e-9 W=90e-9
+m6 net016 a net036 0 NMOS_VTG L=50e-9 W=90e-9
+m5 net036 b 0 0 NMOS_VTG L=50e-9 W=90e-9
+m4 net11 b 0 0 NMOS_VTG L=50e-9 W=90e-9
+m3 _cout a net11 0 NMOS_VTG L=50e-9 W=90e-9
+m2 net16 b 0 0 NMOS_VTG L=50e-9 W=90e-9
+m1 net16 a 0 0 NMOS_VTG L=50e-9 W=90e-9
+m0 _cout cin net16 0 NMOS_VTG L=50e-9 W=90e-9
+m27 _cout cin net0100 vdd! PMOS_VTG L=50e-9 W=90e-9
+m26 net0100 a vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
+m25 net0100 b vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
+m24 _cout a net0111 vdd! PMOS_VTG L=50e-9 W=90e-9
+m23 net0111 b vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
+m22 net025 _cout net0101 vdd! PMOS_VTG L=50e-9 W=90e-9
+m21 net0101 a vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
+m20 net0101 cin vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
+m19 net0101 b vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
+m18 net025 cin net0150 vdd! PMOS_VTG L=50e-9 W=90e-9
+m17 net0150 a net0155 vdd! PMOS_VTG L=50e-9 W=90e-9
+m16 net0155 b vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
+m15 s net025 vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
+m14 cout _cout vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
+.ends full_adder_mirror
+** End of subcircuit definition.
+
+** Library name: EE525_project2
+** Cell name: mux_2t1
+** View name: schematic
+.subckt mux_2t1 in0 in1 out _sel sel
+m1 in0 _sel out 0 NMOS_VTG L=50e-9 W=90e-9
+m0 in1 sel out 0 NMOS_VTG L=50e-9 W=90e-9
+m3 in1 _sel out vdd! PMOS_VTG L=50e-9 W=90e-9
+m2 in0 sel out vdd! PMOS_VTG L=50e-9 W=90e-9
+.ends mux_2t1
+** End of subcircuit definition.
+
+** Library name: EE525_project2
+** Cell name: carry_select
+** View name: schematic
+xi2<1> a<1> b<1> cout<0> cout<1> s<1> _cout<1> full_adder_mirror
+xi2<0> a<0> b<0> 0 cout<0> s<0> _cout<0> full_adder_mirror
+xi5<2> a<4> b<4> cout0<3> cout0<4> s0<4> _cout0<4> full_adder_mirror
+xi5<1> a<3> b<3> cout0<2> cout0<3> s0<3> _cout0<3> full_adder_mirror
+xi5<0> a<2> b<2> 0 cout0<2> s0<2> _cout0<2> full_adder_mirror
+xi11<5> a<19> b<19> cout0<18> cout0<19> s0<19> _cout0<19> full_adder_mirror
+xi11<4> a<18> b<18> cout0<17> cout0<18> s0<18> _cout0<18> full_adder_mirror
+xi11<3> a<17> b<17> cout0<16> cout0<17> s0<17> _cout0<17> full_adder_mirror
+xi11<2> a<16> b<16> cout0<15> cout0<16> s0<16> _cout0<16> full_adder_mirror
+xi11<1> a<15> b<15> cout0<14> cout0<15> s0<15> _cout0<15> full_adder_mirror
+xi11<0> a<14> b<14> 0 cout0<14> s0<14> _cout0<14> full_adder_mirror
+xi9<4> a<13> b<13> cout0<12> cout0<13> s0<13> _cout0<13> full_adder_mirror
+xi9<3> a<12> b<12> cout0<11> cout0<12> s0<12> _cout0<12> full_adder_mirror
+xi9<2> a<11> b<11> cout0<10> cout0<11> s0<11> _cout0<11> full_adder_mirror
+xi9<1> a<10> b<10> cout0<9> cout0<10> s0<10> _cout0<10> full_adder_mirror
+xi9<0> a<9> b<9> 0 cout0<9> s0<9> _cout0<9> full_adder_mirror
+xi12<5> a<19> b<19> cout1<18> cout1<19> s1<19> _cout1<19> full_adder_mirror
+xi12<4> a<18> b<18> cout1<17> cout1<18> s1<18> _cout1<18> full_adder_mirror
+xi12<3> a<17> b<17> cout1<16> cout1<17> s1<17> _cout1<17> full_adder_mirror
+xi12<2> a<16> b<16> cout1<15> cout1<16> s1<16> _cout1<16> full_adder_mirror
+xi12<1> a<15> b<15> cout1<14> cout1<15> s1<15> _cout1<15> full_adder_mirror
+xi12<0> a<14> b<14> vdd! cout1<14> s1<14> _cout1<14> full_adder_mirror
+xi7<3> a<8> b<8> cout0<7> cout0<8> s0<8> _cout0<8> full_adder_mirror
+xi7<2> a<7> b<7> cout0<6> cout0<7> s0<7> _cout0<7> full_adder_mirror
+xi7<1> a<6> b<6> cout0<5> cout0<6> s0<6> _cout0<6> full_adder_mirror
+xi7<0> a<5> b<5> 0 cout0<5> s0<5> _cout0<5> full_adder_mirror
+xi10<4> a<13> b<13> cout1<12> cout1<13> s1<13> _cout1<13> full_adder_mirror
+xi10<3> a<12> b<12> cout1<11> cout1<12> s1<12> _cout1<12> full_adder_mirror
+xi10<2> a<11> b<11> cout1<10> cout1<11> s1<11> _cout1<11> full_adder_mirror
+xi10<1> a<10> b<10> cout1<9> cout1<10> s1<10> _cout1<10> full_adder_mirror
+xi10<0> a<9> b<9> vdd! cout1<9> s1<9> _cout1<9> full_adder_mirror
+xi8<3> a<8> b<8> cout1<7> cout1<8> s1<8> _cout1<8> full_adder_mirror
+xi8<2> a<7> b<7> cout1<6> cout1<7> s1<7> _cout1<7> full_adder_mirror
+xi8<1> a<6> b<6> cout1<5> cout1<6> s1<6> _cout1<6> full_adder_mirror
+xi8<0> a<5> b<5> vdd! cout1<5> s1<5> _cout1<5> full_adder_mirror
+xi6<2> a<4> b<4> cout1<3> cout1<4> s1<4> _cout1<4> full_adder_mirror
+xi6<1> a<3> b<3> cout1<2> cout1<3> s1<3> _cout1<3> full_adder_mirror
+xi6<0> a<2> b<2> vdd! cout1<2> s1<2> _cout1<2> full_adder_mirror
+xi13<2> s0<4> s1<4> s<4> _cout<1> cout<1> mux_2t1
+xi13<1> s0<3> s1<3> s<3> _cout<1> cout<1> mux_2t1
+xi13<0> s0<2> s1<2> s<2> _cout<1> cout<1> mux_2t1
+xi23<5> s0<19> s1<19> s<19> _cout<13> cout<13> mux_2t1
+xi23<4> s0<18> s1<18> s<18> _cout<13> cout<13> mux_2t1
+xi23<3> s0<17> s1<17> s<17> _cout<13> cout<13> mux_2t1
+xi23<2> s0<16> s1<16> s<16> _cout<13> cout<13> mux_2t1
+xi23<1> s0<15> s1<15> s<15> _cout<13> cout<13> mux_2t1
+xi23<0> s0<14> s1<14> s<14> _cout<13> cout<13> mux_2t1
+xi19<4> s0<13> s1<13> s<13> _cout<8> cout<8> mux_2t1
+xi19<3> s0<12> s1<12> s<12> _cout<8> cout<8> mux_2t1
+xi19<2> s0<11> s1<11> s<11> _cout<8> cout<8> mux_2t1
+xi19<1> s0<10> s1<10> s<10> _cout<8> cout<8> mux_2t1
+xi19<0> s0<9> s1<9> s<9> _cout<8> cout<8> mux_2t1
+xi21 cout0<13> cout1<13> cout<13> _cout<8> cout<8> mux_2t1
+xi20 _cout0<13> _cout1<13> _cout<13> _cout<8> cout<8> mux_2t1
+xi17<3> s0<8> s1<8> s<8> _cout<4> cout<4> mux_2t1
+xi17<2> s0<7> s1<7> s<7> _cout<4> cout<4> mux_2t1
+xi17<1> s0<6> s1<6> s<6> _cout<4> cout<4> mux_2t1
+xi17<0> s0<5> s1<5> s<5> _cout<4> cout<4> mux_2t1
+xi18 cout0<8> cout1<8> cout<8> _cout<4> cout<4> mux_2t1
+xi14 cout0<4> cout1<4> cout<4> _cout<1> cout<1> mux_2t1
+xi15 _cout0<4> _cout1<4> _cout<4> _cout<1> cout<1> mux_2t1
+xi16 _cout0<8> _cout1<8> _cout<8> _cout<4> cout<4> mux_2t1
