@@ -27,7 +27,8 @@ vvdd! vdd! gnd! DC=1.2
 *****************************Include your netlist here ************************
 
 .INCLUDE "buf.netlist"
-.INCLUDE "adder_top.netlist"
+*.INCLUDE "adder_top.netlist"
+.INCLUDE "carry_select.netlist"
 
 *to simulate your SRAM, you may create an instance in this file, or 
 *comment out the .subckt and .end in your sram_layout.pex.netlist
@@ -128,6 +129,26 @@ xclk vdd gnd inclk clk minbuff
 *****************************OUTPUTS ***********************************
 
 * the outputs with 50f load
-c_outcap<19:0> s<19:0> gnd 50f
+*c_outcap<19:0> s<19:0> gnd 50f
+c_outcap<19> s<19> gnd 50f
+c_outcap<18> s<18> gnd 50f
+c_outcap<17> s<17> gnd 50f
+c_outcap<16> s<16> gnd 50f
+c_outcap<15> s<15> gnd 50f
+c_outcap<14> s<14> gnd 50f
+c_outcap<13> s<13> gnd 50f
+c_outcap<12> s<12> gnd 50f
+c_outcap<11> s<11> gnd 50f
+c_outcap<10> s<10> gnd 50f
+c_outcap<9> s<9> gnd 50f
+c_outcap<8> s<8> gnd 50f
+c_outcap<7> s<7> gnd 50f
+c_outcap<6> s<6> gnd 50f
+c_outcap<5> s<5> gnd 50f
+c_outcap<4> s<4> gnd 50f
+c_outcap<3> s<3> gnd 50f
+c_outcap<2> s<2> gnd 50f
+c_outcap<1> s<1> gnd 50f
+c_outcap<0> s<0> gnd 50f
 
 .end
