@@ -29,7 +29,6 @@ vvdd! vdd! gnd! DC=1.2
 .INCLUDE "buf.netlist"
 *.INCLUDE "adder_top.netlist"
 *.INCLUDE "carry_select.netlist"
-*.INCLUDE "manchester_carry.netlist"
 .INCLUDE "manchester_carry_dynamic.netlist"
 
 *to simulate your SRAM, you may create an instance in this file, or 
@@ -40,6 +39,7 @@ vvdd! vdd! gnd! DC=1.2
 *****************************Clock define *************************************
 
 Vclk inclk gnd pulse (0V 1.2V 30ps 20ps 20ps 0.98ns 2ns)
+*Vclk inclk gnd pulse (0V 1.2V 30ps 20ps 20ps 1.98ns 4ns)
 
 *****************************INPUTS *******************************************
 
