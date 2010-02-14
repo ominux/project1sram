@@ -1,0 +1,125 @@
+
+** Library name: EE525_project2
+** Cell name: man_carry_block
+** View name: schematic
+.subckt man_carry_block g p _cin _cout _k _p
+m1 _cout p _cin 0 NMOS_VTG L=50e-9 W=180e-9
+m0 _cout g 0 0 NMOS_VTG L=50e-9 W=180e-9
+m3 _cout _p _cin vdd! PMOS_VTG L=50e-9 W=540e-9
+m2 _cout _k vdd! vdd! PMOS_VTG L=50e-9 W=540e-9
+.ends man_carry_block
+** End of subcircuit definition.
+
+** Library name: EE525_project2
+** Cell name: xor
+** View name: schematic
+.subckt xor a b y
+m1 y net15 b 0 NMOS_VTG L=50e-9 W=90e-9
+m2 net15 a 0 0 NMOS_VTG L=50e-9 W=90e-9
+m0 y b net15 0 NMOS_VTG L=50e-9 W=90e-9
+m5 y a b vdd! PMOS_VTG L=50e-9 W=225e-9
+m4 net15 a vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m3 y b a vdd! PMOS_VTG L=50e-9 W=225e-9
+.ends xor
+** End of subcircuit definition.
+
+** Library name: EE525_project2
+** Cell name: pgk
+** View name: schematic
+.subckt pgk g p _a _b _k _p
+m7 _p p 0 0 NMOS_VTG L=50e-9 W=90e-9
+m10 g _a 0 0 NMOS_VTG L=50e-9 W=90e-9
+m11 g _b 0 0 NMOS_VTG L=50e-9 W=90e-9
+m1 _k _b net026 0 NMOS_VTG L=50e-9 W=180e-9
+m0 net026 _a 0 0 NMOS_VTG L=50e-9 W=180e-9
+m3 _k _b vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m2 _k _a vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m6 _p p vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m8 g _b net090 vdd! PMOS_VTG L=50e-9 W=450e-9
+m9 net090 _a vdd! vdd! PMOS_VTG L=50e-9 W=450e-9
+xi2 _a _b p xor
+.ends pgk
+** End of subcircuit definition.
+
+** Library name: EE525_project2
+** Cell name: xor_new
+** View name: schematic
+.subckt xor_new a b out
+m5 _a a 0 0 NMOS_VTG L=50e-9 W=90e-9
+m4 _b b 0 0 NMOS_VTG L=50e-9 W=90e-9
+m3 net4 _b 0 0 NMOS_VTG L=50e-9 W=90e-9
+m2 out _a net4 0 NMOS_VTG L=50e-9 W=90e-9
+m1 out a net16 0 NMOS_VTG L=50e-9 W=90e-9
+m0 net16 b 0 0 NMOS_VTG L=50e-9 W=90e-9
+m11 net044 a vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m10 out _a net044 vdd! PMOS_VTG L=50e-9 W=225e-9
+m9 out _b net044 vdd! PMOS_VTG L=50e-9 W=225e-9
+m8 net044 b vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m7 _a a vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m6 _b b vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+.ends xor_new
+** End of subcircuit definition.
+
+** Library name: EE525_project2
+** Cell name: manchester_carry
+** View name: schematic
+xi0<19> g<19> p<19> _cout<18> _cout<19> _k<19> _p<19> man_carry_block
+xi0<18> g<18> p<18> _cout<17> _cout<18> _k<18> _p<18> man_carry_block
+xi0<17> g<17> p<17> _cout<16> _cout<17> _k<17> _p<17> man_carry_block
+xi0<16> g<16> p<16> _cout<15> _cout<16> _k<16> _p<16> man_carry_block
+xi0<15> g<15> p<15> _cout<14> _cout<15> _k<15> _p<15> man_carry_block
+xi0<14> g<14> p<14> _cout<13> _cout<14> _k<14> _p<14> man_carry_block
+xi0<13> g<13> p<13> _cout<12> _cout<13> _k<13> _p<13> man_carry_block
+xi0<12> g<12> p<12> _cout<11> _cout<12> _k<12> _p<12> man_carry_block
+xi0<11> g<11> p<11> _cout<10> _cout<11> _k<11> _p<11> man_carry_block
+xi0<10> g<10> p<10> _cout<9> _cout<10> _k<10> _p<10> man_carry_block
+xi0<9> g<9> p<9> _cout<8> _cout<9> _k<9> _p<9> man_carry_block
+xi0<8> g<8> p<8> _cout<7> _cout<8> _k<8> _p<8> man_carry_block
+xi0<7> g<7> p<7> _cout<6> _cout<7> _k<7> _p<7> man_carry_block
+xi0<6> g<6> p<6> _cout<5> _cout<6> _k<6> _p<6> man_carry_block
+xi0<5> g<5> p<5> _cout<4> _cout<5> _k<5> _p<5> man_carry_block
+xi0<4> g<4> p<4> _cout<3> _cout<4> _k<4> _p<4> man_carry_block
+xi0<3> g<3> p<3> _cout<2> _cout<3> _k<3> _p<3> man_carry_block
+xi0<2> g<2> p<2> _cout<1> _cout<2> _k<2> _p<2> man_carry_block
+xi0<1> g<1> p<1> _cout<0> _cout<1> _k<1> _p<1> man_carry_block
+xi0<0> g<0> p<0> vdd! _cout<0> _k<0> _p<0> man_carry_block
+xi1<19> g<19> p<19> _a<19> _b<19> _k<19> _p<19> pgk
+xi1<18> g<18> p<18> _a<18> _b<18> _k<18> _p<18> pgk
+xi1<17> g<17> p<17> _a<17> _b<17> _k<17> _p<17> pgk
+xi1<16> g<16> p<16> _a<16> _b<16> _k<16> _p<16> pgk
+xi1<15> g<15> p<15> _a<15> _b<15> _k<15> _p<15> pgk
+xi1<14> g<14> p<14> _a<14> _b<14> _k<14> _p<14> pgk
+xi1<13> g<13> p<13> _a<13> _b<13> _k<13> _p<13> pgk
+xi1<12> g<12> p<12> _a<12> _b<12> _k<12> _p<12> pgk
+xi1<11> g<11> p<11> _a<11> _b<11> _k<11> _p<11> pgk
+xi1<10> g<10> p<10> _a<10> _b<10> _k<10> _p<10> pgk
+xi1<9> g<9> p<9> _a<9> _b<9> _k<9> _p<9> pgk
+xi1<8> g<8> p<8> _a<8> _b<8> _k<8> _p<8> pgk
+xi1<7> g<7> p<7> _a<7> _b<7> _k<7> _p<7> pgk
+xi1<6> g<6> p<6> _a<6> _b<6> _k<6> _p<6> pgk
+xi1<5> g<5> p<5> _a<5> _b<5> _k<5> _p<5> pgk
+xi1<4> g<4> p<4> _a<4> _b<4> _k<4> _p<4> pgk
+xi1<3> g<3> p<3> _a<3> _b<3> _k<3> _p<3> pgk
+xi1<2> g<2> p<2> _a<2> _b<2> _k<2> _p<2> pgk
+xi1<1> g<1> p<1> _a<1> _b<1> _k<1> _p<1> pgk
+xi1<0> g<0> p<0> _a<0> _b<0> _k<0> _p<0> pgk
+xi10<19> _p<19> _cout<19> s<19> xor_new
+xi10<18> _p<18> _cout<18> s<18> xor_new
+xi10<17> _p<17> _cout<17> s<17> xor_new
+xi10<16> _p<16> _cout<16> s<16> xor_new
+xi10<15> _p<15> _cout<15> s<15> xor_new
+xi10<14> _p<14> _cout<14> s<14> xor_new
+xi10<13> _p<13> _cout<13> s<13> xor_new
+xi10<12> _p<12> _cout<12> s<12> xor_new
+xi10<11> _p<11> _cout<11> s<11> xor_new
+xi10<10> _p<10> _cout<10> s<10> xor_new
+xi10<9> _p<9> _cout<9> s<9> xor_new
+xi10<8> _p<8> _cout<8> s<8> xor_new
+xi10<7> _p<7> _cout<7> s<7> xor_new
+xi10<6> _p<6> _cout<6> s<6> xor_new
+xi10<5> _p<5> _cout<5> s<5> xor_new
+xi10<4> _p<4> _cout<4> s<4> xor_new
+xi10<3> _p<3> _cout<3> s<3> xor_new
+xi10<2> _p<2> _cout<2> s<2> xor_new
+xi10<1> _p<1> _cout<1> s<1> xor_new
+xi10<0> _p<0> _cout<0> s<0> xor_new
