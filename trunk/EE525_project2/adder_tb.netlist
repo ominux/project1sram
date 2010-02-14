@@ -13,7 +13,7 @@ vvdd! vdd! gnd! DC=1.2
 
 *****************************Simulation settings ******************************
 
-.TRAN 5e-12 30ns START=0.0
+.TRAN 2e-12 30ns START=0.0
 .OP
 
 .TEMP 25
@@ -28,7 +28,9 @@ vvdd! vdd! gnd! DC=1.2
 
 .INCLUDE "buf.netlist"
 *.INCLUDE "adder_top.netlist"
-.INCLUDE "carry_select.netlist"
+*.INCLUDE "carry_select.netlist"
+*.INCLUDE "manchester_carry.netlist"
+.INCLUDE "manchester_carry_dynamic.netlist"
 
 *to simulate your SRAM, you may create an instance in this file, or 
 *comment out the .subckt and .end in your sram_layout.pex.netlist
@@ -129,7 +131,6 @@ xclk vdd gnd inclk clk minbuff
 *****************************OUTPUTS ***********************************
 
 * the outputs with 50f load
-*c_outcap<19:0> s<19:0> gnd 50f
 c_outcap<19> s<19> gnd 50f
 c_outcap<18> s<18> gnd 50f
 c_outcap<17> s<17> gnd 50f

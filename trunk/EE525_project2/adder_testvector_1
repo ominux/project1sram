@@ -1,5 +1,5 @@
 radix 		44444           44444           44444           44444
-vname 		ain<[0:19]>     _ain<[0:19]>    bin<[0:19]>     _bin<[0:19]>
+vname 		ain<[19:0]>     _ain<[19:0]>    bin<[19:0]>     _bin<[19:0]>
 tunit 1ns
 tfall .02
 trise .02
@@ -11,15 +11,20 @@ vil 0
 
 ;time	 	ain             _ain            bin             _bin
 
+; can change the inputs 30ps before the clkin rising edge
 ; adding 0 and 0
 0.0             00000           FFFFF           00000           FFFFF
 ; adding FFFFF and FFFFF
-4.0		FFFFF           00000           FFFFF           00000
+3.97		FFFFF           00000           FFFFF           00000
 ; adding 0 and FFFFF
-8.0		00000           FFFFF           FFFFF           00000
+7.97		00000           FFFFF           FFFFF           00000
 ; adding FFFFF and 0
-12.0     	FFFFF           00000           00000           FFFFF
+11.97     	FFFFF           00000           00000           FFFFF
 ; adding A5A5A and 5A5A5
-16.0     	A5A5A           5A5A5           5A5A5           A5A5A
+15.97     	A5A5A           5A5A5           5A5A5           A5A5A
 ; adding 5A5A5 and A5A5A
-20.0            5A5A5           A5A5A           A5A5A           5A5A5
+19.97            5A5A5           A5A5A           A5A5A           5A5A5
+; adding FFFFF and 00001
+23.97            FFFFF           00000           00001           FFFFE
+; adding 482A4 and A472C
+27.97            482A4           B7D5B           A472C           5B8D3
