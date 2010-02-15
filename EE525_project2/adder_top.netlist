@@ -3,42 +3,11 @@
 ** Cell name: output_buffer_2stage
 ** View name: schematic
 .subckt output_buffer_2stage in out
-m1 out net5 0 0 NMOS_VTG L=50e-9 W=1e-6
-m0 net5 in 0 0 NMOS_VTG L=50e-9 W=500e-9
-m3 out net5 vdd! vdd! PMOS_VTG L=50e-9 W=3e-6
-m2 net5 in vdd! vdd! PMOS_VTG L=50e-9 W=1.5e-6
+m1 out net5 0 0 NMOS_VTG L=50e-9 W=1.08e-6
+m0 net5 in 0 0 NMOS_VTG L=50e-9 W=360e-9
+m3 out net5 vdd! vdd! PMOS_VTG L=50e-9 W=2.7e-6
+m2 net5 in vdd! vdd! PMOS_VTG L=50e-9 W=900e-9
 .ends output_buffer_2stage
-** End of subcircuit definition.
-
-** Library name: EE525_project2
-** Cell name: xor_new
-** View name: schematic
-.subckt xor_new _a _b a b out
-m3 net4 _b 0 0 NMOS_VTG L=50e-9 W=90e-9
-m2 out _a net4 0 NMOS_VTG L=50e-9 W=90e-9
-m1 out a net16 0 NMOS_VTG L=50e-9 W=90e-9
-m0 net16 b 0 0 NMOS_VTG L=50e-9 W=90e-9
-m11 net044 a vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
-m10 out _a net044 vdd! PMOS_VTG L=50e-9 W=225e-9
-m9 out _b net044 vdd! PMOS_VTG L=50e-9 W=225e-9
-m8 net044 b vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
-.ends xor_new
-** End of subcircuit definition.
-
-** Library name: EE525_project2
-** Cell name: pg
-** View name: schematic
-.subckt pg a b g p _a _b _g _p
-m13 g _g 0 0 NMOS_VTG L=50e-9 W=90e-9
-m11 net040 b 0 0 NMOS_VTG L=50e-9 W=180e-9
-m10 _g a net040 0 NMOS_VTG L=50e-9 W=180e-9
-m7 _p p 0 0 NMOS_VTG L=50e-9 W=90e-9
-m12 g _g vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
-m9 _g b vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
-m8 _g a vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
-m6 _p p vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
-xi3 _a _b a b p xor_new
-.ends pg
 ** End of subcircuit definition.
 
 ** Library name: EE525_project2
@@ -46,12 +15,24 @@ xi3 _a _b a b p xor_new
 ** View name: schematic
 .subckt xor a b y
 m1 y net15 b 0 NMOS_VTG L=50e-9 W=90e-9
-m2 net15 a 0 0 NMOS_VTG L=50e-9 W=90e-9
-m0 y b net15 0 NMOS_VTG L=50e-9 W=90e-9
+m2 net15 a 0 0 NMOS_VTG L=50e-9 W=180e-9
+m0 y b net15 0 NMOS_VTG L=50e-9 W=180e-9
 m5 y a b vdd! PMOS_VTG L=50e-9 W=225e-9
-m4 net15 a vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
-m3 y b a vdd! PMOS_VTG L=50e-9 W=225e-9
+m4 net15 a vdd! vdd! PMOS_VTG L=50e-9 W=450e-9
+m3 y b a vdd! PMOS_VTG L=50e-9 W=450e-9
 .ends xor
+** End of subcircuit definition.
+
+** Library name: EE525_project2
+** Cell name: pg
+** View name: schematic
+.subckt pg a b g p _a _b
+m11 g _a 0 0 NMOS_VTG L=50e-9 W=180e-9
+m10 g _b 0 0 NMOS_VTG L=50e-9 W=180e-9
+m9 g _b net053 vdd! PMOS_VTG L=50e-9 W=900e-9
+m8 net053 _a vdd! vdd! PMOS_VTG L=50e-9 W=900e-9
+xi4 a b p xor
+.ends pg
 ** End of subcircuit definition.
 
 ** Library name: EE525_project2
@@ -133,26 +114,16 @@ m4 y b net46 vdd! PMOS_VTG L=50e-9 W=550e-9
 ** End of subcircuit definition.
 
 ** Library name: EE525_project2
-** Cell name: ripple_carry_4
+** Cell name: ladner_fischer
 ** View name: schematic
-.subckt ripple_carry_4 cout<3> cout<2> cout<1> cout<0> g<3> g<2> g<1> g<0> p<3> p<2> p<1> p<0> cin
-xi6 g<1> p<1> cout<1> net025 aoi
-xi3 g<2> p<2> cout<2> net17 aoi
-xi0 g<0> p<0> cin net13 aoi
-xi4 net17 cout<3> inv_min
-xi2 net13 cout<1> inv_min
-xi5 net025 cout<2> inv_min
-r0 cin cout<0> 0
-.ends ripple_carry_4
-** End of subcircuit definition.
-
-** Library name: EE525_project2
-** Cell name: sparse_tree
-** View name: schematic
-.subckt sparse_tree g<18> g<17> g<16> g<15> g<14> g<13> g<12> g<11> g<10> g<9> g<8> g<7> g<6> g<5> g<4> g<3> g<2> g<1> g<0> gout<19> gout<18> gout<17> gout<16> gout<15> gout<14> gout<13> gout<12> gout<11> gout<10> gout<9> gout<8> gout<7> gout<6> gout<5> gout<4> gout<3> gout<2> gout<1> gout<0> p<18> p<17> p<16> p<15> p<14> p<13> p<12> p<11> p<10> p<9> p<8> p<7> p<6> p<5> p<4> p<3> p<2> p<1> p<0>
-xi6 net13 net14 net66 net0101 aoi
+.subckt ladner_fischer g<18> g<17> g<16> g<15> g<14> g<13> g<12> g<11> g<10> g<9> g<8> g<7> g<6> g<5> g<4> g<3> g<2> g<1> g<0> gout<19> gout<18> gout<17> gout<16> gout<15> gout<14> gout<13> gout<12> gout<11> gout<10> gout<9> gout<8> gout<7> gout<6> gout<5> gout<4> gout<3> gout<2> gout<1> gout<0> p<18> p<17> p<16> p<15> p<14> p<13> p<12> p<11> p<10> p<9> p<8> p<7> p<6> p<5> p<4> p<3> p<2> p<1> p<0> g<19> p<19>
+xi95 net0283 net0281 net062 preout<17> aoi
+xi69 net13 net14 net66 net0198 aoi
+xi68 net068 net069 net0154 preout<5> aoi
 xi2 g<1> p<1> g<0> net20 aoi
-xi14 net70 net27 net28 net29 net24 net25 aoi_and
+xi73 net077 net078 net28 net29 net0195 net0196 aoi_and
+xi65 g<17> p<17> g<16> p<16> net071 net072 aoi_and
+xi72 net70 net27 net28 net29 net0199 net0200 aoi_and
 xi13 g<15> p<15> g<14> p<14> net74 net31 aoi_and
 xi29 g<13> p<13> g<12> p<12> net72 net73 aoi_and
 xi8 g<11> p<11> g<10> p<10> net36 net81 aoi_and
@@ -160,87 +131,137 @@ xi31 g<5> p<5> g<4> p<4> net87 net86 aoi_and
 xi4 g<7> p<7> g<6> p<6> net42 net84 aoi_and
 xi1 g<3> p<3> g<2> p<2> net48 net67 aoi_and
 xi30 g<9> p<9> g<8> p<8> net78 net79 aoi_and
-xi16 net66 net56 buf
-xi28 net25 net24 net0101 net58 ii_aoi
-xi27 net0107 net0132 net0101 net0104 ii_aoi
+xi156 net66 net0154 buf
+xi155 net0198 net0201 buf
+xi154 net0198 net0173 buf
+xi153 net0198 net0221 buf
+xi152 g<0> gout<1> buf
+xi132 net0198 preout<7> buf
+xi87 net79 net0192 buf
+xi86 net78 net0191 buf
+xi110 net20 preout<1> buf
+xi82 net0204 net0203 net0173 net0236 ii_aoi
+xi106 net0164 net0267 preout<7> gout<9> ii_aoi
+xi105 net0168 net0167 preout<3> gout<5> ii_aoi
+xi104 net0172 net0171 preout<5> gout<7> ii_aoi
+xi103 net0176 net0259 preout<13> gout<15> ii_aoi
+xi101 net0184 net0183 preout<15> gout<17> ii_aoi
+xi100 net0243 net0187 preout<17> gout<19> ii_aoi
+xi84 net0196 net0195 net0201 net0234 ii_aoi
+xi102 net0180 net0179 preout<11> gout<13> ii_aoi
+xi107 net0160 net0159 preout<9> gout<11> ii_aoi
+xi108 net0156 net0155 preout<1> gout<3> ii_aoi
+xi83 net0200 net0199 net0198 net062 ii_aoi
+xi85 net0192 net0191 net0221 net0238 ii_aoi
 xi0 net67 net48 net20 net66 ii_aoi
 xi25 net31 net74 net73 net72 net27 net70 ii_aoi_or
 xi24 net81 net36 net79 net78 net29 net28 ii_aoi_or
 xi5 net84 net42 net86 net87 net14 net13 ii_aoi_or
-xi40 net28 net0107 inv_min
-xi39 net29 net0132 inv_min
-xi26 net0101 net88 inv_min
-xi37 gout<19> gout<18> gout<17> gout<16> g<19> g<18> g<17> g<16> p<19> p<18> p<17> p<16> net58 ripple_carry_4
-xi36 gout<15> gout<14> gout<13> gout<12> g<15> g<14> g<13> g<12> p<15> p<14> p<13> p<12> net0104 ripple_carry_4
-xi33 gout<3> gout<2> gout<1> gout<0> g<3> g<2> g<1> g<0> p<3> p<2> p<1> p<0> net0144 ripple_carry_4
-xi34 gout<7> gout<6> gout<5> gout<4> g<7> g<6> g<5> g<4> p<7> p<6> p<5> p<4> net56 ripple_carry_4
-xi35 gout<11> gout<10> gout<9> gout<8> g<11> g<10> g<9> g<8> p<11> p<10> p<9> p<8> net88 ripple_carry_4
-r0 0 net0144 1e3
-.ends sparse_tree
+xi145 preout<1> gout<2> inv_min
+xi150 preout<13> gout<14> inv_min
+xi143 preout<7> gout<8> inv_min
+xi142 preout<5> gout<6> inv_min
+xi148 preout<9> gout<10> inv_min
+xi149 preout<15> gout<16> inv_min
+xi147 preout<11> gout<12> inv_min
+xi146 preout<3> gout<4> inv_min
+xi137 preout<17> gout<18> inv_min
+xi135 net0234 preout<13> inv_min
+xi134 net0236 preout<11> inv_min
+xi133 net0238 preout<9> inv_min
+xi130 net66 preout<3> inv_min
+xi128 p<18> net0187 inv_min
+xi127 g<18> net0243 inv_min
+xi126 p<10> net0159 inv_min
+xi125 g<10> net0160 inv_min
+xi124 g<12> net0180 inv_min
+xi123 p<12> net0179 inv_min
+xi122 p<16> net0183 inv_min
+xi121 g<16> net0184 inv_min
+xi120 g<14> net0176 inv_min
+xi119 p<14> net0259 inv_min
+xi118 p<6> net0171 inv_min
+xi117 g<6> net0172 inv_min
+xi116 g<8> net0164 inv_min
+xi80 net73 net077 inv_min
+xi96 net072 net0283 inv_min
+xi89 net28 net0204 inv_min
+xi98 net062 preout<15> inv_min
+xi88 net29 net0203 inv_min
+xi115 p<8> net0267 inv_min
+xi114 p<4> net0167 inv_min
+xi113 g<4> net0168 inv_min
+xi97 net071 net0281 inv_min
+xi112 g<2> net0156 inv_min
+xi111 p<2> net0155 inv_min
+xi79 net86 net068 inv_min
+xi78 net87 net069 inv_min
+xi81 net72 net078 inv_min
+r4 0 gout<0> 0
+.ends ladner_fischer
 ** End of subcircuit definition.
 
 ** Library name: EE525_project2
 ** Cell name: adder_top
 ** View name: schematic
-xoutbuf<19> net015<0> s<19> output_buffer_2stage
-xoutbuf<18> net015<1> s<18> output_buffer_2stage
-xoutbuf<17> net015<2> s<17> output_buffer_2stage
-xoutbuf<16> net015<3> s<16> output_buffer_2stage
-xoutbuf<15> net015<4> s<15> output_buffer_2stage
-xoutbuf<14> net015<5> s<14> output_buffer_2stage
-xoutbuf<13> net015<6> s<13> output_buffer_2stage
-xoutbuf<12> net015<7> s<12> output_buffer_2stage
-xoutbuf<11> net015<8> s<11> output_buffer_2stage
-xoutbuf<10> net015<9> s<10> output_buffer_2stage
-xoutbuf<9> net015<10> s<9> output_buffer_2stage
-xoutbuf<8> net015<11> s<8> output_buffer_2stage
-xoutbuf<7> net015<12> s<7> output_buffer_2stage
-xoutbuf<6> net015<13> s<6> output_buffer_2stage
-xoutbuf<5> net015<14> s<5> output_buffer_2stage
-xoutbuf<4> net015<15> s<4> output_buffer_2stage
-xoutbuf<3> net015<16> s<3> output_buffer_2stage
-xoutbuf<2> net015<17> s<2> output_buffer_2stage
-xoutbuf<1> net015<18> s<1> output_buffer_2stage
-xoutbuf<0> net015<19> s<0> output_buffer_2stage
-xgenpg<19> a<19> b<19> g<19> p<19> _a<19> _b<19> net11<0> net10<0> pg
-xgenpg<18> a<18> b<18> g<18> p<18> _a<18> _b<18> net11<1> net10<1> pg
-xgenpg<17> a<17> b<17> g<17> p<17> _a<17> _b<17> net11<2> net10<2> pg
-xgenpg<16> a<16> b<16> g<16> p<16> _a<16> _b<16> net11<3> net10<3> pg
-xgenpg<15> a<15> b<15> g<15> p<15> _a<15> _b<15> net11<4> net10<4> pg
-xgenpg<14> a<14> b<14> g<14> p<14> _a<14> _b<14> net11<5> net10<5> pg
-xgenpg<13> a<13> b<13> g<13> p<13> _a<13> _b<13> net11<6> net10<6> pg
-xgenpg<12> a<12> b<12> g<12> p<12> _a<12> _b<12> net11<7> net10<7> pg
-xgenpg<11> a<11> b<11> g<11> p<11> _a<11> _b<11> net11<8> net10<8> pg
-xgenpg<10> a<10> b<10> g<10> p<10> _a<10> _b<10> net11<9> net10<9> pg
-xgenpg<9> a<9> b<9> g<9> p<9> _a<9> _b<9> net11<10> net10<10> pg
-xgenpg<8> a<8> b<8> g<8> p<8> _a<8> _b<8> net11<11> net10<11> pg
-xgenpg<7> a<7> b<7> g<7> p<7> _a<7> _b<7> net11<12> net10<12> pg
-xgenpg<6> a<6> b<6> g<6> p<6> _a<6> _b<6> net11<13> net10<13> pg
-xgenpg<5> a<5> b<5> g<5> p<5> _a<5> _b<5> net11<14> net10<14> pg
-xgenpg<4> a<4> b<4> g<4> p<4> _a<4> _b<4> net11<15> net10<15> pg
-xgenpg<3> a<3> b<3> g<3> p<3> _a<3> _b<3> net11<16> net10<16> pg
-xgenpg<2> a<2> b<2> g<2> p<2> _a<2> _b<2> net11<17> net10<17> pg
-xgenpg<1> a<1> b<1> g<1> p<1> _a<1> _b<1> net11<18> net10<18> pg
-xgenpg<0> a<0> b<0> g<0> p<0> _a<0> _b<0> net11<19> net10<19> pg
-r0 ground 0 0
-xout_xor<19> p<19> gout<18> net015<0> xor
-xout_xor<18> p<18> gout<17> net015<1> xor
-xout_xor<17> p<17> gout<16> net015<2> xor
-xout_xor<16> p<16> gout<15> net015<3> xor
-xout_xor<15> p<15> gout<14> net015<4> xor
-xout_xor<14> p<14> gout<13> net015<5> xor
-xout_xor<13> p<13> gout<12> net015<6> xor
-xout_xor<12> p<12> gout<11> net015<7> xor
-xout_xor<11> p<11> gout<10> net015<8> xor
-xout_xor<10> p<10> gout<9> net015<9> xor
-xout_xor<9> p<9> gout<8> net015<10> xor
-xout_xor<8> p<8> gout<7> net015<11> xor
-xout_xor<7> p<7> gout<6> net015<12> xor
-xout_xor<6> p<6> gout<5> net015<13> xor
-xout_xor<5> p<5> gout<4> net015<14> xor
-xout_xor<4> p<4> gout<3> net015<15> xor
-xout_xor<3> p<3> gout<2> net015<16> xor
-xout_xor<2> p<2> gout<1> net015<17> xor
-xout_xor<1> p<1> gout<0> net015<18> xor
-xout_xor<0> p<0> 0 net015<19> xor
-xi5 g<18> g<17> g<16> g<15> g<14> g<13> g<12> g<11> g<10> g<9> g<8> g<7> g<6> g<5> g<4> g<3> g<2> g<1> g<0> gout<19> gout<18> gout<17> gout<16> gout<15> gout<14> gout<13> gout<12> gout<11> gout<10> gout<9> gout<8> gout<7> gout<6> gout<5> gout<4> gout<3> gout<2> gout<1> gout<0> p<18> p<17> p<16> p<15> p<14> p<13> p<12> p<11> p<10> p<9> p<8> p<7> p<6> p<5> p<4> p<3> p<2> p<1> p<0> sparse_tree
+xoutbuf<19> xor_out<19> s<19> output_buffer_2stage
+xoutbuf<18> xor_out<18> s<18> output_buffer_2stage
+xoutbuf<17> xor_out<17> s<17> output_buffer_2stage
+xoutbuf<16> xor_out<16> s<16> output_buffer_2stage
+xoutbuf<15> xor_out<15> s<15> output_buffer_2stage
+xoutbuf<14> xor_out<14> s<14> output_buffer_2stage
+xoutbuf<13> xor_out<13> s<13> output_buffer_2stage
+xoutbuf<12> xor_out<12> s<12> output_buffer_2stage
+xoutbuf<11> xor_out<11> s<11> output_buffer_2stage
+xoutbuf<10> xor_out<10> s<10> output_buffer_2stage
+xoutbuf<9> xor_out<9> s<9> output_buffer_2stage
+xoutbuf<8> xor_out<8> s<8> output_buffer_2stage
+xoutbuf<7> xor_out<7> s<7> output_buffer_2stage
+xoutbuf<6> xor_out<6> s<6> output_buffer_2stage
+xoutbuf<5> xor_out<5> s<5> output_buffer_2stage
+xoutbuf<4> xor_out<4> s<4> output_buffer_2stage
+xoutbuf<3> xor_out<3> s<3> output_buffer_2stage
+xoutbuf<2> xor_out<2> s<2> output_buffer_2stage
+xoutbuf<1> xor_out<1> s<1> output_buffer_2stage
+xoutbuf<0> xor_out<0> s<0> output_buffer_2stage
+xgenpg<19> a<19> b<19> g<19> p<19> _a<19> _b<19> pg
+xgenpg<18> a<18> b<18> g<18> p<18> _a<18> _b<18> pg
+xgenpg<17> a<17> b<17> g<17> p<17> _a<17> _b<17> pg
+xgenpg<16> a<16> b<16> g<16> p<16> _a<16> _b<16> pg
+xgenpg<15> a<15> b<15> g<15> p<15> _a<15> _b<15> pg
+xgenpg<14> a<14> b<14> g<14> p<14> _a<14> _b<14> pg
+xgenpg<13> a<13> b<13> g<13> p<13> _a<13> _b<13> pg
+xgenpg<12> a<12> b<12> g<12> p<12> _a<12> _b<12> pg
+xgenpg<11> a<11> b<11> g<11> p<11> _a<11> _b<11> pg
+xgenpg<10> a<10> b<10> g<10> p<10> _a<10> _b<10> pg
+xgenpg<9> a<9> b<9> g<9> p<9> _a<9> _b<9> pg
+xgenpg<8> a<8> b<8> g<8> p<8> _a<8> _b<8> pg
+xgenpg<7> a<7> b<7> g<7> p<7> _a<7> _b<7> pg
+xgenpg<6> a<6> b<6> g<6> p<6> _a<6> _b<6> pg
+xgenpg<5> a<5> b<5> g<5> p<5> _a<5> _b<5> pg
+xgenpg<4> a<4> b<4> g<4> p<4> _a<4> _b<4> pg
+xgenpg<3> a<3> b<3> g<3> p<3> _a<3> _b<3> pg
+xgenpg<2> a<2> b<2> g<2> p<2> _a<2> _b<2> pg
+xgenpg<1> a<1> b<1> g<1> p<1> _a<1> _b<1> pg
+xgenpg<0> a<0> b<0> g<0> p<0> _a<0> _b<0> pg
+xout_xor<19> p<19> gout<19> xor_out<19> xor
+xout_xor<18> p<18> gout<18> xor_out<18> xor
+xout_xor<17> p<17> gout<17> xor_out<17> xor
+xout_xor<16> p<16> gout<16> xor_out<16> xor
+xout_xor<15> p<15> gout<15> xor_out<15> xor
+xout_xor<14> p<14> gout<14> xor_out<14> xor
+xout_xor<13> p<13> gout<13> xor_out<13> xor
+xout_xor<12> p<12> gout<12> xor_out<12> xor
+xout_xor<11> p<11> gout<11> xor_out<11> xor
+xout_xor<10> p<10> gout<10> xor_out<10> xor
+xout_xor<9> p<9> gout<9> xor_out<9> xor
+xout_xor<8> p<8> gout<8> xor_out<8> xor
+xout_xor<7> p<7> gout<7> xor_out<7> xor
+xout_xor<6> p<6> gout<6> xor_out<6> xor
+xout_xor<5> p<5> gout<5> xor_out<5> xor
+xout_xor<4> p<4> gout<4> xor_out<4> xor
+xout_xor<3> p<3> gout<3> xor_out<3> xor
+xout_xor<2> p<2> gout<2> xor_out<2> xor
+xout_xor<1> p<1> gout<1> xor_out<1> xor
+xout_xor<0> p<0> gout<0> xor_out<0> xor
+xi5 g<18> g<17> g<16> g<15> g<14> g<13> g<12> g<11> g<10> g<9> g<8> g<7> g<6> g<5> g<4> g<3> g<2> g<1> g<0> gout<19> gout<18> gout<17> gout<16> gout<15> gout<14> gout<13> gout<12> gout<11> gout<10> gout<9> gout<8> gout<7> gout<6> gout<5> gout<4> gout<3> gout<2> gout<1> gout<0> p<18> p<17> p<16> p<15> p<14> p<13> p<12> p<11> p<10> p<9> p<8> p<7> p<6> p<5> p<4> p<3> p<2> p<1> p<0> g<19> p<19> ladner_fischer
