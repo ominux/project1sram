@@ -13,7 +13,7 @@ vvdd! vdd! gnd! DC=1.2
 
 *****************************Simulation settings ******************************
 
-.TRAN 5e-12 30ns START=0.0
+.TRAN 5e-12 32ns START=0.0
 .OP
 
 .TEMP 25
