@@ -1,0 +1,40 @@
+radix 		44444           44444           44444           44444
+vname 		ain<[19:0]>     _ain<[19:0]>    bin<[19:0]>     _bin<[19:0]>
+tunit 1ns
+tfall .02
+trise .02
+vih 1.2
+vil 0
+
+;for delay sim
+
+
+;time	 	ain             _ain            bin             _bin
+
+; setup for the next one
+0.0             FFFFE			00001           00000           FFFFF
+; adding 1 and FFFFF
+4.0             00001           FFFFE           FFFFF           00000
+
+; setup for the next one
+8.0             00000			FFFFF			FFFFE			00001
+; adding FFFFF and 1
+12.0             FFFFF			00000			00001           FFFFE
+
+; adding EEEEE and 11111
+16.0             EEEEE			11111			11111           EEEEE
+
+; adding 22222 and EEEEE
+20.0             22222			DDDDD			EEEEE           11111
+
+; adding EEEEE and 22222
+24.0             EEEEE			11111			22222           DDDDD
+
+; adding 77777 and 88888
+28.0             77777			88888			88888           77777
+
+; adding 88888 and 77777
+32.0             88888			77777			77777           88888
+
+; adding 88888 and 88888
+36.0             88888			77777			88888           77777
