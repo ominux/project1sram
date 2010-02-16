@@ -131,14 +131,14 @@ xi31 g<5> p<5> g<4> p<4> net87 net86 aoi_and
 xi4 g<7> p<7> g<6> p<6> net42 net84 aoi_and
 xi1 g<3> p<3> g<2> p<2> net48 net67 aoi_and
 xi30 g<9> p<9> g<8> p<8> net78 net79 aoi_and
-xi156 net66 net0154 buf
-xi155 net0198 net0201 buf
-xi154 net0198 net0173 buf
-xi153 net0198 net0221 buf
 xi152 g<0> gout<1> buf
 xi132 net0198 preout<7> buf
+xi155 net0198 net0201 buf
 xi87 net79 net0192 buf
 xi86 net78 net0191 buf
+xi154 net0198 net0173 buf
+xi153 net0198 net0221 buf
+xi156 net66 net0154 buf
 xi110 net20 preout<1> buf
 xi82 net0204 net0203 net0173 net0236 ii_aoi
 xi106 net0164 net0267 preout<7> gout<9> ii_aoi
