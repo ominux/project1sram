@@ -42,9 +42,9 @@ xi4 a b p xor
 m3 y b net9 0 NMOS_VTG L=50e-9 W=180e-9
 m2 net9 c 0 0 NMOS_VTG L=50e-9 W=180e-9
 m0 y a 0 0 NMOS_VTG L=50e-9 W=90e-9
-m5 y a net25 vdd! PMOS_VTG L=50e-9 W=550e-9
-m4 net25 c vdd! vdd! PMOS_VTG L=50e-9 W=550e-9
-m1 net25 b vdd! vdd! PMOS_VTG L=50e-9 W=550e-9
+m5 y a net25 vdd! PMOS_VTG L=50e-9 W=450e-9
+m4 net25 c vdd! vdd! PMOS_VTG L=50e-9 W=450e-9
+m1 net25 b vdd! vdd! PMOS_VTG L=50e-9 W=450e-9
 .ends aoi
 ** End of subcircuit definition.
 
@@ -52,16 +52,16 @@ m1 net25 b vdd! vdd! PMOS_VTG L=50e-9 W=550e-9
 ** Cell name: aoi_and
 ** View name: schematic
 .subckt aoi_and a b c d p y
-m7 net7 d 0 0 NMOS_VTG L=50e-9 W=180e-9
-m6 p b net7 0 NMOS_VTG L=50e-9 W=180e-9
+m7 net7 b 0 0 NMOS_VTG L=50e-9 W=180e-9
+m6 p d net7 0 NMOS_VTG L=50e-9 W=180e-9
 m0 y a 0 0 NMOS_VTG L=50e-9 W=90e-9
 m2 net19 c 0 0 NMOS_VTG L=50e-9 W=180e-9
 m3 y b net19 0 NMOS_VTG L=50e-9 W=180e-9
-m9 p d vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
-m8 p b vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
-m1 net35 b vdd! vdd! PMOS_VTG L=50e-9 W=550e-9
-m4 net35 c vdd! vdd! PMOS_VTG L=50e-9 W=550e-9
-m5 y a net35 vdd! PMOS_VTG L=50e-9 W=550e-9
+m9 p b vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m8 p d vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m1 net35 b vdd! vdd! PMOS_VTG L=50e-9 W=450e-9
+m4 net35 c vdd! vdd! PMOS_VTG L=50e-9 W=450e-9
+m5 y a net35 vdd! PMOS_VTG L=50e-9 W=450e-9
 .ends aoi_and
 ** End of subcircuit definition.
 
@@ -88,10 +88,10 @@ xi0 net3 y inv_min
 ** View name: schematic
 .subckt ii_aoi a b c y
 m0 y a net13 0 NMOS_VTG L=50e-9 W=180e-9
-m2 net13 b 0 0 NMOS_VTG L=50e-9 W=180e-9
-m3 net13 c 0 0 NMOS_VTG L=50e-9 W=180e-9
-m1 net24 c vdd! vdd! PMOS_VTG L=50e-9 W=550e-9
-m4 y b net24 vdd! PMOS_VTG L=50e-9 W=550e-9
+m2 net13 c 0 0 NMOS_VTG L=50e-9 W=180e-9
+m3 net13 b 0 0 NMOS_VTG L=50e-9 W=180e-9
+m1 net24 b vdd! vdd! PMOS_VTG L=50e-9 W=450e-9
+m4 y c net24 vdd! PMOS_VTG L=50e-9 W=450e-9
 m5 y a vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
 .ends ii_aoi
 ** End of subcircuit definition.
@@ -105,11 +105,11 @@ m6 p d 0 0 NMOS_VTG L=50e-9 W=90e-9
 m0 y a net19 0 NMOS_VTG L=50e-9 W=180e-9
 m3 net19 c 0 0 NMOS_VTG L=50e-9 W=180e-9
 m2 net19 b 0 0 NMOS_VTG L=50e-9 W=180e-9
-m9 net34 d vdd! vdd! PMOS_VTG L=50e-9 W=550e-9
-m8 p b net34 vdd! PMOS_VTG L=50e-9 W=550e-9
+m9 net34 b vdd! vdd! PMOS_VTG L=50e-9 W=450e-9
+m8 p d net34 vdd! PMOS_VTG L=50e-9 W=450e-9
 m5 y a vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
-m1 net46 c vdd! vdd! PMOS_VTG L=50e-9 W=550e-9
-m4 y b net46 vdd! PMOS_VTG L=50e-9 W=550e-9
+m1 net46 c vdd! vdd! PMOS_VTG L=50e-9 W=450e-9
+m4 y b net46 vdd! PMOS_VTG L=50e-9 W=450e-9
 .ends ii_aoi_or
 ** End of subcircuit definition.
 
