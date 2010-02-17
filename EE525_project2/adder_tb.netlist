@@ -34,7 +34,7 @@ vvdd! vdd! gnd! DC=1.2
 *to simulate your SRAM, you may create an instance in this file, or 
 *comment out the .subckt and .end in your sram_layout.pex.netlist
 
-.vec adder_testvector_2
+.vec adder_testvector_1
 
 *****************************Clock define *************************************
 
