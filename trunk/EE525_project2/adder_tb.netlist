@@ -24,6 +24,12 @@ vvdd! vdd! gnd! DC=1.2
 +    PSF=2
 +    POST
 
+.meas tran Qtot integral i(vvdd) from=10ps to=32ns
+.meas Etot param='1.2*Qtot
+.meas tran Qtot2 integral i(vvdd!) from=10ps to=32ns
+.meas Etot2 param='1.2*Qtot2
+
+
 *****************************Include your netlist here ************************
 
 .INCLUDE "buf.netlist"
@@ -45,7 +51,7 @@ vvdd! vdd! gnd! DC=1.2
 *Vclk inclk gnd pulse (0V 1.2V 30ps 20ps 20ps 1.98ns 4ns)
 
 *2ns clock period, starts low
-Vclk inclk gnd pulse (1.2V 0V 30ps 20ps 20ps 0.98ns 2ns)
+*Vclk inclk gnd pulse (1.2V 0V 30ps 20ps 20ps 0.98ns 2ns)
 
 *****************************INPUTS *******************************************
 
@@ -132,7 +138,7 @@ x_bin<1> vdd gnd _bin<1> _b<1> minbuff
 x_bin<0> vdd gnd _bin<0> _b<0> minbuff
 
 * clock input
-xclk vdd gnd inclk clk minbuff
+*xclk vdd gnd inclk clk minbuff
 
 *****************************OUTPUTS ***********************************
 
