@@ -33,7 +33,8 @@ vvdd! vdd! gnd! DC=1.2
 *****************************Include your netlist here ************************
 
 .INCLUDE "buf.netlist"
-.INCLUDE "adder_top.netlist"
+*.INCLUDE "adder_top.netlist"
+.INCLUDE "adder_top.pex.netlist"
 *.INCLUDE "carry_select.netlist"
 *.INCLUDE "manchester_carry_dynamic.netlist"
 

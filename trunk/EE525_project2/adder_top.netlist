@@ -116,7 +116,7 @@ m4 y b net46 vdd! PMOS_VTG L=50e-9 W=450e-9
 ** Library name: EE525_project2
 ** Cell name: ladner_fischer
 ** View name: schematic
-.subckt ladner_fischer g<19> g<18> g<17> g<16> g<15> g<14> g<13> g<12> g<11> g<10> g<9> g<8> g<7> g<6> g<5> g<4> g<3> g<2> g<1> g<0> gout<19> gout<18> gout<17> gout<16> gout<15> gout<14> gout<13> gout<12> gout<11> gout<10> gout<9> gout<8> gout<7> gout<6> gout<5> gout<4> gout<3> gout<2> gout<1> p<19> p<18> p<17> p<16> p<15> p<14> p<13> p<12> p<11> p<10> p<9> p<8> p<7> p<6> p<5> p<4> p<3> p<2> p<1> p<0>
+.subckt ladner_fischer g<18> g<17> g<16> g<15> g<14> g<13> g<12> g<11> g<10> g<9> g<8> g<7> g<6> g<5> g<4> g<3> g<2> g<1> g<0> gout<19> gout<18> gout<17> gout<16> gout<15> gout<14> gout<13> gout<12> gout<11> gout<10> gout<9> gout<8> gout<7> gout<6> gout<5> gout<4> gout<3> gout<2> gout<1> p<18> p<17> p<16> p<15> p<14> p<13> p<12> p<11> p<10> p<9> p<8> p<7> p<6> p<5> p<4> p<3> p<2> p<1> p<0>
 xi95 net0283 net0281 net062 preout<17> aoi
 xi69 net13 net14 net66 net0198 aoi
 xi68 net068 net069 net0154 preout<5> aoi
@@ -223,7 +223,6 @@ xoutbuf<4> xor_out<4> s<4> output_buffer_2stage
 xoutbuf<3> xor_out<3> s<3> output_buffer_2stage
 xoutbuf<2> xor_out<2> s<2> output_buffer_2stage
 xoutbuf<1> xor_out<1> s<1> output_buffer_2stage
-xgenpg<19> a<19> b<19> g<19> p<19> _a<19> _b<19> pg
 xgenpg<18> a<18> b<18> g<18> p<18> _a<18> _b<18> pg
 xgenpg<17> a<17> b<17> g<17> p<17> _a<17> _b<17> pg
 xgenpg<16> a<16> b<16> g<16> p<16> _a<16> _b<16> pg
@@ -243,6 +242,7 @@ xgenpg<3> a<3> b<3> g<3> p<3> _a<3> _b<3> pg
 xgenpg<2> a<2> b<2> g<2> p<2> _a<2> _b<2> pg
 xgenpg<1> a<1> b<1> g<1> p<1> _a<1> _b<1> pg
 xgenpg<0> a<0> b<0> g<0> p<0> _a<0> _b<0> pg
+xbit19xor a<19> b<19> p<19> xor
 xout_xor<19> p<19> gout<19> xor_out<19> xor
 xout_xor<18> p<18> gout<18> xor_out<18> xor
 xout_xor<17> p<17> gout<17> xor_out<17> xor
@@ -262,4 +262,4 @@ xout_xor<4> p<4> gout<4> xor_out<4> xor
 xout_xor<3> p<3> gout<3> xor_out<3> xor
 xout_xor<2> p<2> gout<2> xor_out<2> xor
 xout_xor<1> p<1> gout<1> xor_out<1> xor
-xi5 g<19> g<18> g<17> g<16> g<15> g<14> g<13> g<12> g<11> g<10> g<9> g<8> g<7> g<6> g<5> g<4> g<3> g<2> g<1> g<0> gout<19> gout<18> gout<17> gout<16> gout<15> gout<14> gout<13> gout<12> gout<11> gout<10> gout<9> gout<8> gout<7> gout<6> gout<5> gout<4> gout<3> gout<2> gout<1> p<19> p<18> p<17> p<16> p<15> p<14> p<13> p<12> p<11> p<10> p<9> p<8> p<7> p<6> p<5> p<4> p<3> p<2> p<1> p<0> ladner_fischer
+xi5 g<18> g<17> g<16> g<15> g<14> g<13> g<12> g<11> g<10> g<9> g<8> g<7> g<6> g<5> g<4> g<3> g<2> g<1> g<0> gout<19> gout<18> gout<17> gout<16> gout<15> gout<14> gout<13> gout<12> gout<11> gout<10> gout<9> gout<8> gout<7> gout<6> gout<5> gout<4> gout<3> gout<2> gout<1> p<18> p<17> p<16> p<15> p<14> p<13> p<12> p<11> p<10> p<9> p<8> p<7> p<6> p<5> p<4> p<3> p<2> p<1> p<0> ladner_fischer
