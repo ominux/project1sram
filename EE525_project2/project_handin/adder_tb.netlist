@@ -29,12 +29,6 @@ vvdd! vdd! gnd! DC=1.2
 +    PSF=2
 +    POST
 
-*.meas tran Qtot integral i(vvdd) from=10ps to=20ns
-*.meas Etot param='1.2*Qtot
-*.meas tran Qtot2 integral i(vvdd!) from=10ps to=20ns
-*.meas Etot2 param='1.2*Qtot2
-
-
 *****************************Include your netlist here ************************
 
 .INCLUDE "buf.netlist"
@@ -46,9 +40,8 @@ vvdd! vdd! gnd! DC=1.2
 *to simulate your SRAM, you may create an instance in this file, or 
 *comment out the .subckt and .end in your sram_layout.pex.netlist
 
-*.vec adder_testvector_2
-*.vec adder_testvector_functional
-.vec adder_testvector_demo
+*.vec adder_testvector_critical_path
+.vec adder_testvector_functional
 
 *****************************get the energy ***********************************
 
