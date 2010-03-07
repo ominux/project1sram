@@ -1,0 +1,124 @@
+
+** Adder simulation stimulus file for hspiceD
+
+*****************************Hspice 45nm node model selection *****************
+
+.INCLUDE "/automnt/home/lab.apps/vlsiapps/kits/FreePDK45/ncsu_basekit/models/hspice/hspice_nom.include"
+
+*****************************parameter settings ********************************
+.param my_vdd=1.2V
+.param my_sim_time=20ns
+.param size=1
+
+*****************************power rails ********************************
+.GLOBAL vdd
+.GLOBAL vdd!
+
+vdd vdd gnd DC=my_vdd
+vdd! vdd! gnd! DC=my_vdd
+
+*****************************Simulation settings ******************************
+
+.TRAN 5e-12 my_sim_time START=0.0
+.OP
+
+.TEMP 25
+.OPTION
++    ARTIST=2
++    INGOLD=2
++    PARHIER=LOCAL
++    PSF=2
++    POST
+
+*****************************Include your netlist here ************************
+
+.INCLUDE "buf.netlist"
+.INCLUDE "multiplier.netlist"
+
+*to simulate your SRAM, you may create an instance in this file, or 
+*comment out the .subckt and .end in your sram_layout.pex.netlist
+
+.vec multiplier_1.vec
+
+*****************************get the energy ***********************************
+
+.meas tran Qtot integral i(vdd!) from=30ps to=my_sim_time
+.meas tran Qtot2 integral i(vdd) from=30ps to=my_sim_time
+.meas Etot param='my_vdd*(Qtot+Qtot2)
+
+*****************************Clock define *************************************
+
+Vclk inclk gnd pulse (0V my_vdd 30ps 20ps 20ps 0.98ns 2ns)
+
+*****************************INPUTS *******************************************
+
+* data inputs
+xain<9> vdd gnd ain<9> a<9> minbuff
+xain<8> vdd gnd ain<8> a<8> minbuff
+xain<7> vdd gnd ain<7> a<7> minbuff
+xain<6> vdd gnd ain<6> a<6> minbuff
+xain<5> vdd gnd ain<5> a<5> minbuff
+xain<4> vdd gnd ain<4> a<4> minbuff
+xain<3> vdd gnd ain<3> a<3> minbuff
+xain<2> vdd gnd ain<2> a<2> minbuff
+xain<1> vdd gnd ain<1> a<1> minbuff
+xain<0> vdd gnd ain<0> a<0> minbuff
+x_ain<9> vdd gnd _ain<9> _a<9> minbuff
+x_ain<8> vdd gnd _ain<8> _a<8> minbuff
+x_ain<7> vdd gnd _ain<7> _a<7> minbuff
+x_ain<6> vdd gnd _ain<6> _a<6> minbuff
+x_ain<5> vdd gnd _ain<5> _a<5> minbuff
+x_ain<4> vdd gnd _ain<4> _a<4> minbuff
+x_ain<3> vdd gnd _ain<3> _a<3> minbuff
+x_ain<2> vdd gnd _ain<2> _a<2> minbuff
+x_ain<1> vdd gnd _ain<1> _a<1> minbuff
+x_ain<0> vdd gnd _ain<0> _a<0> minbuff
+xbin<9> vdd gnd bin<9> b<9> minbuff
+xbin<8> vdd gnd bin<8> b<8> minbuff
+xbin<7> vdd gnd bin<7> b<7> minbuff
+xbin<6> vdd gnd bin<6> b<6> minbuff
+xbin<5> vdd gnd bin<5> b<5> minbuff
+xbin<4> vdd gnd bin<4> b<4> minbuff
+xbin<3> vdd gnd bin<3> b<3> minbuff
+xbin<2> vdd gnd bin<2> b<2> minbuff
+xbin<1> vdd gnd bin<1> b<1> minbuff
+xbin<0> vdd gnd bin<0> b<0> minbuff
+x_bin<9> vdd gnd _bin<9> _b<9> minbuff
+x_bin<8> vdd gnd _bin<8> _b<8> minbuff
+x_bin<7> vdd gnd _bin<7> _b<7> minbuff
+x_bin<6> vdd gnd _bin<6> _b<6> minbuff
+x_bin<5> vdd gnd _bin<5> _b<5> minbuff
+x_bin<4> vdd gnd _bin<4> _b<4> minbuff
+x_bin<3> vdd gnd _bin<3> _b<3> minbuff
+x_bin<2> vdd gnd _bin<2> _b<2> minbuff
+x_bin<1> vdd gnd _bin<1> _b<1> minbuff
+x_bin<0> vdd gnd _bin<0> _b<0> minbuff
+
+* clock input
+xclk vdd gnd inclk clk minbuff
+
+*****************************OUTPUTS ***********************************
+
+* the outputs with 50f load
+c_outcap<19> p<19> gnd 50f
+c_outcap<18> p<18> gnd 50f
+c_outcap<17> p<17> gnd 50f
+c_outcap<16> p<16> gnd 50f
+c_outcap<15> p<15> gnd 50f
+c_outcap<14> p<14> gnd 50f
+c_outcap<13> p<13> gnd 50f
+c_outcap<12> p<12> gnd 50f
+c_outcap<11> p<11> gnd 50f
+c_outcap<10> p<10> gnd 50f
+c_outcap<9> p<9> gnd 50f
+c_outcap<8> p<8> gnd 50f
+c_outcap<7> p<7> gnd 50f
+c_outcap<6> p<6> gnd 50f
+c_outcap<5> p<5> gnd 50f
+c_outcap<4> p<4> gnd 50f
+c_outcap<3> p<3> gnd 50f
+c_outcap<2> p<2> gnd 50f
+c_outcap<1> p<1> gnd 50f
+c_outcap<0> p<0> gnd 50f
+
+.end
