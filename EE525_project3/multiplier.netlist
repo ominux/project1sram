@@ -1,9 +1,24 @@
 
 ** Library name: EE525_project3
+** Cell name: dyn_inv
+** View name: schematic
+.subckt dyn_inv clk in out
+m18 net040 clk 0 0 NMOS_VTG L=50e-9 W='size*180e-9'
+m9 net021 net033 net040 0 NMOS_VTG L=50e-9 W='size*180e-9'
+m12 out net021 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m10 net033 in 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m19 net021 out vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
+m13 out net021 vdd! vdd! PMOS_VTG L=50e-9 W='size*450e-9'
+m0 net021 clk vdd! vdd! PMOS_VTG L=50e-9 W='size*90e-9'
+m11 net033 in vdd! vdd! PMOS_VTG L=50e-9 W='size*90e-9'
+.ends dyn_inv
+** End of subcircuit definition.
+
+** Library name: EE525_project3
 ** Cell name: dyn_xor
 ** View name: schematic
 .subckt dyn_xor _a _b a b clk out
-m6 out _xor vdd! vdd! PMOS_VTG L=50e-9 W='size*225e-9'
+m6 out _xor vdd! vdd! PMOS_VTG L=50e-9 W=poutsize
 m0 _xor clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
 m7 out _xor 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
 m5 net34 clk 0 0 NMOS_VTG L=50e-9 W='size*270e-9'
@@ -15,61 +30,55 @@ m1 _xor a net31 0 NMOS_VTG L=50e-9 W='size*270e-9'
 ** End of subcircuit definition.
 
 ** Library name: EE525_project3
-** Cell name: dyn_and_coreys
+** Cell name: dyn_xnor
 ** View name: schematic
-.subckt dyn_and_coreys a b clk out
-m6 out net25 vdd! vdd! PMOS_VTG L=50e-9 W='size*225e-9'
-m0 net25 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
-m7 out net25 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
-m5 footer clk 0 0 NMOS_VTG L=50e-9 W='size*270e-9'
-m4 net21 b footer 0 NMOS_VTG L=50e-9 W='size*270e-9'
-m1 net25 a net21 0 NMOS_VTG L=50e-9 W='size*270e-9'
-.ends dyn_and_coreys
+.subckt dyn_xnor _a _b a b clk out
+m6 out _xnor vdd! vdd! PMOS_VTG L=50e-9 W='size*450e-9'
+m0 _xnor clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m7 out _xnor 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m5 net34 clk 0 0 NMOS_VTG L=50e-9 W='size*270e-9'
+m4 _xnor _a net27 0 NMOS_VTG L=50e-9 W='size*270e-9'
+m3 net27 _b net34 0 NMOS_VTG L=50e-9 W='size*270e-9'
+m2 net31 b net34 0 NMOS_VTG L=50e-9 W='size*270e-9'
+m1 _xnor a net31 0 NMOS_VTG L=50e-9 W='size*270e-9'
+.ends dyn_xnor
 ** End of subcircuit definition.
 
 ** Library name: EE525_project3
-** Cell name: inv_min
+** Cell name: dyn_nand
 ** View name: schematic
-.subckt inv_min in out
-m0 out in vdd! vdd! PMOS_VTG L=50e-9 W='size*225e-9'
-m1 out in 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
-.ends inv_min
+.subckt dyn_nand a b clk out
+m8 out _nand 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m6 _nand a footer 0 NMOS_VTG L=50e-9 W='size*180e-9'
+m4 _nand b footer 0 NMOS_VTG L=50e-9 W='size*180e-9'
+m1 footer clk 0 0 NMOS_VTG L=50e-9 W='size*180e-9'
+m9 out _nand vdd! vdd! PMOS_VTG L=50e-9 W='size*450e-9'
+m7 _nand clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+.ends dyn_nand
 ** End of subcircuit definition.
 
 ** Library name: EE525_project3
-** Cell name: dyn_HA
+** Cell name: dyn_and
 ** View name: schematic
-.subckt dyn_HA a b clk cout sum
-xi2 net7 net8 a b clk sum dyn_xor
-xi3 a b clk cout dyn_and_coreys
-xi6 b net8 inv_min
-xi5 a net7 inv_min
-.ends dyn_HA
+.subckt dyn_and a b clk out
+m6 out net35 vdd! vdd! PMOS_VTG L=50e-9 W=poutsize
+m0 net35 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m7 out net35 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m5 net34 clk 0 0 NMOS_VTG L=50e-9 W='size*270e-9'
+m2 net31 b net34 0 NMOS_VTG L=50e-9 W='size*270e-9'
+m1 net35 a net31 0 NMOS_VTG L=50e-9 W='size*270e-9'
+.ends dyn_and
 ** End of subcircuit definition.
 
 ** Library name: EE525_project3
-** Cell name: dyn_or3
+** Cell name: dyn_HA_wInv
 ** View name: schematic
-.subckt dyn_or3 a b c clk out
-m7 out net10 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
-m1 net10 a net14 0 NMOS_VTG L=50e-9 W='size*180e-9'
-m2 net10 c net14 0 NMOS_VTG L=50e-9 W='size*180e-9'
-m4 net10 b net14 0 NMOS_VTG L=50e-9 W='size*180e-9'
-m5 net14 clk 0 0 NMOS_VTG L=50e-9 W='size*180e-9'
-m6 out net10 vdd! vdd! PMOS_VTG L=50e-9 W='size*225e-9'
-m0 net10 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
-.ends dyn_or3
-** End of subcircuit definition.
-
-** Library name: EE525_project3
-** Cell name: dyn_majority_detect
-** View name: schematic
-.subckt dyn_majority_detect a b c clk maj
-xi4 c a clk net6 dyn_and_coreys
-xi3 c b clk net10 dyn_and_coreys
-xi2 a b clk net14 dyn_and_coreys
-xi5 net14 net10 net6 clk maj dyn_or3
-.ends dyn_majority_detect
+.subckt dyn_HA_wInv _a _b _cout _sum a b clk cout sum
+xi2 _a _b a b clk sum dyn_xor
+xi4 _a _b a b clk _sum dyn_xnor
+xi7 _a _b clk _cout dyn_nand
+xi3 a b clk cout dyn_and
+.ends dyn_HA_wInv
 ** End of subcircuit definition.
 
 ** Library name: EE525_project3
@@ -89,98 +98,198 @@ m2 net22 _b net25 0 NMOS_VTG L=50e-9 W='size*360e-9'
 m3 net26 b net25 0 NMOS_VTG L=50e-9 W='size*360e-9'
 m4 _xor3 _a net26 0 NMOS_VTG L=50e-9 W='size*360e-9'
 m5 net34 clk 0 0 NMOS_VTG L=50e-9 W='size*360e-9'
-m15 _xor3 out vdd! vdd! PMOS_VTG L=100e-9 W=90e-9
-m6 out _xor3 vdd! vdd! PMOS_VTG L=50e-9 W='size*225e-9'
+m16 net0102 0 vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
+m15 _xor3 out net0102 vdd! PMOS_VTG L=50e-9 W=90e-9
+m6 out _xor3 vdd! vdd! PMOS_VTG L=50e-9 W='size*450e-9'
 m0 _xor3 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
 .ends dyn_xor3
 ** End of subcircuit definition.
 
 ** Library name: EE525_project3
-** Cell name: dyn_FA
+** Cell name: dyn_maj
 ** View name: schematic
-.subckt dyn_FA a b cin clk cout sum
-xi2 a b cin clk cout dyn_majority_detect
-xi9 _a _b _c a b cin clk sum dyn_xor3
-xi8 a _a inv_min
-xi7 b _b inv_min
-xi6 cin _c inv_min
-.ends dyn_FA
+.subckt dyn_maj a b c clk out
+m6 out _maj vdd! vdd! PMOS_VTG L=50e-9 W='size*450e-9'
+m0 _maj clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m9 net14 c net25 0 NMOS_VTG L=50e-9 W='size*270e-9'
+m8 net18 c net25 0 NMOS_VTG L=50e-9 W='size*270e-9'
+m3 net22 b net25 0 NMOS_VTG L=50e-9 W='size*270e-9'
+m2 _maj b net14 0 NMOS_VTG L=50e-9 W='size*270e-9'
+m7 out _maj 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m5 net25 clk 0 0 NMOS_VTG L=50e-9 W='size*270e-9'
+m4 _maj a net18 0 NMOS_VTG L=50e-9 W='size*270e-9'
+m1 _maj a net22 0 NMOS_VTG L=50e-9 W='size*270e-9'
+.ends dyn_maj
 ** End of subcircuit definition.
 
 ** Library name: EE525_project3
-** Cell name: dyn_5_to_3
+** Cell name: dyn_xnor3
 ** View name: schematic
-.subckt dyn_5_to_3 a b c carry cin clk cout d sum
-xi1 net9 d cin clk carry sum dyn_FA
-xi0 a b c clk cout net9 dyn_FA
-.ends dyn_5_to_3
+.subckt dyn_xnor3 _a _b _c a b c clk out
+m6 out _xnor3 vdd! vdd! PMOS_VTG L=50e-9 W='size*450e-9'
+m15 _xnor3 out net16 vdd! PMOS_VTG L=50e-9 W=90e-9
+m16 net16 0 vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
+m0 _xnor3 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m7 out _xnor3 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m12 net29 _b net32 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m11 _xnor3 a net29 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m10 net37 clk 0 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m9 net32 c net37 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m14 _xnor3 _a net49 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m13 net49 b net32 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m1 _xnor3 a net57 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m2 net57 b net60 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m8 net60 _c net73 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m3 net65 _b net60 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m4 _xnor3 _a net65 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m5 net73 clk 0 0 NMOS_VTG L=50e-9 W='size*360e-9'
+.ends dyn_xnor3
 ** End of subcircuit definition.
 
 ** Library name: EE525_project3
-** Cell name: dyn_5_5_4
+** Cell name: dyn_FA_wInv
 ** View name: schematic
-.subckt dyn_5_5_4 clk pp0<4> pp0<3> pp0<2> pp0<1> pp0<0> pp1<4> pp1<3> pp1<2> pp1<1> pp1<0> s<0> s<1> s<2> s<3>
-xi6 cout2 carry1 cout1 clk s<3> s<2> dyn_FA
-xi2 carry0 cout0 net016 clk cout2 s<1> dyn_FA
-xi4 pp0<4> pp0<3> pp0<2> carry0 pp0<0> clk cout0 pp0<1> s<0> dyn_5_to_3
-xi5 pp1<4> pp1<3> pp1<2> carry1 pp1<0> clk cout1 pp1<1> net016 dyn_5_to_3
-.ends dyn_5_5_4
+.subckt dyn_FA_wInv _a _b _cin _cout _sum a b cin clk cout sum
+xi9 _a _b _cin a b cin clk sum dyn_xor3
+xi1 _a _b _cin clk _cout dyn_maj
+xi2 a b cin clk cout dyn_maj
+xi0 _a _b _cin a b cin clk _sum dyn_xnor3
+.ends dyn_FA_wInv
+** End of subcircuit definition.
+
+** Library name: EE525_project3
+** Cell name: dyn_5_to_3_wInv
+** View name: schematic
+.subckt dyn_5_to_3_wInv _a _b _c _carry _cin _cout _d _sum a b c carry cin clk cout d sum
+xi0 _a _b _c _cout net030 a b c clk cout net23 dyn_FA_wInv
+xi1 net030 _d _cin _carry _sum net23 d cin clk carry sum dyn_FA_wInv
+.ends dyn_5_to_3_wInv
+** End of subcircuit definition.
+
+** Library name: EE525_project3
+** Cell name: dyn_5_5_4_wInv
+** View name: schematic
+.subckt dyn_5_5_4_wInv _pp0<4> _pp0<3> _pp0<2> _pp0<1> _pp0<0> _pp1<4> _pp1<3> _pp1<2> _pp1<1> _pp1<0> _s<0> _s<1> _s<2> _s<3> clk pp0<4> pp0<3> pp0<2> pp0<1> pp0<0> pp1<4> pp1<3> pp1<2> pp1<1> pp1<0> s<0> s<1> s<2> s<3>
+xi6 net031 net019 net049 _s<3> _s<2> cout2 carry1 cout1 clk s<3> s<2> dyn_FA_wInv
+xi2 net33 net055 net044 net031 _s<1> carry0 cout0 net13 clk cout2 s<1> dyn_FA_wInv
+xi5 _pp1<4> _pp1<3> _pp1<2> net019 _pp1<1> net049 _pp1<0> net044 pp1<4> pp1<3> pp1<2> carry1 pp1<0> clk cout1 pp1<1> net13 dyn_5_to_3_wInv
+xi4 _pp0<4> _pp0<3> _pp0<2> net33 _pp0<1> net055 _pp0<0> _s<0> pp0<4> pp0<3> pp0<2> carry0 pp0<0> clk cout0 pp0<1> s<0> dyn_5_to_3_wInv
+.ends dyn_5_5_4_wInv
 ** End of subcircuit definition.
 
 ** Library name: EE525_project3
 ** Cell name: dyn_compressor
 ** View name: schematic
-.subckt dyn_compressor a<19> a<18> a<17> a<16> a<15> a<14> a<13> a<12> a<11> a<10> a<9> a<8> a<7> a<6> a<5> a<4> a<3> a<2> a<1> a<0> b<19> b<18> b<17> b<16> b<15> b<14> b<13> b<12> b<11> b<10> b<9> b<8> b<7> b<6> b<5> b<4> b<3> b<2> b<1> b<0> clk pp0<13> pp0<12> pp0<11> pp0<10> pp0<9> pp0<8> pp0<7> pp0<6> pp0<5> pp0<4> pp0<3> pp0<2> pp0<1> pp0<0> pp1<13> pp1<12> pp1<11> pp1<10> pp1<9> pp1<8> pp1<7> pp1<6> pp1<5> pp1<4> pp1<3> pp1<2> pp1<1> pp1<0> pp2<13> pp2<12> pp2<11> pp2<10> pp2<9> pp2<8> pp2<7> pp2<6> pp2<5> pp2<4> pp2<3> pp2<2> pp2<1> pp2<0> pp3<13> pp3<12> pp3<11> pp3<10> pp3<9> pp3<8> pp3<7> pp3<6> pp3<5> pp3<4> pp3<3> pp3<2> pp3<1> pp3<0> pp4<12> pp4<11> pp4<10> pp4<9> pp4<8> pp4<7> pp4<6> pp4<5> pp4<4> pp4<3> pp4<2> pp4<1> pp4<0> pp5
-xi35 net081 pp4<12> clk net061 a<19> dyn_HA
-xi34 net068 net069 clk b<19> a<18> dyn_HA
-xi33 net073 net087 clk b<18> a<17> dyn_HA
-xi32 net078 net044 clk b<17> a<16> dyn_HA
-xi30 pp4<11> vdd! clk net081 net069 dyn_HA
-xi29 pp4<10> pp3<12> clk net068 net087 dyn_HA
-xi24 net0116 net0125 clk b<14> a<13> dyn_HA
-xi23 net0115 net0124 clk b<13> a<12> dyn_HA
-xi22 b11_ints0 b11_ints2 clk b<11> a<10> dyn_HA
-xi21 net0123 net0132 clk b<12> a<11> dyn_HA
-xi20 net0130 net053 clk b<10> a<9> dyn_HA
-xi19 pp0<8> net0107 clk b<9> b<8> dyn_HA
-xi15 net0105 net079 clk b<7> a<6> dyn_HA
-xi13 net042 net064 clk b<6> a<5> dyn_HA
-xi11 net034 int3<1> clk b<4> a<3> dyn_HA
-xi8 pp1<2> pp0<3> clk net031 net034 dyn_HA
-xi5 pp0<1> int1<1> clk b<2> a<1> dyn_HA
-xi4 pp1<0> pp0<0> clk int1<1> a<0> dyn_HA
+.subckt dyn_compressor _a<19> _a<18> _a<17> _a<16> _a<15> _a<14> _a<13> _a<12> _a<11> _a<10> _a<9> _a<8> _a<7> _a<6> _a<5> _a<4> _a<3> _a<2> _a<1> _a<0> _b<19> _b<18> _b<17> _b<16> _b<15> _b<14> _b<13> _b<12> _b<11> _b<10> _b<9> _b<8> _b<7> _b<6> _b<5> _b<4> _b<3> _b<2> _b<1> _b<0> a<19> a<18> a<17> a<16> a<15> a<14> a<13> a<12> a<11> a<10> a<9> a<8> a<7> a<6> a<5> a<4> a<3> a<2> a<1> a<0> b<19> b<18> b<17> b<16> b<15> b<14> b<13> b<12> b<11> b<10> b<9> b<8> b<7> b<6> b<5> b<4> b<3> b<2> b<1> b<0> clk clk_delayed pp0<13> pp0<12> pp0<11> pp0<10> pp0<9> pp0<8> pp0<7> pp0<6> pp0<5> pp0<4> pp0<3> pp0<2> pp0<1> pp0<0> pp1<13> pp1<12> pp1<11> pp1<10> pp1<9> pp1<8> pp1<7> pp1<6> pp1<5> pp1<4> pp1<3> pp1<2> pp1<1> pp1<0> pp2<13> pp2<12> pp2<11> pp2<10> pp2<9> pp2<8> pp2<7> pp2<6> pp2<5> pp2<4> pp2<3> pp2<2> pp2<1> pp2<0> pp3<13> pp3<12> pp3<11> pp3<10> pp3<9> pp3<8> pp3<7> pp3<6> pp3<5> pp3<4> pp3<3> pp3<2> pp3<1> pp3<0> pp4<12> pp4<11> pp4<10> pp4<9> pp4<8> pp4<7> pp4<6> pp4<5> pp4<4> pp4<3> pp4<2> pp4<1> pp4<0>
++pp5
+xi64<12> clk_delayed pp4<12> _pp4<12> dyn_inv
+xi64<11> clk_delayed pp4<11> _pp4<11> dyn_inv
+xi64<10> clk_delayed pp4<10> _pp4<10> dyn_inv
+xi64<9> clk_delayed pp4<9> _pp4<9> dyn_inv
+xi64<8> clk_delayed pp4<8> _pp4<8> dyn_inv
+xi64<7> clk_delayed pp4<7> _pp4<7> dyn_inv
+xi64<6> clk_delayed pp4<6> _pp4<6> dyn_inv
+xi64<5> clk_delayed pp4<5> _pp4<5> dyn_inv
+xi64<4> clk_delayed pp4<4> _pp4<4> dyn_inv
+xi64<3> clk_delayed pp4<3> _pp4<3> dyn_inv
+xi64<2> clk_delayed pp4<2> _pp4<2> dyn_inv
+xi64<1> clk_delayed pp4<1> _pp4<1> dyn_inv
+xi64<0> clk_delayed pp4<0> _pp4<0> dyn_inv
+xi65 clk_delayed pp5 _pp5 dyn_inv
+xi63<13> clk_delayed pp3<13> _pp3<13> dyn_inv
+xi63<12> clk_delayed pp3<12> _pp3<12> dyn_inv
+xi63<11> clk_delayed pp3<11> _pp3<11> dyn_inv
+xi63<10> clk_delayed pp3<10> _pp3<10> dyn_inv
+xi63<9> clk_delayed pp3<9> _pp3<9> dyn_inv
+xi63<8> clk_delayed pp3<8> _pp3<8> dyn_inv
+xi63<7> clk_delayed pp3<7> _pp3<7> dyn_inv
+xi63<6> clk_delayed pp3<6> _pp3<6> dyn_inv
+xi63<5> clk_delayed pp3<5> _pp3<5> dyn_inv
+xi63<4> clk_delayed pp3<4> _pp3<4> dyn_inv
+xi63<3> clk_delayed pp3<3> _pp3<3> dyn_inv
+xi63<2> clk_delayed pp3<2> _pp3<2> dyn_inv
+xi63<1> clk_delayed pp3<1> _pp3<1> dyn_inv
+xi63<0> clk_delayed pp3<0> _pp3<0> dyn_inv
+xi62<13> clk_delayed pp2<13> _pp2<13> dyn_inv
+xi62<12> clk_delayed pp2<12> _pp2<12> dyn_inv
+xi62<11> clk_delayed pp2<11> _pp2<11> dyn_inv
+xi62<10> clk_delayed pp2<10> _pp2<10> dyn_inv
+xi62<9> clk_delayed pp2<9> _pp2<9> dyn_inv
+xi62<8> clk_delayed pp2<8> _pp2<8> dyn_inv
+xi62<7> clk_delayed pp2<7> _pp2<7> dyn_inv
+xi62<6> clk_delayed pp2<6> _pp2<6> dyn_inv
+xi62<5> clk_delayed pp2<5> _pp2<5> dyn_inv
+xi62<4> clk_delayed pp2<4> _pp2<4> dyn_inv
+xi62<3> clk_delayed pp2<3> _pp2<3> dyn_inv
+xi62<2> clk_delayed pp2<2> _pp2<2> dyn_inv
+xi62<1> clk_delayed pp2<1> _pp2<1> dyn_inv
+xi62<0> clk_delayed pp2<0> _pp2<0> dyn_inv
+xi61<13> clk_delayed pp1<13> _pp1<13> dyn_inv
+xi61<12> clk_delayed pp1<12> _pp1<12> dyn_inv
+xi61<11> clk_delayed pp1<11> _pp1<11> dyn_inv
+xi61<10> clk_delayed pp1<10> _pp1<10> dyn_inv
+xi61<9> clk_delayed pp1<9> _pp1<9> dyn_inv
+xi61<8> clk_delayed pp1<8> _pp1<8> dyn_inv
+xi61<7> clk_delayed pp1<7> _pp1<7> dyn_inv
+xi61<6> clk_delayed pp1<6> _pp1<6> dyn_inv
+xi61<5> clk_delayed pp1<5> _pp1<5> dyn_inv
+xi61<4> clk_delayed pp1<4> _pp1<4> dyn_inv
+xi61<3> clk_delayed pp1<3> _pp1<3> dyn_inv
+xi61<2> clk_delayed pp1<2> _pp1<2> dyn_inv
+xi61<1> clk_delayed pp1<1> _pp1<1> dyn_inv
+xi61<0> clk_delayed pp1<0> _pp1<0> dyn_inv
+xi51<13> clk_delayed pp0<13> _pp0<13> dyn_inv
+xi51<12> clk_delayed pp0<12> _pp0<12> dyn_inv
+xi51<11> clk_delayed pp0<11> _pp0<11> dyn_inv
+xi51<10> clk_delayed pp0<10> _pp0<10> dyn_inv
+xi51<9> clk_delayed pp0<9> _pp0<9> dyn_inv
+xi51<8> clk_delayed pp0<8> _pp0<8> dyn_inv
+xi51<7> clk_delayed pp0<7> _pp0<7> dyn_inv
+xi51<6> clk_delayed pp0<6> _pp0<6> dyn_inv
+xi51<5> clk_delayed pp0<5> _pp0<5> dyn_inv
+xi51<4> clk_delayed pp0<4> _pp0<4> dyn_inv
+xi51<3> clk_delayed pp0<3> _pp0<3> dyn_inv
+xi51<2> clk_delayed pp0<2> _pp0<2> dyn_inv
+xi51<1> clk_delayed pp0<1> _pp0<1> dyn_inv
+xi51<0> clk_delayed pp0<0> _pp0<0> dyn_inv
 r8 0 b<3> 0
 r4 0 b<1> 0
 r3 0 b<0> 0
-xi31 net0135 net0118 net0180 clk b<16> a<15> dyn_FA
-xi28 pp4<9> pp3<11> vdd! clk net073 net044 dyn_FA
-xi27 pp4<8> pp3<10> pp2<12> clk net078 net0180 dyn_FA
-xi26 pp4<7> pp3<9> pp2<11> clk net0135 net0136 dyn_FA
-xi25 net0136 net0137 vdd! clk b<15> a<14> dyn_FA
-xi12 pp2<2> pp1<4> pp0<5> clk net079 net042 dyn_FA
-xi10 net065 pp0<4> net031 clk b<5> a<4> dyn_FA
-xi9 pp3<0> pp2<1> pp1<3> clk net064 net065 dyn_FA
-xi7 pp2<0> pp1<1> pp0<2> clk int3<1> a<2> dyn_FA
-xi18 clk pp4<5> pp3<7> pp2<9> pp1<11> pp0<12> pp4<6> pp3<8> pp2<10> pp1<12> pp0<13> net0115 net0116 net0137 net0118 dyn_5_5_4
-xi17 clk pp4<3> pp3<5> pp2<7> pp1<9> pp0<10> pp4<4> pp3<6> pp2<8> pp1<10> pp0<11> b11_ints0 net0123 net0124 net0125 dyn_5_5_4
-xi16 clk pp5 pp4<1> pp3<3> pp2<5> pp1<7> pp4<2> pp3<4> pp2<6> pp1<8> pp0<9> a<8> net0130 b11_ints2 net0132 dyn_5_5_4
-xi14 clk pp4<0> pp3<1> pp2<3> pp1<5> pp0<6> 0 pp3<2> pp2<4> pp1<6> pp0<7> net0105 a<7> net0107 net053 dyn_5_5_4
+r10 vdd! _b<0> 0
+r12 vdd! _b<3> 0
+r11 vdd! _b<1> 0
+xi30 _pp4<11> 0 net091 net0181 pp4<11> vdd! clk net081 net069 dyn_HA_wInv
+xi29 _pp4<10> _pp3<12> net086 net0126 pp4<10> pp3<12> clk net068 intb17 dyn_HA_wInv
+xi8 _pp1<2> _pp0<3> net0176 net0279 pp1<2> pp0<3> clk net031 net034 dyn_HA_wInv
+xi35 net091 _pp4<12> net0179 _a<19> net081 pp4<12> clk net061 a<19> dyn_HA_wInv
+xi34 net086 net0181 _b<19> _a<18> net068 net069 clk b<19> a<18> dyn_HA_wInv
+xi33 net089 net0126 _b<18> _a<17> inta17 intb17 clk b<18> a<17> dyn_HA_wInv
+xi32 net0290 net0199 _b<17> _a<16> net078 net044 clk b<17> a<16> dyn_HA_wInv
+xi24 net0369 net0208 _b<14> _a<13> net0125 net0116 clk b<14> a<13> dyn_HA_wInv
+xi23 net0368 net0217 _b<13> _a<12> net0124 net0115 clk b<13> a<12> dyn_HA_wInv
+xi22 net0372 net084 _b<11> _a<10> net0103 net0218 clk b<11> a<10> dyn_HA_wInv
+xi21 net0234 net0235 _b<12> _a<11> net0132 net0123 clk b<12> a<11> dyn_HA_wInv
+xi20 net0243 net0129 _b<10> _a<9> net053 net0130 clk b<10> a<9> dyn_HA_wInv
+xi19 net0385 _pp0<8> _b<9> _b<8> net0107 pp0<8> clk b<9> b<8> dyn_HA_wInv
+xi15 net0128 net0262 _b<7> _a<6> net0105 net079 clk b<7> a<6> dyn_HA_wInv
+xi13 net0324 net0271 _b<6> _a<5> net042 net064 clk b<6> a<5> dyn_HA_wInv
+xi11 net0279 net0142 _b<4> _a<3> net034 int3<1> clk b<4> a<3> dyn_HA_wInv
+xi5 _pp0<1> net056 _b<2> _a<1> pp0<1> net0264 clk b<2> a<1> dyn_HA_wInv
+xi4 _pp1<0> _pp0<0> net056 _a<0> pp1<0> pp0<0> clk net0264 a<0> dyn_HA_wInv
+xi28 _pp4<9> _pp3<11> 0 net089 net0199 pp4<9> pp3<11> vdd! clk inta17 net044 dyn_FA_wInv
+xi27 _pp4<8> _pp3<10> _pp2<12> net0290 net0320 pp4<8> pp3<10> pp2<12> clk net078 net0180 dyn_FA_wInv
+xi26 _pp4<7> _pp3<9> _pp2<11> net0319 net0330 pp4<7> pp3<9> pp2<11> clk net0135 net0136 dyn_FA_wInv
+xi9 _pp3<0> _pp2<1> _pp1<3> net0271 net0340 pp3<0> pp2<1> pp1<3> clk net064 net065 dyn_FA_wInv
+xi12 _pp2<2> _pp1<4> _pp0<5> net0262 net0324 pp2<2> pp1<4> pp0<5> clk net079 net042 dyn_FA_wInv
+xi31 net0352 net0319 net0320 _b<16> _a<15> net0118 net0135 net0180 clk b<16> a<15> dyn_FA_wInv
+xi25 net0351 net0330 0 _b<15> _a<14> net0137 net0136 vdd! clk b<15> a<14> dyn_FA_wInv
+xi10 net0340 net0176 _pp0<4> _b<5> _a<4> net065 net031 pp0<4> clk b<5> a<4> dyn_FA_wInv
+xi7 _pp2<0> _pp1<1> _pp0<2> net0142 _a<2> pp2<0> pp1<1> pp0<2> clk int3<1> a<2> dyn_FA_wInv
+xi18 _pp4<5> _pp3<7> _pp2<9> _pp1<11> _pp0<12> _pp4<6> _pp3<8> _pp2<10> _pp1<12> _pp0<13> net0217 net0208 net0351 net0352 clk pp4<5> pp3<7> pp2<9> pp1<11> pp0<12> pp4<6> pp3<8> pp2<10> pp1<12> pp0<13> net0115 net0116 net0137 net0118 dyn_5_5_4_wInv
+xi17 _pp4<3> _pp3<5> _pp2<7> _pp1<9> _pp0<10> _pp4<4> _pp3<6> _pp2<8> _pp1<10> _pp0<11> net084 net0235 net0368 net0369 clk pp4<3> pp3<5> pp2<7> pp1<9> pp0<10> pp4<4> pp3<6> pp2<8> pp1<10> pp0<11> net0218 net0123 net0124 net0125 dyn_5_5_4_wInv
+xi16 _pp5 _pp4<1> _pp3<3> _pp2<5> _pp1<7> _pp4<2> _pp3<4> _pp2<6> _pp1<8> _pp0<9> _a<8> net0129 net0372 net0234 clk pp5 pp4<1> pp3<3> pp2<5> pp1<7> pp4<2> pp3<4> pp2<6> pp1<8> pp0<9> a<8> net0130 net0103 net0132 dyn_5_5_4_wInv
+xi14 _pp4<0> _pp3<1> _pp2<3> _pp1<5> _pp0<6> vdd! _pp3<2> _pp2<4> _pp1<6> _pp0<7> net0128 _a<7> net0385 net0243 clk pp4<0> pp3<1> pp2<3> pp1<5> pp0<6> 0 pp3<2> pp2<4> pp1<6> pp0<7> net0105 a<7> net0107 net053 dyn_5_5_4_wInv
 .ends dyn_compressor
-** End of subcircuit definition.
-
-** Library name: EE525_project3
-** Cell name: dyn_xnor
-** View name: schematic
-.subckt dyn_xnor _a _b a b clk out
-m6 out net35 vdd! vdd! PMOS_VTG L=50e-9 W='size*225e-9'
-m0 net35 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
-m7 out net35 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
-m5 net34 clk 0 0 NMOS_VTG L=50e-9 W='size*270e-9'
-m4 net35 _a net27 0 NMOS_VTG L=50e-9 W='size*270e-9'
-m3 net27 _b net34 0 NMOS_VTG L=50e-9 W='size*270e-9'
-m2 net31 b net34 0 NMOS_VTG L=50e-9 W='size*270e-9'
-m1 net35 a net31 0 NMOS_VTG L=50e-9 W='size*270e-9'
-.ends dyn_xnor
 ** End of subcircuit definition.
 
 ** Library name: EE525_project3
@@ -263,14 +372,14 @@ m0 net25 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
 ** Cell name: clk_buffer
 ** View name: schematic
 .subckt clk_buffer in out
-m10 out net016 0 0 NMOS_VTG L=50e-9 W=17.415e-6
-m8 net016 mid 0 0 NMOS_VTG L=50e-9 W=5.805e-6
-m3 mid net15 0 0 NMOS_VTG L=50e-9 W=1.935e-6
-m1 net15 in 0 0 NMOS_VTG L=50e-9 W=645e-9
-m9 out net016 vdd! vdd! PMOS_VTG L=50e-9 W=43.524e-6
-m7 net016 mid vdd! vdd! PMOS_VTG L=50e-9 W=14.508e-6
-m2 mid net15 vdd! vdd! PMOS_VTG L=50e-9 W=4.836e-6
-m0 net15 in vdd! vdd! PMOS_VTG L=50e-9 W=1.612e-6
+m10 out net016 0 0 NMOS_VTG L=50e-9 W=11.57e-6
+m8 net016 mid 0 0 NMOS_VTG L=50e-9 W=2.88e-6
+m3 mid net15 0 0 NMOS_VTG L=50e-9 W=720e-9
+m1 net15 in 0 0 NMOS_VTG L=50e-9 W=180e-9
+m9 out net016 vdd! vdd! PMOS_VTG L=50e-9 W=28.8e-6
+m7 net016 mid vdd! vdd! PMOS_VTG L=50e-9 W=7.2e-6
+m2 mid net15 vdd! vdd! PMOS_VTG L=50e-9 W=1.8e-6
+m0 net15 in vdd! vdd! PMOS_VTG L=50e-9 W=450e-9
 .ends clk_buffer
 ** End of subcircuit definition.
 
@@ -304,10 +413,296 @@ xi20 _y<9> _x<1> y<9> x<1> clk_buf pp_row_0<12> dyn_xor
 ** End of subcircuit definition.
 
 ** Library name: EE525_project3
+** Cell name: dyn_radix4_gray
+** View name: schematic
+.subckt dyn_radix4_gray clk g0 g1 g2 g3 g_out p1 p2 p3
+m10 net9 g3 net17 0 NMOS_VTG L=50e-9 W='size*180e-9'
+m9 net9 p3 net068 0 NMOS_VTG L=50e-9 W='size*450e-9'
+m8 net068 g2 net17 0 NMOS_VTG L=50e-9 W='size*270e-9'
+m7 g_out net9 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m3 net080 g1 net17 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m4 net068 p2 net080 0 NMOS_VTG L=50e-9 W='size*450e-9'
+m1 net080 p1 net13 0 NMOS_VTG L=50e-9 W='size*450e-9'
+m2 net13 g0 net17 0 NMOS_VTG L=50e-9 W='size*450e-9'
+m5 net17 clk 0 0 NMOS_VTG L=50e-9 W='size*450e-9'
+m6 g_out net9 vdd! vdd! PMOS_VTG L=50e-9 W=poutsize
+m0 net9 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+.ends dyn_radix4_gray
+** End of subcircuit definition.
+
+** Library name: EE525_project3
+** Cell name: dyn_radix3_gray
+** View name: schematic
+.subckt dyn_radix3_gray clk g0 g1 g2 g_out p1 p2
+m10 net40 g2 net23 0 NMOS_VTG L=50e-9 W='size*180e-9'
+m7 g_out net40 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m9 net40 p2 net24 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m3 net20 g0 net23 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m4 net24 p1 net20 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m8 net24 g1 net23 0 NMOS_VTG L=50e-9 W='size*270e-9'
+m5 net23 clk 0 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m6 g_out net40 vdd! vdd! PMOS_VTG L=50e-9 W=poutsize
+m0 net40 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+.ends dyn_radix3_gray
+** End of subcircuit definition.
+
+** Library name: EE525_project3
+** Cell name: dyn_radix3_black
+** View name: schematic
+.subckt dyn_radix3_black clk g0 g1 g2 g_out p0 p1 p2 p_out
+m4 net10 p0 net22 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m3 net14 p1 net10 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m2 net18 p2 net14 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m5 net22 clk 0 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m7 p_out net18 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m0 net18 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m6 p_out net18 vdd! vdd! PMOS_VTG L=50e-9 W=poutsize
+xi0 clk g0 g1 g2 g_out p1 p2 dyn_radix3_gray
+.ends dyn_radix3_black
+** End of subcircuit definition.
+
+** Library name: EE525_project3
+** Cell name: dyn_man4
+** View name: schematic
+.subckt dyn_man4 c0 c1 c2 c3 clk g0 g1 g2 g3 p1 p2 p3
+m17 pre_inv_2 g2 net16 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m16 c0 pre_inv_0 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m13 c1 pre_inv_1 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m12 c2 pre_inv_2 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m10 pre_inv_3 g3 net16 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m9 pre_inv_3 p3 pre_inv_2 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m7 c3 pre_inv_3 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m20 pre_inv_1 p1 pre_inv_0 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m21 pre_inv_0 g0 net16 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m18 pre_inv_1 g1 net16 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m19 pre_inv_2 p2 pre_inv_1 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m5 net16 clk 0 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m15 c0 pre_inv_0 vdd! vdd! PMOS_VTG L=50e-9 W=poutsize
+m14 c1 pre_inv_1 vdd! vdd! PMOS_VTG L=50e-9 W=poutsize
+m11 c2 pre_inv_2 vdd! vdd! PMOS_VTG L=50e-9 W=poutsize
+m8 pre_inv_3 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m4 pre_inv_2 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m3 pre_inv_1 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m6 c3 pre_inv_3 vdd! vdd! PMOS_VTG L=50e-9 W=poutsize
+m0 pre_inv_0 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+.ends dyn_man4
+** End of subcircuit definition.
+
+** Library name: EE525_project3
+** Cell name: dyn_pg
+** View name: schematic
+.subckt dyn_pg _a _b a b clk g p
+xi2 _a _b a b clk p dyn_xor
+xi1 a b clk g dyn_and
+.ends dyn_pg
+** End of subcircuit definition.
+
+** Library name: EE525_project3
+** Cell name: dyn_sum
+** View name: schematic
+.subckt dyn_sum clk g p s
+m12 s net20 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m11 s net24 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m10 net23 clk 0 0 NMOS_VTG L=50e-9 W='size*180e-9'
+m8 net20 p net23 0 NMOS_VTG L=50e-9 W='size*180e-9'
+m4 net20 g net23 0 NMOS_VTG L=50e-9 W='size*180e-9'
+m7 net24 net28 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m1 net28 g net32 0 NMOS_VTG L=50e-9 W='size*270e-9'
+m2 net32 p net36 0 NMOS_VTG L=50e-9 W='size*270e-9'
+m5 net36 clk 0 0 NMOS_VTG L=50e-9 W='size*270e-9'
+m13 net47 net20 vdd! vdd! PMOS_VTG L=50e-9 W=450e-9
+m9 s net24 net47 vdd! PMOS_VTG L=50e-9 W=450e-9
+m3 net20 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m6 net24 net28 vdd! vdd! PMOS_VTG L=50e-9 W=poutsize
+m0 net28 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+.ends dyn_sum
+** End of subcircuit definition.
+
+** Library name: EE525_project3
+** Cell name: dyn_man3
+** View name: schematic
+.subckt dyn_man3 c0 c1 c2 clk g0 g1 g2 p1 p2
+m14 c0 pre_inv_1 vdd! vdd! PMOS_VTG L=50e-9 W=poutsize
+m11 c1 pre_inv_2 vdd! vdd! PMOS_VTG L=50e-9 W=poutsize
+m6 c2 pre_inv_3 vdd! vdd! PMOS_VTG L=50e-9 W=poutsize
+m4 pre_inv_2 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m8 pre_inv_3 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m3 pre_inv_1 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m10 pre_inv_3 g2 net53 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m13 c0 pre_inv_1 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m12 c1 pre_inv_2 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m7 c2 pre_inv_3 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m18 pre_inv_1 g0 net53 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m19 pre_inv_2 p1 pre_inv_1 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m5 net53 clk 0 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m17 pre_inv_2 g1 net53 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m9 pre_inv_3 p2 pre_inv_2 0 NMOS_VTG L=50e-9 W='size*360e-9'
+.ends dyn_man3
+** End of subcircuit definition.
+
+** Library name: EE525_project3
+** Cell name: dyn_span_tree
+** View name: schematic
+.subckt dyn_span_tree _a<9> _a<8> _a<7> _a<6> _a<5> _a<4> _a<3> _a<2> _a<1> _a<0> _b<9> _b<8> _b<7> _b<6> _b<5> _b<4> _b<3> _b<2> _b<1> _b<0> a<9> a<8> a<7> a<6> a<5> a<4> a<3> a<2> a<1> a<0> b<9> b<8> b<7> b<6> b<5> b<4> b<3> b<2> b<1> b<0> c clk s<9> s<8> s<7> s<6> s<5> s<4> s<3> s<2> s<1> s<0> c_out
+xi1 clk c g<0> g<1> g<2> g_out_2 p<0> p<1> p<2> dyn_radix4_gray
+xi0 clk g<3> g<4> g<5> g_out_5 p<3> p<4> p<5> p_out_5 dyn_radix3_black
+xi6 c_out_7 c_out_8 c_out_9 c_out clk g_out_6 g<7> g<8> g<9> p<7> p<8> p<9> dyn_man4
+xi2 c_out_3 c_out_4 c_out_5 c_out_6 clk g_out_2 g<3> g<4> g<5> p<3> p<4> p<5> dyn_man4
+xgen_pg<9> _a<9> _b<9> a<9> b<9> clk g<9> p<9> dyn_pg
+xgen_pg<8> _a<8> _b<8> a<8> b<8> clk g<8> p<8> dyn_pg
+xgen_pg<7> _a<7> _b<7> a<7> b<7> clk g<7> p<7> dyn_pg
+xgen_pg<6> _a<6> _b<6> a<6> b<6> clk g<6> p<6> dyn_pg
+xgen_pg<5> _a<5> _b<5> a<5> b<5> clk g<5> p<5> dyn_pg
+xgen_pg<4> _a<4> _b<4> a<4> b<4> clk g<4> p<4> dyn_pg
+xgen_pg<3> _a<3> _b<3> a<3> b<3> clk g<3> p<3> dyn_pg
+xgen_pg<2> _a<2> _b<2> a<2> b<2> clk g<2> p<2> dyn_pg
+xgen_pg<1> _a<1> _b<1> a<1> b<1> clk g<1> p<1> dyn_pg
+xgen_pg<0> _a<0> _b<0> a<0> b<0> clk g<0> p<0> dyn_pg
+xgen_sum<9> clk c_out_9 p<9> s<9> dyn_sum
+xgen_sum<8> clk c_out_8 p<8> s<8> dyn_sum
+xgen_sum<7> clk c_out_7 p<7> s<7> dyn_sum
+xgen_sum<6> clk c_out_6 p<6> s<6> dyn_sum
+xgen_sum<5> clk c_out_5 p<5> s<5> dyn_sum
+xgen_sum<4> clk c_out_4 p<4> s<4> dyn_sum
+xgen_sum<3> clk c_out_3 p<3> s<3> dyn_sum
+xgen_sum<2> clk c_out_2 p<2> s<2> dyn_sum
+xgen_sum<1> clk c_out_1 p<1> s<1> dyn_sum
+xgen_sum<0> clk c_out_0 p<0> s<0> dyn_sum
+xi9 clk g_out_2 g_out_5 g<6> g_out_6 p_out_5 p<6> dyn_radix3_gray
+xi5 c_out_0 c_out_1 c_out_2 clk c g<0> g<1> p<0> p<1> dyn_man3
+.ends dyn_span_tree
+** End of subcircuit definition.
+
+** Library name: EE525_project3
+** Cell name: sta_mux
+** View name: schematic
+.subckt sta_mux a b out sel
+m10 out sel a vdd! PMOS_VTG L=50e-9 W='size*225e-9'
+m6 _sel sel vdd! vdd! PMOS_VTG L=50e-9 W='size*225e-9'
+m11 out _sel b vdd! PMOS_VTG L=50e-9 W='size*225e-9'
+m7 _sel sel 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m0 b sel out 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m1 a _sel out 0 NMOS_VTG L=50e-9 W='size*90e-9'
+.ends sta_mux
+** End of subcircuit definition.
+
+** Library name: EE525_project3
+** Cell name: dyn_csa
+** View name: schematic
+.subckt dyn_csa _a<9> _a<8> _a<7> _a<6> _a<5> _a<4> _a<3> _a<2> _a<1> _a<0> _b<9> _b<8> _b<7> _b<6> _b<5> _b<4> _b<3> _b<2> _b<1> _b<0> a<9> a<8> a<7> a<6> a<5> a<4> a<3> a<2> a<1> a<0> b<9> b<8> b<7> b<6> b<5> b<4> b<3> b<2> b<1> b<0> c clk s<9> s<8> s<7> s<6> s<5> s<4> s<3> s<2> s<1> s<0>
+xi1 _a<9> _a<8> _a<7> _a<6> _a<5> _a<4> _a<3> _a<2> _a<1> _a<0> _b<9> _b<8> _b<7> _b<6> _b<5> _b<4> _b<3> _b<2> _b<1> _b<0> a<9> a<8> a<7> a<6> a<5> a<4> a<3> a<2> a<1> a<0> b<9> b<8> b<7> b<6> b<5> b<4> b<3> b<2> b<1> b<0> 0 clk net9<0> net9<1> net9<2> net9<3> net9<4> net9<5> net9<6> net9<7> net9<8> net9<9> net7 dyn_span_tree
+xi0 _a<9> _a<8> _a<7> _a<6> _a<5> _a<4> _a<3> _a<2> _a<1> _a<0> _b<9> _b<8> _b<7> _b<6> _b<5> _b<4> _b<3> _b<2> _b<1> _b<0> a<9> a<8> a<7> a<6> a<5> a<4> a<3> a<2> a<1> a<0> b<9> b<8> b<7> b<6> b<5> b<4> b<3> b<2> b<1> b<0> vdd! clk net17<0> net17<1> net17<2> net17<3> net17<4> net17<5> net17<6> net17<7> net17<8> net17<9> net15 dyn_span_tree
+xmux<9> net9<0> net17<0> s<9> c sta_mux
+xmux<8> net9<1> net17<1> s<8> c sta_mux
+xmux<7> net9<2> net17<2> s<7> c sta_mux
+xmux<6> net9<3> net17<3> s<6> c sta_mux
+xmux<5> net9<4> net17<4> s<5> c sta_mux
+xmux<4> net9<5> net17<5> s<4> c sta_mux
+xmux<3> net9<6> net17<6> s<3> c sta_mux
+xmux<2> net9<7> net17<7> s<2> c sta_mux
+xmux<1> net9<8> net17<8> s<1> c sta_mux
+xmux<0> net9<9> net17<9> s<0> c sta_mux
+.ends dyn_csa
+** End of subcircuit definition.
+
+** Library name: EE525_project3
+** Cell name: inv_min
+** View name: schematic
+.subckt inv_min in out
+m0 out in vdd! vdd! PMOS_VTG L=50e-9 W='size*225e-9'
+m1 out in 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+.ends inv_min
+** End of subcircuit definition.
+
+** Library name: EE525_project3
+** Cell name: clk_delay
+** View name: schematic
+.subckt clk_delay in out
+xi16<9> delay2 net17<0> inv_min
+xi16<8> delay2 net17<1> inv_min
+xi16<7> delay2 net17<2> inv_min
+xi16<6> delay2 net17<3> inv_min
+xi16<5> delay2 net17<4> inv_min
+xi16<4> delay2 net17<5> inv_min
+xi16<3> delay2 net17<6> inv_min
+xi16<2> delay2 net17<7> inv_min
+xi16<1> delay2 net17<8> inv_min
+xi16<0> delay2 net17<9> inv_min
+xi20 delay0 delay1 inv_min
+xi18<9> delay1 net19<0> inv_min
+xi18<8> delay1 net19<1> inv_min
+xi18<7> delay1 net19<2> inv_min
+xi18<6> delay1 net19<3> inv_min
+xi18<5> delay1 net19<4> inv_min
+xi18<4> delay1 net19<5> inv_min
+xi18<3> delay1 net19<6> inv_min
+xi18<2> delay1 net19<7> inv_min
+xi18<1> delay1 net19<8> inv_min
+xi18<0> delay1 net19<9> inv_min
+xi23<9> delay0 net21<0> inv_min
+xi23<8> delay0 net21<1> inv_min
+xi23<7> delay0 net21<2> inv_min
+xi23<6> delay0 net21<3> inv_min
+xi23<5> delay0 net21<4> inv_min
+xi23<4> delay0 net21<5> inv_min
+xi23<3> delay0 net21<6> inv_min
+xi23<2> delay0 net21<7> inv_min
+xi23<1> delay0 net21<8> inv_min
+xi23<0> delay0 net21<9> inv_min
+xi25 in delay0 inv_min
+xi8 delay1 delay2 inv_min
+xi0 delay2 delay3 inv_min
+m3 out delay4 0 0 NMOS_VTG L=50e-9 W='size*360e-9'
+m1 delay4 delay3 0 0 NMOS_VTG L=50e-9 W='size*500e-9'
+m2 out delay4 vdd! vdd! PMOS_VTG L=50e-9 W='size*2.5e-6'
+m0 delay4 delay3 vdd! vdd! PMOS_VTG L=50e-9 W='size*450e-9'
+.ends clk_delay
+** End of subcircuit definition.
+
+** Library name: EE525_project3
+** Cell name: output_buffer
+** View name: schematic
+.subckt output_buffer in out
+m7 net012 net036 0 0 NMOS_VTG L=50e-9 W=270e-9
+m1 out net5 0 0 NMOS_VTG L=50e-9 W=2.43e-6
+m0 net5 net012 0 0 NMOS_VTG L=50e-9 W=810e-9
+m8 net012 net036 vdd! vdd! PMOS_VTG L=50e-9 W=675e-9
+m3 out net5 vdd! vdd! PMOS_VTG L=50e-9 W=6.075e-6
+m2 net5 net012 vdd! vdd! PMOS_VTG L=50e-9 W=2.025e-6
+xi2 in net036 inv_min
+.ends output_buffer
+** End of subcircuit definition.
+
+** Library name: EE525_project3
 ** Cell name: multiplier
 ** View name: schematic
-xi2 a_pp<19> a_pp<18> a_pp<17> a_pp<16> a_pp<15> a_pp<14> a_pp<13> a_pp<12> a_pp<11> a_pp<10> a_pp<9> a_pp<8> a_pp<7> a_pp<6> a_pp<5> a_pp<4> a_pp<3> a_pp<2> a_pp<1> a_pp<0> b_pp<19> b_pp<18> b_pp<17> b_pp<16> b_pp<15> b_pp<14> b_pp<13> b_pp<12> b_pp<11> b_pp<10> b_pp<9> b_pp<8> b_pp<7> b_pp<6> b_pp<5> b_pp<4> b_pp<3> b_pp<2> b_pp<1> b_pp<0> clk_bufed pp_row_0<13> pp_row_0<12> pp_row_0<11> pp_row_0<10> pp_row_0<9> pp_row_0<8> pp_row_0<7> pp_row_0<6> pp_row_0<5> pp_row_0<4> pp_row_0<3> pp_row_0<2> pp_row_0<1> pp_row_0<0> pp_row_1<13> pp_row_1<12> pp_row_1<11> pp_row_1<10> pp_row_1<9> pp_row_1<8> pp_row_1<7> pp_row_1<6> pp_row_1<5> pp_row_1<4> pp_row_1<3> pp_row_1<2> pp_row_1<1> pp_row_1<0> pp_row_2<13> pp_row_2<12> pp_row_2<11> pp_row_2<10> pp_row_2<9> pp_row_2<8> pp_row_2<7> pp_row_2<6> pp_row_2<5> pp_row_2<4> pp_row_2<3> pp_row_2<2> pp_row_2<1> pp_row_2<0> pp_row_3<13> pp_row_3<12> pp_row_3<11> pp_row_3<10> pp_row_3<9> pp_row_3<8> pp_row_3<7> pp_row_3<6> pp_row_3<5> pp_row_3<4> pp_row_3<3> pp_row_3<2>
-+pp_row_3<1> pp_row_3<0> pp_row_4<12> pp_row_4<11> pp_row_4<10> pp_row_4<9> pp_row_4<8> pp_row_4<7> pp_row_4<6> pp_row_4<5> pp_row_4<4> pp_row_4<3> pp_row_4<2> pp_row_4<1> pp_row_4<0> pp_row_5 dyn_compressor
+xi2 _a_com<19> _a_com<18> _a_com<17> _a_com<16> _a_com<15> _a_com<14> _a_com<13> _a_com<12> _a_com<11> _a_com<10> _a_com<9> _a_com<8> _a_com<7> _a_com<6> _a_com<5> _a_com<4> _a_com<3> _a_com<2> _a_com<1> _a_com<0> _b_com<19> _b_com<18> _b_com<17> _b_com<16> _b_com<15> _b_com<14> _b_com<13> _b_com<12> _b_com<11> _b_com<10> _b_com<9> _b_com<8> _b_com<7> _b_com<6> _b_com<5> _b_com<4> _b_com<3> _b_com<2> _b_com<1> _b_com<0> a_com<19> a_com<18> a_com<17> a_com<16> a_com<15> a_com<14> a_com<13> a_com<12> a_com<11> a_com<10> a_com<9> a_com<8> a_com<7> a_com<6> a_com<5> a_com<4> a_com<3> a_com<2> a_com<1> a_com<0> b_com<19> b_com<18> b_com<17> b_com<16> b_com<15> b_com<14> b_com<13> b_com<12> b_com<11> b_com<10> b_com<9> b_com<8> b_com<7> b_com<6> b_com<5> b_com<4> b_com<3> b_com<2> b_com<1> b_com<0> buf_clk clk_delayed pp_row_0<13> pp_row_0<12> pp_row_0<11> pp_row_0<10> pp_row_0<9> pp_row_0<8> pp_row_0<7> pp_row_0<6> pp_row_0<5> pp_row_0<4> pp_row_0<3> pp_row_0<2> pp_row_0<1> pp_row_0<0> pp_row_1<13> pp_row_1<12>
++pp_row_1<11> pp_row_1<10> pp_row_1<9> pp_row_1<8> pp_row_1<7> pp_row_1<6> pp_row_1<5> pp_row_1<4> pp_row_1<3> pp_row_1<2> pp_row_1<1> pp_row_1<0> pp_row_2<13> pp_row_2<12> pp_row_2<11> pp_row_2<10> pp_row_2<9> pp_row_2<8> pp_row_2<7> pp_row_2<6> pp_row_2<5> pp_row_2<4> pp_row_2<3> pp_row_2<2> pp_row_2<1> pp_row_2<0> pp_row_3<13> pp_row_3<12> pp_row_3<11> pp_row_3<10> pp_row_3<9> pp_row_3<8> pp_row_3<7> pp_row_3<6> pp_row_3<5> pp_row_3<4> pp_row_3<3> pp_row_3<2> pp_row_3<1> pp_row_3<0> pp_row_4<12> pp_row_4<11> pp_row_4<10> pp_row_4<9> pp_row_4<8> pp_row_4<7> pp_row_4<6> pp_row_4<5> pp_row_4<4> pp_row_4<3> pp_row_4<2> pp_row_4<1> pp_row_4<0> pp_row_5 dyn_compressor
 xi7 _a<9> _a<8> _a<7> _a<6> _a<5> _a<4> _a<3> _a<2> _a<1> _a<0> _b<9> _b<8> _b<7> _b<6> _b<5> _b<4> _b<3> _b<2> _b<1> _b<0> clk_bufed pp_row_0<13> pp_row_0<12> pp_row_0<11> pp_row_0<10> pp_row_0<9> pp_row_0<8> pp_row_0<7> pp_row_0<6> pp_row_0<5> pp_row_0<4> pp_row_0<3> pp_row_0<2> pp_row_0<1> pp_row_0<0> pp_row_1<13> pp_row_1<12> pp_row_1<11> pp_row_1<10> pp_row_1<9> pp_row_1<8> pp_row_1<7> pp_row_1<6> pp_row_1<5> pp_row_1<4> pp_row_1<3> pp_row_1<2> pp_row_1<1> pp_row_1<0> pp_row_2<13> pp_row_2<12> pp_row_2<11> pp_row_2<10> pp_row_2<9> pp_row_2<8> pp_row_2<7> pp_row_2<6> pp_row_2<5> pp_row_2<4> pp_row_2<3> pp_row_2<2> pp_row_2<1> pp_row_2<0> pp_row_3<13> pp_row_3<12> pp_row_3<11> pp_row_3<10> pp_row_3<9> pp_row_3<8> pp_row_3<7> pp_row_3<6> pp_row_3<5> pp_row_3<4> pp_row_3<3> pp_row_3<2> pp_row_3<1> pp_row_3<0> pp_row_4<12> pp_row_4<11> pp_row_4<10> pp_row_4<9> pp_row_4<8> pp_row_4<7> pp_row_4<6> pp_row_4<5> pp_row_4<4> pp_row_4<3> pp_row_4<2> pp_row_4<1> pp_row_4<0> pp_row_5 a<9> a<8> a<7> a<6> a<5> a<4>
 +a<3> a<2> a<1> a<0> b<9> b<8> b<7> b<6> b<5> b<4> b<3> b<2> b<1> b<0> dyn_booth
+xi20 clk clk_adder clk_buffer
+xi18 clk buf_clk clk_buffer
 xi8 clk clk_bufed clk_buffer
+xi9 _a_com<9> _a_com<8> _a_com<7> _a_com<6> _a_com<5> _a_com<4> _a_com<3> _a_com<2> _a_com<1> _a_com<0> _b_com<9> _b_com<8> _b_com<7> _b_com<6> _b_com<5> _b_com<4> _b_com<3> _b_com<2> _b_com<1> _b_com<0> a_com<9> a_com<8> a_com<7> a_com<6> a_com<5> a_com<4> a_com<3> a_com<2> a_com<1> a_com<0> b_com<9> b_com<8> b_com<7> b_com<6> b_com<5> b_com<4> b_com<3> b_com<2> b_com<1> b_com<0> 0 clk_adder p_int<9> p_int<8> p_int<7> p_int<6> p_int<5> p_int<4> p_int<3> p_int<2> p_int<1> p_int<0> c_out_span dyn_span_tree
+xi10 _a_com<19> _a_com<18> _a_com<17> _a_com<16> _a_com<15> _a_com<14> _a_com<13> _a_com<12> _a_com<11> _a_com<10> _b_com<19> _b_com<18> _b_com<17> _b_com<16> _b_com<15> _b_com<14> _b_com<13> _b_com<12> _b_com<11> _b_com<10> a_com<19> a_com<18> a_com<17> a_com<16> a_com<15> a_com<14> a_com<13> a_com<12> a_com<11> a_com<10> b_com<19> b_com<18> b_com<17> b_com<16> b_com<15> b_com<14> b_com<13> b_com<12> b_com<11> b_com<10> c_out_span clk_adder p_int<19> p_int<18> p_int<17> p_int<16> p_int<15> p_int<14> p_int<13> p_int<12> p_int<11> p_int<10> dyn_csa
+xi15 buf_clk clk_delayed clk_delay
+xi17<19> p_int<19> p<19> output_buffer
+xi17<18> p_int<18> p<18> output_buffer
+xi17<17> p_int<17> p<17> output_buffer
+xi17<16> p_int<16> p<16> output_buffer
+xi17<15> p_int<15> p<15> output_buffer
+xi17<14> p_int<14> p<14> output_buffer
+xi17<13> p_int<13> p<13> output_buffer
+xi17<12> p_int<12> p<12> output_buffer
+xi17<11> p_int<11> p<11> output_buffer
+xi17<10> p_int<10> p<10> output_buffer
+xi17<9> p_int<9> p<9> output_buffer
+xi17<8> p_int<8> p<8> output_buffer
+xi17<7> p_int<7> p<7> output_buffer
+xi17<6> p_int<6> p<6> output_buffer
+xi17<5> p_int<5> p<5> output_buffer
+xi17<4> p_int<4> p<4> output_buffer
+xi17<3> p_int<3> p<3> output_buffer
+xi17<2> p_int<2> p<2> output_buffer
+xi17<1> p_int<1> p<1> output_buffer
+xi17<0> p_int<0> p<0> output_buffer
