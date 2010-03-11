@@ -1,6 +1,6 @@
 radix 		244           244              244              244
 vname 		ain<[9:0]>    _ain<[9:0]>      bin<[9:0]>       _bin<[9:0]>
-period 2ns
+period 4ns
 tfall .02
 trise .02
 vih 1.2
@@ -9,15 +9,15 @@ vil 0
 ;for delay sim
 
 ;	 	ain             _ain            bin             _bin
-; multiplying -199 and -107, result 21293
+; multiplying -199 and -107, result 21293 (0x532D)
                 339             0C6             395             06A
 ; multiplying 3FF (-1) and 3FF (-1), result 1
                 3FF             000             3FF             000
 ; multiplying 0 and 0, result 0
                 000             3FF             000             3FF
-; multiplying -300 and 1, result -300 (2D4h)
+; multiplying -300 and 1, result -300 (0x2D4h)
                 2D4             12B             001             3FE
-; multiplying 5 and -50, result -250
+; multiplying 5 and -50, result -250 (0xFFF06)
                 005             3FA             3CE             031
-; multiplying 120 and 4, result 480
+; multiplying 120 and 4, result 480 (0x1E0)
                 078             387             004             3FB

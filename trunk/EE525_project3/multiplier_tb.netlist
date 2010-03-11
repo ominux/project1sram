@@ -49,7 +49,8 @@ vdd! vdd! gnd! DC=my_vdd
 
 *****************************Clock define *************************************
 
-Vclk inclk gnd pulse (0V my_vdd 30ps 20ps 20ps 0.98ns 2ns)
+* have to precharge the nodes first
+Vclk inclk gnd pulse (0V my_vdd 1ns 20ps 20ps 1.98ns 4ns)
 
 *****************************INPUTS *******************************************
 
