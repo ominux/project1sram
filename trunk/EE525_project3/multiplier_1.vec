@@ -9,6 +9,8 @@ vil 0
 ;for delay sim
 
 ;	 	ain             _ain            bin             _bin
+; multiplying -199 and -107, result 21293
+                339             0C6             395             06A
 ; multiplying 3FF (-1) and 3FF (-1), result 1
                 3FF             000             3FF             000
 ; multiplying 0 and 0, result 0
