@@ -1,6 +1,6 @@
 radix 		244           244              244              244
 vname 		ain<[9:0]>    _ain<[9:0]>      bin<[9:0]>       _bin<[9:0]>
-period 4ns
+period 2.24ns
 tfall .02
 trise .02
 vih 1.2
