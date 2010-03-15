@@ -7,7 +7,7 @@
 
 *****************************parameter settings ********************************
 .param my_vdd=1.2V
-.param my_sim_time=28ns
+.param my_sim_time=24ns
 .param size=1
 .param poutsize=450n
 
