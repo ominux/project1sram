@@ -369,14 +369,14 @@ m0 net25 clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
 ** Cell name: clk_buffer
 ** View name: schematic
 .subckt clk_buffer in out
-m10 out net016 0 0 NMOS_VTG L=50e-9 W=11.57e-6
-m8 net016 mid 0 0 NMOS_VTG L=50e-9 W=2.88e-6
-m3 mid net15 0 0 NMOS_VTG L=50e-9 W=720e-9
-m1 net15 in 0 0 NMOS_VTG L=50e-9 W=180e-9
-m9 out net016 vdd! vdd! PMOS_VTG L=50e-9 W=28.8e-6
-m7 net016 mid vdd! vdd! PMOS_VTG L=50e-9 W=7.2e-6
-m2 mid net15 vdd! vdd! PMOS_VTG L=50e-9 W=1.8e-6
-m0 net15 in vdd! vdd! PMOS_VTG L=50e-9 W=450e-9
+m10 out net016 0 0 NMOS_VTG L=50e-9 W=3e-6
+m8 net016 mid 0 0 NMOS_VTG L=50e-9 W=5e-6
+m3 mid net15 0 0 NMOS_VTG L=50e-9 W=360e-9
+m1 net15 in 0 0 NMOS_VTG L=50e-9 W=540e-9
+m9 out net016 vdd! vdd! PMOS_VTG L=50e-9 W=28e-6
+m7 net016 mid vdd! vdd! PMOS_VTG L=50e-9 W=1e-6
+m2 mid net15 vdd! vdd! PMOS_VTG L=50e-9 W=3e-6
+m0 net15 in vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
 .ends clk_buffer
 ** End of subcircuit definition.
 
@@ -410,6 +410,21 @@ xi20 _y<9> _x<1> y<9> x<1> clk_buf pp_row_0<12> dyn_xor
 ** End of subcircuit definition.
 
 ** Library name: EE525_project3
+** Cell name: clk_buffer_slow
+** View name: schematic
+.subckt clk_buffer_slow in out
+m2 mid net31 vdd! vdd! PMOS_VTG L=50e-9 W=1e-6
+m7 net23 mid vdd! vdd! PMOS_VTG L=50e-9 W=5e-6
+m9 out net23 vdd! vdd! PMOS_VTG L=50e-9 W=20e-6
+m0 net31 in vdd! vdd! PMOS_VTG L=50e-9 W=90e-9
+m3 mid net31 0 0 NMOS_VTG L=50e-9 W=270e-9
+m8 net23 mid 0 0 NMOS_VTG L=50e-9 W=5e-6
+m10 out net23 0 0 NMOS_VTG L=50e-9 W=4e-6
+m1 net31 in 0 0 NMOS_VTG L=50e-9 W=90e-9
+.ends clk_buffer_slow
+** End of subcircuit definition.
+
+** Library name: EE525_project3
 ** Cell name: sta_mux_inv
 ** View name: schematic
 .subckt sta_mux_inv a b out sel
@@ -420,11 +435,11 @@ m5 net23 b vdd! vdd! PMOS_VTG L=50e-9 W='size*450e-9'
 m4 net44 _sel net23 vdd! PMOS_VTG L=50e-9 W='size*450e-9'
 m6 _sel sel vdd! vdd! PMOS_VTG L=50e-9 W='size*225e-9'
 m10 out net44 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
-m3 net44 sel net36 0 NMOS_VTG L=50e-9 W='size*180e-9'
 m2 net36 b 0 0 NMOS_VTG L=50e-9 W='size*180e-9'
-m1 net40 a 0 0 NMOS_VTG L=50e-9 W='size*180e-9'
 m0 net44 _sel net40 0 NMOS_VTG L=50e-9 W='size*180e-9'
+m1 net40 a 0 0 NMOS_VTG L=50e-9 W='size*180e-9'
 m7 _sel sel 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m3 net44 sel net36 0 NMOS_VTG L=50e-9 W='size*180e-9'
 .ends sta_mux_inv
 ** End of subcircuit definition.
 
@@ -671,37 +686,16 @@ m1 out in 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
 ** Cell name: clk_delay
 ** View name: schematic
 .subckt clk_delay in out
-xi16<9> delay2 net17<0> inv_min
-xi16<8> delay2 net17<1> inv_min
-xi16<7> delay2 net17<2> inv_min
-xi16<6> delay2 net17<3> inv_min
-xi16<5> delay2 net17<4> inv_min
-xi16<4> delay2 net17<5> inv_min
-xi16<3> delay2 net17<6> inv_min
-xi16<2> delay2 net17<7> inv_min
-xi16<1> delay2 net17<8> inv_min
-xi16<0> delay2 net17<9> inv_min
+xi23<2> delay0 net48<0> inv_min
+xi23<1> delay0 net48<1> inv_min
+xi23<0> delay0 net48<2> inv_min
+xi18<2> delay1 net18<0> inv_min
+xi18<1> delay1 net18<1> inv_min
+xi18<0> delay1 net18<2> inv_min
 xi20 delay0 delay1 inv_min
-xi18<9> delay1 net19<0> inv_min
-xi18<8> delay1 net19<1> inv_min
-xi18<7> delay1 net19<2> inv_min
-xi18<6> delay1 net19<3> inv_min
-xi18<5> delay1 net19<4> inv_min
-xi18<4> delay1 net19<5> inv_min
-xi18<3> delay1 net19<6> inv_min
-xi18<2> delay1 net19<7> inv_min
-xi18<1> delay1 net19<8> inv_min
-xi18<0> delay1 net19<9> inv_min
-xi23<9> delay0 net21<0> inv_min
-xi23<8> delay0 net21<1> inv_min
-xi23<7> delay0 net21<2> inv_min
-xi23<6> delay0 net21<3> inv_min
-xi23<5> delay0 net21<4> inv_min
-xi23<4> delay0 net21<5> inv_min
-xi23<3> delay0 net21<6> inv_min
-xi23<2> delay0 net21<7> inv_min
-xi23<1> delay0 net21<8> inv_min
-xi23<0> delay0 net21<9> inv_min
+xi16<2> delay2 net16<0> inv_min
+xi16<1> delay2 net16<1> inv_min
+xi16<0> delay2 net16<2> inv_min
 xi25 in delay0 inv_min
 xi8 delay1 delay2 inv_min
 xi0 delay2 delay3 inv_min
@@ -720,8 +714,8 @@ m10 net016 net5 0 0 NMOS_VTG L=50e-9 W=2.43e-6
 m7 net012 in 0 0 NMOS_VTG L=50e-9 W=270e-9
 m1 out net016 0 0 NMOS_VTG L=50e-9 W=7.29e-6
 m0 net5 net012 0 0 NMOS_VTG L=50e-9 W=810e-9
-m9 net016 net5 vdd! vdd! PMOS_VTG L=50e-9 W=6.075e-6
 m8 net012 in vdd! vdd! PMOS_VTG L=50e-9 W=675e-9
+m9 net016 net5 vdd! vdd! PMOS_VTG L=50e-9 W=6.075e-6
 m3 out net016 vdd! vdd! PMOS_VTG L=50e-9 W=18.225e-6
 m2 net5 net012 vdd! vdd! PMOS_VTG L=50e-9 W=2.025e-6
 .ends output_buffer
@@ -730,15 +724,14 @@ m2 net5 net012 vdd! vdd! PMOS_VTG L=50e-9 W=2.025e-6
 ** Library name: EE525_project3
 ** Cell name: multiplier
 ** View name: schematic
-xi2 _a_com<19> _a_com<18> _a_com<17> _a_com<16> _a_com<15> _a_com<14> _a_com<13> _a_com<12> _a_com<11> _a_com<10> _a_com<9> _a_com<8> _a_com<7> _a_com<6> _a_com<5> _a_com<4> _a_com<3> _a_com<2> _a_com<1> _a_com<0> _b_com<19> _b_com<18> _b_com<17> _b_com<16> _b_com<15> _b_com<14> _b_com<13> _b_com<12> _b_com<11> _b_com<10> _b_com<9> _b_com<8> _b_com<7> _b_com<6> _b_com<5> _b_com<4> _b_com<3> _b_com<2> _b_com<1> _b_com<0> a_com<19> a_com<18> a_com<17> a_com<16> a_com<15> a_com<14> a_com<13> a_com<12> a_com<11> a_com<10> a_com<9> a_com<8> a_com<7> a_com<6> a_com<5> a_com<4> a_com<3> a_com<2> a_com<1> a_com<0> b_com<19> b_com<18> b_com<17> b_com<16> b_com<15> b_com<14> b_com<13> b_com<12> b_com<11> b_com<10> b_com<9> b_com<8> b_com<7> b_com<6> b_com<5> b_com<4> b_com<3> b_com<2> b_com<1> b_com<0> buf_clk net18 pp_row_0<13> pp_row_0<12> pp_row_0<11> pp_row_0<10> pp_row_0<9> pp_row_0<8> pp_row_0<7> pp_row_0<6> pp_row_0<5> pp_row_0<4> pp_row_0<3> pp_row_0<2> pp_row_0<1> pp_row_0<0> pp_row_1<13> pp_row_1<12>
+xi2 _a_com<19> _a_com<18> _a_com<17> _a_com<16> _a_com<15> _a_com<14> _a_com<13> _a_com<12> _a_com<11> _a_com<10> _a_com<9> _a_com<8> _a_com<7> _a_com<6> _a_com<5> _a_com<4> _a_com<3> _a_com<2> _a_com<1> _a_com<0> _b_com<19> _b_com<18> _b_com<17> _b_com<16> _b_com<15> _b_com<14> _b_com<13> _b_com<12> _b_com<11> _b_com<10> _b_com<9> _b_com<8> _b_com<7> _b_com<6> _b_com<5> _b_com<4> _b_com<3> _b_com<2> _b_com<1> _b_com<0> a_com<19> a_com<18> a_com<17> a_com<16> a_com<15> a_com<14> a_com<13> a_com<12> a_com<11> a_com<10> a_com<9> a_com<8> a_com<7> a_com<6> a_com<5> a_com<4> a_com<3> a_com<2> a_com<1> a_com<0> b_com<19> b_com<18> b_com<17> b_com<16> b_com<15> b_com<14> b_com<13> b_com<12> b_com<11> b_com<10> b_com<9> b_com<8> b_com<7> b_com<6> b_com<5> b_com<4> b_com<3> b_com<2> b_com<1> b_com<0> slow_clk delayed_clk pp_row_0<13> pp_row_0<12> pp_row_0<11> pp_row_0<10> pp_row_0<9> pp_row_0<8> pp_row_0<7> pp_row_0<6> pp_row_0<5> pp_row_0<4> pp_row_0<3> pp_row_0<2> pp_row_0<1> pp_row_0<0> pp_row_1<13> pp_row_1<12>
 +pp_row_1<11> pp_row_1<10> pp_row_1<9> pp_row_1<8> pp_row_1<7> pp_row_1<6> pp_row_1<5> pp_row_1<4> pp_row_1<3> pp_row_1<2> pp_row_1<1> pp_row_1<0> pp_row_2<13> pp_row_2<12> pp_row_2<11> pp_row_2<10> pp_row_2<9> pp_row_2<8> pp_row_2<7> pp_row_2<6> pp_row_2<5> pp_row_2<4> pp_row_2<3> pp_row_2<2> pp_row_2<1> pp_row_2<0> pp_row_3<13> pp_row_3<12> pp_row_3<11> pp_row_3<10> pp_row_3<9> pp_row_3<8> pp_row_3<7> pp_row_3<6> pp_row_3<5> pp_row_3<4> pp_row_3<3> pp_row_3<2> pp_row_3<1> pp_row_3<0> pp_row_4<12> pp_row_4<11> pp_row_4<10> pp_row_4<9> pp_row_4<8> pp_row_4<7> pp_row_4<6> pp_row_4<5> pp_row_4<4> pp_row_4<3> pp_row_4<2> pp_row_4<1> pp_row_4<0> pp_row_5 dyn_compressor
 xi7 _a<9> _a<8> _a<7> _a<6> _a<5> _a<4> _a<3> _a<2> _a<1> _a<0> _b<9> _b<8> _b<7> _b<6> _b<5> _b<4> _b<3> _b<2> _b<1> _b<0> clk_bufed pp_row_0<13> pp_row_0<12> pp_row_0<11> pp_row_0<10> pp_row_0<9> pp_row_0<8> pp_row_0<7> pp_row_0<6> pp_row_0<5> pp_row_0<4> pp_row_0<3> pp_row_0<2> pp_row_0<1> pp_row_0<0> pp_row_1<13> pp_row_1<12> pp_row_1<11> pp_row_1<10> pp_row_1<9> pp_row_1<8> pp_row_1<7> pp_row_1<6> pp_row_1<5> pp_row_1<4> pp_row_1<3> pp_row_1<2> pp_row_1<1> pp_row_1<0> pp_row_2<13> pp_row_2<12> pp_row_2<11> pp_row_2<10> pp_row_2<9> pp_row_2<8> pp_row_2<7> pp_row_2<6> pp_row_2<5> pp_row_2<4> pp_row_2<3> pp_row_2<2> pp_row_2<1> pp_row_2<0> pp_row_3<13> pp_row_3<12> pp_row_3<11> pp_row_3<10> pp_row_3<9> pp_row_3<8> pp_row_3<7> pp_row_3<6> pp_row_3<5> pp_row_3<4> pp_row_3<3> pp_row_3<2> pp_row_3<1> pp_row_3<0> pp_row_4<12> pp_row_4<11> pp_row_4<10> pp_row_4<9> pp_row_4<8> pp_row_4<7> pp_row_4<6> pp_row_4<5> pp_row_4<4> pp_row_4<3> pp_row_4<2> pp_row_4<1> pp_row_4<0> pp_row_5 a<9> a<8> a<7> a<6> a<5> a<4>
 +a<3> a<2> a<1> a<0> b<9> b<8> b<7> b<6> b<5> b<4> b<3> b<2> b<1> b<0> dyn_booth
-xi20 clk clk_adder clk_buffer
-xi18 clk buf_clk clk_buffer
 xi8 clk clk_bufed clk_buffer
-xi9 _a_com<19> _a_com<18> _a_com<17> _a_com<16> _a_com<15> _a_com<14> _a_com<13> _a_com<12> _a_com<11> _a_com<10> _a_com<9> _a_com<8> _a_com<7> _a_com<6> _a_com<5> _a_com<4> _a_com<3> _a_com<2> _b_com<19> _b_com<18> _b_com<17> _b_com<16> _b_com<15> _b_com<14> _b_com<13> _b_com<12> _b_com<11> _b_com<10> _b_com<9> _b_com<8> _b_com<7> _b_com<6> _b_com<5> _b_com<4> _b_com<3> _b_com<2> a_com<19> a_com<18> a_com<17> a_com<16> a_com<15> a_com<14> a_com<13> a_com<12> a_com<11> a_com<10> a_com<9> a_com<8> a_com<7> a_com<6> a_com<5> a_com<4> a_com<3> a_com<2> b_com<19> b_com<18> b_com<17> b_com<16> b_com<15> b_com<14> b_com<13> b_com<12> b_com<11> b_com<10> b_com<9> b_com<8> b_com<7> b_com<6> b_com<5> b_com<4> b_com<3> b_com<2> clk_adder p_int<17> p_int<16> p_int<15> p_int<14> p_int<13> p_int<12> p_int<11> p_int<10> p_int<9> p_int<8> p_int<7> p_int<6> p_int<5> p_int<4> p_int<3> p_int<2> p_int<1> p_int<0> dyn_add
-xi15 buf_clk net18 clk_delay
+xi18 clk slow_clk clk_buffer_slow
+xi9 _a_com<19> _a_com<18> _a_com<17> _a_com<16> _a_com<15> _a_com<14> _a_com<13> _a_com<12> _a_com<11> _a_com<10> _a_com<9> _a_com<8> _a_com<7> _a_com<6> _a_com<5> _a_com<4> _a_com<3> _a_com<2> _b_com<19> _b_com<18> _b_com<17> _b_com<16> _b_com<15> _b_com<14> _b_com<13> _b_com<12> _b_com<11> _b_com<10> _b_com<9> _b_com<8> _b_com<7> _b_com<6> _b_com<5> _b_com<4> _b_com<3> _b_com<2> a_com<19> a_com<18> a_com<17> a_com<16> a_com<15> a_com<14> a_com<13> a_com<12> a_com<11> a_com<10> a_com<9> a_com<8> a_com<7> a_com<6> a_com<5> a_com<4> a_com<3> a_com<2> b_com<19> b_com<18> b_com<17> b_com<16> b_com<15> b_com<14> b_com<13> b_com<12> b_com<11> b_com<10> b_com<9> b_com<8> b_com<7> b_com<6> b_com<5> b_com<4> b_com<3> b_com<2> slow_clk p_int<17> p_int<16> p_int<15> p_int<14> p_int<13> p_int<12> p_int<11> p_int<10> p_int<9> p_int<8> p_int<7> p_int<6> p_int<5> p_int<4> p_int<3> p_int<2> p_int<1> p_int<0> dyn_add
+xi15 slow_clk delayed_clk clk_delay
 xgen_outs<19> p_int<17> p<19> output_buffer
 xgen_outs<18> p_int<16> p<18> output_buffer
 xgen_outs<17> p_int<15> p<17> output_buffer
