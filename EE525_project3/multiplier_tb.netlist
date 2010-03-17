@@ -7,7 +7,7 @@
 
 *****************************parameter settings ********************************
 .param my_vdd=1.2V
-.param my_sim_time=32.5ns
+.param my_sim_time=17.0ns
 .param size=1
 .param poutsize=450n
 
@@ -39,8 +39,8 @@ vdd! vdd! gnd! DC=my_vdd
 *to simulate your SRAM, you may create an instance in this file, or 
 *comment out the .subckt and .end in your sram_layout.pex.netlist
 
-*.vec multiplier_1.vec
-.vec multiplier_functional.vec
+.vec multiplier_1.vec
+*.vec multiplier_functional.vec
 *.vec testvector4
 
 *****************************get the energy ***********************************
