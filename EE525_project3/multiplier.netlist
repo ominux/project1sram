@@ -289,21 +289,51 @@ xi14 _pp4<0> _pp3<1> _pp2<3> _pp1<5> _pp0<6> vdd! _pp3<2> _pp2<4> _pp1<6> _pp0<7
 ** End of subcircuit definition.
 
 ** Library name: EE525_project3
+** Cell name: dyn_xor_2x
+** View name: schematic
+.subckt dyn_xor_2x _a _b a b clk out
+m6 out _xor vdd! vdd! PMOS_VTG L=50e-9 W='poutsize*2'
+m0 _xor clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m7 out _xor 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m5 net34 clk 0 0 NMOS_VTG L=50e-9 W='(size*270)*2e-9'
+m4 _xor _a net27 0 NMOS_VTG L=50e-9 W='(size*270)*2e-9'
+m3 net27 b net34 0 NMOS_VTG L=50e-9 W='(size*270)*2e-9'
+m2 net31 _b net34 0 NMOS_VTG L=50e-9 W='(size*270)*2e-9'
+m1 _xor a net31 0 NMOS_VTG L=50e-9 W='(size*270)*2e-9'
+.ends dyn_xor_2x
+** End of subcircuit definition.
+
+** Library name: EE525_project3
+** Cell name: dyn_xnor_2x
+** View name: schematic
+.subckt dyn_xnor_2x _a _b a b clk out
+m6 out _xnor vdd! vdd! PMOS_VTG L=50e-9 W='poutsize*2'
+m0 _xnor clk vdd! vdd! PMOS_VTG L=50e-9 W=225e-9
+m7 out _xnor 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m5 net34 clk 0 0 NMOS_VTG L=50e-9 W='(size*270)*2e-9'
+m4 _xnor _a net27 0 NMOS_VTG L=50e-9 W='(size*270)*2e-9'
+m3 net27 _b net34 0 NMOS_VTG L=50e-9 W='(size*270)*2e-9'
+m2 net31 b net34 0 NMOS_VTG L=50e-9 W='(size*270)*2e-9'
+m1 _xnor a net31 0 NMOS_VTG L=50e-9 W='(size*270)*2e-9'
+.ends dyn_xnor_2x
+** End of subcircuit definition.
+
+** Library name: EE525_project3
 ** Cell name: dyn_booth_enc
 ** View name: schematic
-.subckt dyn_booth_enc n2x_out _x _x1 _x_1 clk x x1 x_1 x_out neg_out pos_out
-xi0 _x_1 _x x_1 x clk x_out dyn_xor
-m11 net37 x_1 net044 0 NMOS_VTG L=50e-9 W='size*270e-9'
-m10 net37 x net044 0 NMOS_VTG L=50e-9 W='size*270e-9'
-m8 pos_out net22 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
-m7 net044 clk 0 0 NMOS_VTG L=50e-9 W='size*360e-9'
-m6 net18 x_1 net044 0 NMOS_VTG L=50e-9 W='size*270e-9'
-m5 net22 x net18 0 NMOS_VTG L=50e-9 W='size*270e-9'
-m2 net22 _x1 net37 0 NMOS_VTG L=50e-9 W='size*270e-9'
-m9 pos_out net22 vdd! vdd! PMOS_VTG L=50e-9 W=poutsize
+.subckt dyn_booth_enc n2x_out _x _x1 _x_1 clk x x1 x_1 x_out neg_out pos_prebuf
+m11 net37 x_1 net044 0 NMOS_VTG L=50e-9 W='(size*270)*2e-9'
+m10 net37 x net044 0 NMOS_VTG L=50e-9 W='(size*270)*2e-9'
+m8 pos_prebuf net22 0 0 NMOS_VTG L=50e-9 W='size*90e-9'
+m7 net044 clk 0 0 NMOS_VTG L=50e-9 W='(size*270)*2e-9'
+m6 net18 x_1 net044 0 NMOS_VTG L=50e-9 W='(size*270)*2e-9'
+m5 net22 x net18 0 NMOS_VTG L=50e-9 W='(size*270)*2e-9'
+m2 net22 _x1 net37 0 NMOS_VTG L=50e-9 W='(size*270)*2e-9'
+m9 pos_prebuf net22 vdd! vdd! PMOS_VTG L=50e-9 W='poutsize*2'
 m1 net22 clk vdd! vdd! PMOS_VTG L=50e-9 W='size*225e-9'
 r0 x1 neg_out 0
-xi3 _x_1 _x x_1 x clk n2x_out dyn_xnor
+xi0 _x_1 _x x_1 x clk x_out dyn_xor_2x
+xi3 _x_1 _x x_1 x clk n2x_out dyn_xnor_2x
 .ends dyn_booth_enc
 ** End of subcircuit definition.
 
