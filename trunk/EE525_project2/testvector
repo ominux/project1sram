@@ -1,0 +1,25 @@
+radix  44444       44444        44444      	   44444    
+vname ain[19:0]     bin[19:0]     nain[19:0]       nbin[19:0]
+
+period 2ns
+tfall .02
+trise .02
+vih 1.2
+vil 0
+
+; inputs in hexadecimal
+
+;make sure you change 'vih' if you are not using vdd=1.2
+
+; the 'period' parameter above controls timing of the inputs, 'period' should be in ns.
+; ex. if you want the inputs change every 800ps, use 'period 0.8ns'
+
+;	a		b		_a		_b
+	00000		00000		fffff		fffff
+	fffff		fffff		00000		00000
+	00000		00000		fffff		fffff
+	fffff		fffff		00000		00000
+
+	
+;extend this vector to test the correctness of your adder and to measure delay.
+  

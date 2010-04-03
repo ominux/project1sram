@@ -1,0 +1,38 @@
+radix  44444       44444        44444      	   44444    
+vname  ain<[19:0]> bin<[19:0]>  _ain<[19:0]>       _bin<[19:0]>
+
+period 1.5ns
+tfall .02
+trise .02
+vih 1.2
+vil 0
+
+; inputs in hexadecimal
+
+; make sure you change 'vih' if you are not using vdd=1.2
+
+; the 'period' parameter above controls timing of the inputs, 'period' should be in ns.
+; ex. if you want the inputs change every 800ps, use 'period 0.8ns'
+
+;	a		b		_a		_b		sum
+;	00000		00000 		fffff		fffff		;=00000, test case 1
+;	45678		45678		ba987		ba987		;=8acf0
+;	54321		20fee		abcde		df011		;=7530f
+;	fe678		05987		01987		fa678		;=03fff
+;	24568		cba98		dba97		34567		;=f0000, test case 5
+;	aaaaa		55555		55555		aaaaa		;=fffff
+;	fffff		00001		00000		ffffe		;=00000
+;	ba987		45678		45678		ba987		;=fffff
+;	00000		00000		fffff		fffff		;=00000
+;	7ffff		00001		80000		ffffe		;=80000, test case 10
+
+	3ffff		3ffff		c0000		c0000		;=7fffe
+	00001		7ffff		ffffe		80000		;=80000
+	00000		00000		fffff		fffff		;=00000
+	3ffff		00001		c0000		ffffe		;=40000
+	7ffff		7ffff		80000		80000		;=ffffe, test case 15
+	fffff		00001		00000		ffffe		;=00000
+	80000		00000		7ffff		fffff		;=80000
+	0ffff		00001		f0000		ffffe		;=10000
+	00000		00000 		fffff		fffff		;=00000
+	07fff		00001		f8000		ffffe		;=08000, test case 20
